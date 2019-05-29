@@ -1,10 +1,6 @@
 package com.pizza.order;
 
 
-import com.pizza.order.dao.PriceDAO;
-import com.pizza.order.model.pizza.Pizza;
-import com.pizza.order.model.sides.Side;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +14,6 @@ public class PizzaOrder {
     public PizzaOrder(Pizza pizza, int quantity) {
         this.pizza = pizza;
         this.quantity = quantity;
-        new PriceDAO();
     }
 
     public PizzaOrder withSides(Side... side) {

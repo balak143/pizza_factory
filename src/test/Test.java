@@ -1,7 +1,6 @@
 import com.pizza.order.*;
 import com.pizza.order.builder.PizzaBuilder;
 import com.pizza.order.model.crust.WheatThinCrust;
-import com.pizza.order.model.enums.*;
 import com.pizza.order.model.pizza.Pizza;
 import com.pizza.order.model.sides.ColdDrink;
 import com.pizza.order.model.sides.MousseCake;
