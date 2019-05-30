@@ -4,7 +4,7 @@ import com.pizza.utils.Price;
 
 import java.util.Date;
 
-public class ColdDrink implements SidesModel{
+public class ColdDrink extends AbstractSidesModel{
 
     @Override
     public Price cost(Date date) {

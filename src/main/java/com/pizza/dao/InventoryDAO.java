@@ -30,7 +30,7 @@ Map<InventoryDataKey, InventoryData> inventoryMap = new ConcurrentHashMap<Invent
         vegToppingPriceMap.put(VEGTOPPING.Mushroom,Double.valueOf(30));
         vegToppingPriceMap.put(VEGTOPPING.FreshTomato,Double.valueOf(10));
         // Non Veg ToppingModel
-        nonVegToppingPriceMap.put(NONVEGTOPPING.ChickenTikkaModel,Double.valueOf(35));
+        nonVegToppingPriceMap.put(NONVEGTOPPING.ChickenTikkaToppingModel,Double.valueOf(35));
         nonVegToppingPriceMap.put(NONVEGTOPPING.BarbequeChicken,Double.valueOf(45));
         nonVegToppingPriceMap.put(NONVEGTOPPING.GrilledChicken,Double.valueOf(40));*/
     }

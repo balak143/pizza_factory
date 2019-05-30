@@ -7,9 +7,9 @@ import com.pizza.utils.Price;
 
 import java.util.Date;
 
-public class NonVegSupremeModel extends NonVegetarianPizzaModel {
+public class NonVegSupremePizzaModel extends NonVegetarianPizzaModel {
 
-    public NonVegSupremeModel() {
+    public NonVegSupremePizzaModel() {
         pizzaIngredientsModel =  new DeluxeVeggiePizzaIngredientsModel();
     }
 

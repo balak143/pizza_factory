@@ -8,8 +8,13 @@ import java.util.Date;
 public abstract class AbstractCrustModel implements CrustModel {
     protected IngredientModel ingredientModel;
 
-    public AbstractCrustModel(IngredientModel ingredientModel) {
+    public IngredientModel getIngredientModel() {
+        return ingredientModel;
+    }
+
+    public AbstractCrustModel setIngredientModel(IngredientModel ingredientModel) {
         this.ingredientModel = ingredientModel;
+        return this;
     }
 
     @Override

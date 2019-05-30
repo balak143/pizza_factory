@@ -5,11 +5,7 @@ import com.pizza.utils.Price;
 
 import java.util.Date;
 
-public class BarbequeChickenModel extends AbstractToppingModel {
-
-    public BarbequeChickenModel(IngredientModel ingredientModel){
-        super(ingredientModel);
-    }
+public class BarbequeChickenToppingModel extends AbstractToppingModel implements NonVegetarianToppingModel {
 
     @Override
     public Price cost(Date date) {

@@ -6,7 +6,7 @@ import com.pizza.utils.Price;
 import java.util.Date;
 
 public class PaneerToppingModel extends AbstractToppingModel{
-    PaneerToppingModel(IngredientModel ingredientModel){
+    public PaneerToppingModel(IngredientModel ingredientModel){
         super(ingredientModel);
         this.ingredientModel = ingredientModel;
     }

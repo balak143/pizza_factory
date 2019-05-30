@@ -5,12 +5,7 @@ import com.pizza.utils.Price;
 
 import java.util.Date;
 
-public class FreshPanPizza extends AbstractCrustModel {
-
-    public FreshPanPizza(IngredientModel ingredientModel) {
-        super(ingredientModel);
-    }
-
+public class NewHandTossedCrustModel extends AbstractCrustModel {
     @Override
     public Price cost(Date date) {
         return null;

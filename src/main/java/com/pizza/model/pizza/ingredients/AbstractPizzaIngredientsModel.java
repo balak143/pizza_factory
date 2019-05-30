@@ -16,7 +16,9 @@ public abstract class AbstractPizzaIngredientsModel implements PizzaIngredientsM
         return null;
     }
 
-    //public abstract void add(IngredientModel ingredientModel);
+    public void add(IngredientModel ingredientModel){
+        ingredients.add(ingredientModel);
+    }
     public List<IngredientModel> getIngredients() {
         return ingredients;
     }

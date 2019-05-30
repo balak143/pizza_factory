@@ -4,7 +4,7 @@ import com.pizza.utils.Price;
 
 import java.util.Date;
 
-public class MousseCake implements SidesModel {
+public class MousseCake extends AbstractSidesModel {
 
     @Override
     public Price cost(Date date) {

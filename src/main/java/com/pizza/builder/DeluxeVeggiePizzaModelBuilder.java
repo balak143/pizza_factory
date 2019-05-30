@@ -1,12 +1,36 @@
 package com.pizza.builder;
 
-import com.pizza.model.pizza.veg.CheeseAndCornPizzaModel;
+import com.pizza.input.PizzaInputData;
+import com.pizza.model.crust.AbstractCrustModel;
+import com.pizza.model.crust.CrustModelFactory;
+import com.pizza.model.ingredient.IngredientType;
+import com.pizza.model.crust.CrustName;
+import com.pizza.model.pizza.AbstractPizzaModel;
+import com.pizza.model.pizza.PizzaModelFactory;
+import com.pizza.model.pizza.PizzaName;
+import com.pizza.model.pizza.Size;
+import com.pizza.model.pizza.ingredients.DeluxeVeggiePizzaIngredientsModel;
+import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
 import com.pizza.model.pizza.veg.DeluxeVeggiePizzaModel;
+import com.pizza.model.topping.AbstractToppingModel;
+import com.pizza.model.topping.ToppingModelFactory;
+import com.pizza.model.topping.ToppingName;
 
-public class DeluxeVeggiePizzaModelBuilder implements PizzaModelBuilder{
+import java.util.ArrayList;
+import java.util.List;
 
-    @Override
-    public DeluxeVeggiePizzaModel build(BuildContext context) {
-        return null;
+public class DeluxeVeggiePizzaModelBuilder extends AbstractPizzaModelBuilder {
+
+    public DeluxeVeggiePizzaModelBuilder(PizzaInputData pizzaInputData) {
+        super(pizzaInputData);
     }
+
+    protected PizzaIngredientsModel buildPizzaIngredientModel() {
+        DeluxeVeggiePizzaIngredientsModel ingredientsModel = new DeluxeVeggiePizzaIngredientsModel();
+        ingredientsModel.add(buildIngredientModel("Capsicum", IngredientType.VEG, 50.0 * getMultiplier(), "GRAM"));
+        ingredientsModel.add(buildIngredientModel("Sauce", IngredientType.VEG, 20.0 * getMultiplier(), "GRAM"));
+        ingredientsModel.add(buildIngredientModel("Cheese", IngredientType.VEG, 40.0 * getMultiplier(), "GRAM"));
+        return ingredientsModel;
+    }
+
 }

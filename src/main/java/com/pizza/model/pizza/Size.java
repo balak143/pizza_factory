@@ -5,7 +5,8 @@ public enum Size {
     LARGE("Large"),
     REGULAR("Regular");
 
-    String name ;
+    private String name ;
+
     Size(String name) {
         this.name = name;
     }

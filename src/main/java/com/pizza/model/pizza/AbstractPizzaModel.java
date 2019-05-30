@@ -1,8 +1,10 @@
 package com.pizza.model.pizza;
 
 import com.pizza.dao.CostData;
+import com.pizza.model.crust.AbstractCrustModel;
 import com.pizza.model.crust.CrustModel;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
+import com.pizza.model.topping.AbstractToppingModel;
 import com.pizza.model.topping.ToppingModel;
 import com.pizza.utils.Price;
 
@@ -13,9 +15,9 @@ import java.util.List;
 
 public abstract class AbstractPizzaModel implements PizzaModel {
     private Size size;
-    private CrustModel crustModel;
+    private AbstractCrustModel crustModel;
     protected String name;
-    private List<ToppingModel> toppings = new ArrayList<>();
+    private List<AbstractToppingModel> toppings = new ArrayList<>();
     protected PizzaIngredientsModel pizzaIngredientsModel;
 
     public void setSize(Size size) {
@@ -26,15 +28,15 @@ public abstract class AbstractPizzaModel implements PizzaModel {
         return this.size;
     }
 
-    public void setCrustModel(CrustModel crustModel) {
+    public void setCrustModel(AbstractCrustModel crustModel) {
         this.crustModel = crustModel;
     }
 
-    public CrustModel getCrustModel() {
+    public AbstractCrustModel getCrustModel() {
         return this.crustModel;
     }
 
-    public List<ToppingModel> getToppings() {
+    public List<AbstractToppingModel> getToppings() {
         return toppings;
     }
 
@@ -46,8 +48,9 @@ public abstract class AbstractPizzaModel implements PizzaModel {
         this.pizzaIngredientsModel = pizzaIngredientsModel;
     }
 
-    public void addToppings(ToppingModel... topping) {
-        this.toppings.addAll(Arrays.asList(topping));
+    public AbstractPizzaModel setToppings(List<AbstractToppingModel> toppings) {
+        this.toppings = toppings;
+        return this;
     }
 
     public PizzaIngredientsModel getPizzaIngredientsModel() {
@@ -61,7 +64,7 @@ public abstract class AbstractPizzaModel implements PizzaModel {
                 .append("of " + getSize().getName()).append(" Size ").append(System.lineSeparator())
                 .append("With " + getCrustModel()).append(" as CrustModel ").append(System.lineSeparator())
                 .append("Having ToppingModel ").append(System.lineSeparator());
-        for (ToppingModel topping : this.toppings) {
+        for (AbstractToppingModel topping : this.toppings) {
             result.append(" + ").append(topping).append(System.lineSeparator());
         }
         return result.toString();
