@@ -24,13 +24,13 @@ Map<InventoryDataKey, InventoryData> inventoryMap = new ConcurrentHashMap<Invent
 
     private void loadToppingsMap() {
         // Veg ToppingModel
-   /*     vegToppingPriceMap.put(VEGTOPPING.BlackOliveToppingModelModel,Double.valueOf(20));
+   /*     vegToppingPriceMap.put(VEGTOPPING.BlackOliveToppingModel,Double.valueOf(20));
         vegToppingPriceMap.put(VEGTOPPING.Capsicum,Double.valueOf(25));
         vegToppingPriceMap.put(VEGTOPPING.Paneer,Double.valueOf(35));
         vegToppingPriceMap.put(VEGTOPPING.Mushroom,Double.valueOf(30));
         vegToppingPriceMap.put(VEGTOPPING.FreshTomato,Double.valueOf(10));
         // Non Veg ToppingModel
-        nonVegToppingPriceMap.put(NONVEGTOPPING.ChickenTikka,Double.valueOf(35));
+        nonVegToppingPriceMap.put(NONVEGTOPPING.ChickenTikkaModel,Double.valueOf(35));
         nonVegToppingPriceMap.put(NONVEGTOPPING.BarbequeChicken,Double.valueOf(45));
         nonVegToppingPriceMap.put(NONVEGTOPPING.GrilledChicken,Double.valueOf(40));*/
     }

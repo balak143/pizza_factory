@@ -1,14 +1,17 @@
 package com.pizza.model.crust;
 
-import com.pizza.model.enums.CRUST;
+import com.pizza.model.ingredient.IngredientModel;
+import com.pizza.utils.Price;
 
-public class NewHandTossed implements Crust {
-    @Override
-    public Double getCost() {
-        return null;
+import java.util.Date;
+
+public class NewHandTossed extends AbstractCrustModel {
+    public NewHandTossed(IngredientModel ingredientModel) {
+        super(ingredientModel);
     }
+
     @Override
-    public String toString() {
-        return CRUST.NewHandTossed.getName();
+    public Price cost(Date date) {
+        return null;
     }
 }

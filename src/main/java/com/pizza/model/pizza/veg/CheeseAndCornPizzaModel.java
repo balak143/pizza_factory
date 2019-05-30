@@ -1,15 +1,16 @@
 package com.pizza.model.pizza.veg;
 
 import com.pizza.dao.CostData;
+import com.pizza.model.pizza.ingredients.CheeseCornPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.DeluxeVeggiePizzaIngredientsModel;
 import com.pizza.utils.Price;
 
 import java.util.Date;
 
-public class DeluxeVeggiePizzaModel extends VegetarianPizzaModel {
+public class CheeseAndCornPizzaModel extends VegetarianPizzaModel {
 
-    public DeluxeVeggiePizzaModel() {
-        pizzaIngredientsModel =  new DeluxeVeggiePizzaIngredientsModel();
+    public CheeseAndCornPizzaModel() {
+        pizzaIngredientsModel =  new CheeseCornPizzaIngredientsModel();
     }
 
     @Override

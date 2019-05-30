@@ -1,13 +1,12 @@
-package com.pizza.model.crust;
+package com.pizza.model.topping;
 
 import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.utils.Price;
 
 import java.util.Date;
 
-public class FreshPanPizza extends AbstractCrustModel {
-
-    public FreshPanPizza(IngredientModel ingredientModel) {
+public class MushroomToppingModel extends AbstractToppingModel {
+    public MushroomToppingModel(IngredientModel ingredientModel) {
         super(ingredientModel);
     }
 

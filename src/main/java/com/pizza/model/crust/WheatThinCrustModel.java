@@ -5,9 +5,8 @@ import com.pizza.utils.Price;
 
 import java.util.Date;
 
-public class FreshPanPizza extends AbstractCrustModel {
-
-    public FreshPanPizza(IngredientModel ingredientModel) {
+public class WheatThinCrustModel extends AbstractCrustModel {
+    public WheatThinCrustModel(IngredientModel ingredientModel) {
         super(ingredientModel);
     }
 

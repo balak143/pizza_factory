@@ -1,4 +1,6 @@
 package com.pizza.model.pizza;
 
-public interface PizzaModel extends CostModel{
+import com.pizza.model.cost.CostModel;
+
+public interface PizzaModel extends CostModel {
 }

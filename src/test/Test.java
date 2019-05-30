@@ -1,13 +1,12 @@
-import com.pizza.order.*;
-import com.pizza.order.builder.PizzaBuilder;
-import com.pizza.order.model.crust.WheatThinCrust;
-import com.pizza.order.model.pizza.Pizza;
-import com.pizza.order.model.sides.ColdDrink;
-import com.pizza.order.model.sides.MousseCake;
-import com.pizza.order.model.topping.BlackOlive;
-import com.pizza.order.model.topping.ChickenTikka;
-import com.pizza.order.service.OrderingService;
-import com.pizza.order.service.TerminalOrderingService;
+import com.pizza.model.order.builder.PizzaBuilder;
+import com.pizza.model.order.model.crust.WheatThinCrust;
+import com.pizza.model.order.model.pizza.Pizza;
+import com.pizza.model.order.model.sides.ColdDrink;
+import com.pizza.model.order.model.sides.MousseCake;
+import com.pizza.model.order.model.topping.BlackOlive;
+import com.pizza.model.order.model.topping.ChickenTikka;
+import com.pizza.model.order.service.OrderingService;
+import com.pizza.model.order.service.TerminalOrderingService;
 
 import java.util.logging.Logger;
 

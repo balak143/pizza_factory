@@ -1,14 +1,15 @@
-package com.pizza.model.crust;
+package com.pizza.model.topping;
 
 import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.utils.Price;
 
 import java.util.Date;
 
-public class FreshPanPizza extends AbstractCrustModel {
+public class GrilledChickenModel extends AbstractToppingModel {
 
-    public FreshPanPizza(IngredientModel ingredientModel) {
+    public GrilledChickenModel(IngredientModel ingredientModel) {
         super(ingredientModel);
+        this.ingredientModel = ingredientModel;
     }
 
     @Override

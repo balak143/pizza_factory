@@ -161,7 +161,7 @@ public class TerminalPizzaOrderApplication
         System.out.println();
         System.out.println("Your order is as follows: ");
         System.out.println(order.getSize() + " inch createPizza");
-        System.out.println(order.getCrust() + " crust");
+        System.out.println(order.getCrustModel() + " crust");
         System.out.println(order.getToppingList());
 
 

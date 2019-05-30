@@ -1,15 +1,18 @@
 package com.pizza.model.crust;
 
-import com.pizza.model.enums.CRUST;
+import com.pizza.model.ingredient.IngredientModel;
+import com.pizza.utils.Price;
 
-public class CheeseBurst implements Crust {
-    @Override
-    public Double getCost() {
-        return null;
+import java.util.Date;
+
+public class CheeseBurst extends AbstractCrustModel{
+
+    public CheeseBurst(IngredientModel ingredientModel) {
+        super(ingredientModel);
     }
 
     @Override
-    public String toString() {
-        return CRUST.CheeseBurst.getName();
+    public Price cost(Date date) {
+        return null;
     }
 }

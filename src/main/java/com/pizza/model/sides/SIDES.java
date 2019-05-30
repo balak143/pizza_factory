@@ -2,8 +2,8 @@ package com.pizza.model.sides;
 
 public enum SIDES //implements ToppingModel
 {
-    ColdDrink("Cold Drink"),
-    MousseCake("Mousse Cake");
+    COLDD_RINK("Cold Drink"),
+    MOUSSE_CAKE("Mousse Cake");
 
     String name;
     SIDES(String name){
