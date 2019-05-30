@@ -4,6 +4,7 @@ import com.pizza.model.cost.CostModel;
 import com.pizza.utils.Price;
 
 import java.util.Date;
+import java.util.List;
 
 public class IngredientModel implements CostModel {
     private String productCode;
@@ -19,7 +20,7 @@ public class IngredientModel implements CostModel {
     }
 
     @Override
-    public Price cost(Date date) {
+    public List<Price> cost(Date date) {
         return null;
     }
 }

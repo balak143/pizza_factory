@@ -4,11 +4,12 @@ import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.utils.Price;
 
 import java.util.Date;
+import java.util.List;
 
 public class CheeseBurstCrustModel extends AbstractCrustModel{
 
     @Override
-    public Price cost(Date date) {
+    public List<Price> cost(Date date) {
         return null;
     }
 }

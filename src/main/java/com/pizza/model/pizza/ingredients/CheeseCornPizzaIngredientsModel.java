@@ -4,10 +4,4 @@ import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.model.ingredient.IngredientType;
 
 public class CheeseCornPizzaIngredientsModel extends AbstractPizzaIngredientsModel {
-    public void add(){
-        this.ingredients.add(new IngredientModel("Corn", IngredientType.VEG, 50.00, "GRAM"));
-        this.ingredients.add(new IngredientModel("Cheese", IngredientType.VEG, 20.00, "GRAM"));
-        this.ingredients.add(new IngredientModel("Capsicum", IngredientType.VEG, 50.00, "GRAM"));
-    }
-
-  }
+}

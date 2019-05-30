@@ -14,7 +14,7 @@ public class KalyaniPizzaStoreOrderModel implements PizzaOrderModel {
 
 
     @Override
-    public Price cost(Date date) {
+    public List<Price> cost(Date date) {
         return null;
     }
 

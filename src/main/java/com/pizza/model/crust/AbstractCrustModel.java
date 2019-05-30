@@ -4,6 +4,7 @@ import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.utils.Price;
 
 import java.util.Date;
+import java.util.List;
 
 public abstract class AbstractCrustModel implements CrustModel {
     protected IngredientModel ingredientModel;
@@ -18,7 +19,7 @@ public abstract class AbstractCrustModel implements CrustModel {
     }
 
     @Override
-    public Price cost(Date date) {
+    public List<Price> cost(Date date) {
         return null;
     }
 

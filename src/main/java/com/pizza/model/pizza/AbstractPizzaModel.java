@@ -71,11 +71,11 @@ public abstract class AbstractPizzaModel implements PizzaModel {
     }
 
     @Override
-    public Price cost(Date date) {
+    public List<Price> cost(Date date) {
         CostData costData = null; //new CostDAO().getCostMap().get("Paneer");
         double price = costData.getPrice();
         String priceCcy = costData.getPriceCcy();
         String priceUOM = costData.getPriceUOM();
-        return new Price(price, priceCcy, priceUOM);
+        return null;
     }
 }

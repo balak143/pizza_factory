@@ -4,14 +4,11 @@ import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.utils.Price;
 
 import java.util.Date;
+import java.util.List;
 
 public class PaneerToppingModel extends AbstractToppingModel{
-    public PaneerToppingModel(IngredientModel ingredientModel){
-        super(ingredientModel);
-        this.ingredientModel = ingredientModel;
-    }
     @Override
-    public Price cost(Date date) {
+    public List<Price> cost(Date date) {
         return null;
     }
 }
