@@ -4,24 +4,39 @@ import com.pizza.dao.CostData;
 import com.pizza.dao.CostDataKey;
 import com.pizza.dao.DataKey;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CostDataLoader extends DataLoader {
+    static Map<CostDataKey, CostData> costData = new TreeMap<>();
+
+    {
+        costData.entrySet().add(CostDB.BLACK_OLIVE.getCostMapEntry());
+        costData.entrySet().add(CostDB.CAPSICUM.getCostMapEntry());
+        costData.entrySet().add(CostDB.MUSHROOM.getCostMapEntry());
+        costData.entrySet().add(CostDB.PANEER.getCostMapEntry());
+    }
+
     @Override
-    public Map<CostDataKey, CostData> loadAll(){
-       return new HashMap<CostDataKey, CostData>();
+    public Map<CostDataKey, CostData> loadAll() {
+        return costData;
+
     }
 
     @Override
     public List<CostData> load(List<? extends DataKey> list) {
-        return null;
+        List<CostData> resultList = new ArrayList<>();
+        costData.entrySet().stream().forEach(entry -> {
+            if (list.contains(entry.getKey())) {
+                resultList.add(entry.getValue());
+            }
+        });
+        return resultList;
     }
 
     @Override
     public CostData load(DataKey dataKey) {
-        return null;
+        return costData.get(dataKey);
     }
 
 

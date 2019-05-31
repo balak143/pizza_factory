@@ -15,7 +15,7 @@ public class ColdDrinkSidesModelBuilder extends AbstractSideModelBuilder{
     public AbstractSidesModel build(BuildContext context) {
         // call service to get the
         AbstractSidesModel coldDrink = SidesModelFactory.getInstance().createSidesModel(SidesName.valueOf(getSidesInputData()));
-        coldDrink.setIngredientModel(buildIngredientModel(getSidesInputData(), IngredientType.VEG, 100.00, "ML"));
+        coldDrink.setIngredientModel(buildIngredientModel(getSidesInputData(), IngredientType.BEVERAGES, 100.00, "ML"));
         return coldDrink;
     }
 }

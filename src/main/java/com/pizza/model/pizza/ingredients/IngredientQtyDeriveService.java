@@ -1,5 +1,7 @@
 package com.pizza.model.pizza.ingredients;
 
+import com.pizza.exception.ApplicationException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,10 +21,10 @@ public class IngredientQtyDeriveService {
         return INSTANCE;
     }
 
-    public IngredientRequiredQty getQty(String name) {
+    public IngredientRequiredQty getQty(String name)throws ApplicationException {
 
         if(!isExist(name)) {
-            throw new IllegalArgumentException("Not a valid product.");
+            throw new ApplicationException("Not a valid product.");
         }
 
         return quantities.get(name);

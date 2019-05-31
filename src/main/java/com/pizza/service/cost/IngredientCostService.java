@@ -15,7 +15,6 @@ public class IngredientCostService implements CostService {
     public Price cost(IngredientModel model, Date date) {
         CostMemoryGrid costMemoryGrid = GridManager.getInstance().get(GridType.COST, CostMemoryGrid.class);
         CostData costData = costMemoryGrid.getData(new CostDataKey(model.getProductCode(), date));
-
         return new Price(costData.getPrice(), costData.getPriceCcy());
     }
 }

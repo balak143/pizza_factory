@@ -7,10 +7,13 @@ import com.pizza.dao.DataKey;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class InventoryDataLoader extends DataLoader {
+
     @Override
     public Map<InventoryDataKey, InventoryData> loadAll(){
+
        return new HashMap<InventoryDataKey, InventoryData>();
     }
 

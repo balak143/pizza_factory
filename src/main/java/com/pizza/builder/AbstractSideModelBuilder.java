@@ -15,8 +15,6 @@ public abstract class AbstractSideModelBuilder implements SidesModelBuilder {
     }
 
     protected IngredientModel buildIngredientModel(String productName, IngredientType type, double qty, String uomCode) {
-        //Call inventoryGet Service to get the Ingredient type and set
         return new IngredientModel(productName, type, qty, uomCode);
-
     }
 }

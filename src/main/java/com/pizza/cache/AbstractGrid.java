@@ -16,9 +16,8 @@ public abstract class AbstractGrid<K extends DataKey, V extends Data> implements
         return data;
     }
 
-    public AbstractGrid<K, V> setData(Map<K, V> data) {
+    public void setData(Map<K, V> data) {
         this.data = data;
-        return this;
     }
 
     protected boolean isExist(K key) {

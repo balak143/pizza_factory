@@ -2,7 +2,7 @@ package com.pizza.dao;
 
 public final class InventoryDataKey implements DataKey {
     private String productCode;
-    InventoryDataKey(String productCode){
+    public InventoryDataKey(String productCode){
         this.productCode = productCode;
     }
 

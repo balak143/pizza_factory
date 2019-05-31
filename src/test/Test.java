@@ -14,7 +14,7 @@ public class Test {
     private static Logger logger = Logger.getLogger(Test.class.getName());
     public static void main(String[] args)throws Exception {
 
-        Pizza pizza = new PizzaBuilder(VEGETARIAN.DeluxeVeggie)
+     /*   Pizza pizza = new PizzaBuilder(VEGETARIAN.DeluxeVeggie)
                 .ofSize(Size.MEDIUM)
                 .withCrust(new WheatThinCrust())
                 .havingToppings(new BlackOlive(),new ChickenTikka())
@@ -29,7 +29,7 @@ public class Test {
         OrderingService pizzaService = new TerminalOrderingService(pizzaOrder, pizzaOrder1);
         logger.info("Pizza Order Total Cost - "+pizzaService.calculatePrice());
         pizzaService.placeOrder();
-        pizzaService.validateOrder();
+        pizzaService.validateOrder();*/
     }
 
 }

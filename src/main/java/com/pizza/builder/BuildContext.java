@@ -9,8 +9,7 @@ public class BuildContext {
         return pizzaOrderInputData;
     }
 
-    public BuildContext setPizzaOrderInputData(PizzaOrderInputData pizzaOrderInputData) {
+    public void setPizzaOrderInputData(PizzaOrderInputData pizzaOrderInputData) {
         this.pizzaOrderInputData = pizzaOrderInputData;
-        return this;
     }
 }

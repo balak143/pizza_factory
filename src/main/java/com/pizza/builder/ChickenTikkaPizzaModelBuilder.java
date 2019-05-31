@@ -15,11 +15,10 @@ public class ChickenTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder {
 
     @Override
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() {
-
         ChickenTikkaPizzaIngredientsModel ingredientsModel = new ChickenTikkaPizzaIngredientsModel();
-        ingredientsModel.add(buildIngredientModel("Capsicum", IngredientType.VEG, 50.0 * getMultiplier(), "GRAM"));
-        ingredientsModel.add(buildIngredientModel("Sauce", IngredientType.VEG, 20.0 * getMultiplier(), "GRAM"));
-        ingredientsModel.add(buildIngredientModel("Cheese", IngredientType.VEG, 40.0 * getMultiplier(), "GRAM"));
+        ingredientsModel.add(buildIngredientModel("Chicken", IngredientType.NON_VEG, 100.0 * getMultiplier(), "GRAM"));
+        ingredientsModel.add(buildIngredientModel("Sauce", IngredientType.NON_VEG, 20.0 * getMultiplier(), "GRAM"));
+        ingredientsModel.add(buildIngredientModel("Cheese", IngredientType.NON_VEG, 40.0 * getMultiplier(), "GRAM"));
         return ingredientsModel;
     }
 

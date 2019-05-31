@@ -1,5 +1,7 @@
 package com.pizza.builder;
 
+import com.pizza.exception.ApplicationException;
+import com.pizza.exception.ThrowingConsumer;
 import com.pizza.input.PizzaInputData;
 import com.pizza.model.crust.AbstractCrustModel;
 import com.pizza.model.crust.CrustModelFactory;
@@ -53,7 +55,7 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
     protected abstract AbstractPizzaIngredientsModel buildPizzaIngredientModel();
 
     @Override
-    public AbstractPizzaModel build(BuildContext context) {
+    public AbstractPizzaModel build(BuildContext context) throws ApplicationException {
         AbstractPizzaModel model = createPizzaModel();
             model.setSize(Size.valueOf(getPizzaInputData().getPizzaSize()));
             model.setPizzaIngredientsModel(buildPizzaIngredientModel());
@@ -62,7 +64,7 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
             return model;
     }
 
-    protected AbstractCrustModel buildCrustModel() {
+    protected AbstractCrustModel buildCrustModel()throws ApplicationException {
         CrustName crustName = CrustName.valueOf(getPizzaInputData().getCrustName());
         AbstractCrustModel crustModel = CrustModelFactory.getInstance().createCrustModel(crustName);
 
@@ -78,7 +80,12 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
         toppings.forEach(topping -> {
             ToppingName toppingName = ToppingName.valueOf(topping);
 
-            IngredientRequiredQty requiredQty = IngredientQtyDeriveService.getInstance().getQty(toppingName.getName());
+            IngredientRequiredQty requiredQty = null;
+            try {
+                requiredQty = IngredientQtyDeriveService.getInstance().getQty(toppingName.getName());
+            } catch (ApplicationException e) {
+                ThrowingConsumer.sneakyThrow(e);
+            }
 
             AbstractToppingModel toppingModel = ToppingModelFactory.getInstance().createToppingModel(toppingName);
             toppingModel.setIngredientModel(buildIngredientModel(toppingName.getName(), toppingName.getType(), requiredQty.getQty(), requiredQty.getQtyUom()));

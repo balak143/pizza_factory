@@ -1,5 +1,6 @@
 package com.pizza.model.cost;
 
+import com.pizza.exception.ApplicationException;
 import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.service.cost.CostService;
 import com.pizza.utils.Price;
@@ -12,7 +13,7 @@ public abstract class AbstractCostModel implements CostModel {
     private CostService costService;
 
 
-    protected Price getPrice(Date orderDate, List<IngredientModel> ingredients) {
+    protected Price getPrice(Date orderDate, List<IngredientModel> ingredients){
         double totalPrice = 0;
         Price imPrice = null;
 

@@ -1,0 +1,91 @@
+package com.pizza.validator.pizza;
+
+import com.pizza.exception.ApplicationException;
+import com.pizza.model.ingredient.IngredientType;
+import com.pizza.model.pizza.AbstractPizzaModel;
+import com.pizza.model.topping.AbstractToppingModel;
+import com.pizza.model.topping.ToppingName;
+import com.pizza.validator.crust.CrustModelValidator;
+import com.pizza.validator.topping.ToppingModelValidator;
+
+import java.util.List;
+import java.util.ResourceBundle;
+
+
+public class AbstractPizzaModelValidator<T extends AbstractPizzaModel> implements PizzaModelValidator<T> {
+    private ToppingModelValidator toppingModelValidator;
+    private CrustModelValidator crustModelValidator;
+
+    public ToppingModelValidator getToppingModelValidator() {
+        return toppingModelValidator;
+    }
+
+    public void setToppingModelValidator(ToppingModelValidator toppingModelValidator) {
+        this.toppingModelValidator = toppingModelValidator;
+    }
+
+    public CrustModelValidator getCrustModelValidator() {
+        return crustModelValidator;
+    }
+
+    public void setCrustModelValidator(CrustModelValidator crustModelValidator) {
+        this.crustModelValidator = crustModelValidator;
+    }
+
+    @Override
+    public void validate(AbstractPizzaModel pizzaModel) throws ApplicationException {
+        validateCrust(pizzaModel);
+        validateToppings(pizzaModel);
+    }
+
+    private void validateCrust(AbstractPizzaModel pizzaModel)throws ApplicationException {
+        if(pizzaModel.getCrustModel()==null){
+            throw new ApplicationException(ResourceBundle.getBundle("application.properties")
+                    .getString(("AbstractPizzaModelValidator.validateCrust.001")));
+
+        }
+    }
+
+    private void validateToppings(AbstractPizzaModel pizzaModel) throws ApplicationException {
+        List<AbstractToppingModel> toppingModels = pizzaModel.getToppings();
+        if (toppingModels == null || toppingModels.isEmpty()) {
+            return;
+        }
+        for (AbstractToppingModel toppingModel : toppingModels) {
+            vegPizzaCantHaveNonVegTopping(pizzaModel, toppingModel);
+            nonvegPizzaCantHavePaneerTopping(pizzaModel, toppingModel);
+        }
+
+        onlyOneNonVegToppingAllowedOnNonvegPizza(pizzaModel, toppingModels);
+    }
+
+    private void onlyOneNonVegToppingAllowedOnNonvegPizza(AbstractPizzaModel pizzaModel, List<AbstractToppingModel> toppingModels) throws ApplicationException {
+        long noOfNonVegToppings = toppingModels.stream().filter(abstractToppingModel ->
+                abstractToppingModel.getIngredientModel().getType() == IngredientType.NON_VEG).count();
+
+        if (noOfNonVegToppings > 2L && pizzaModel.getPizzaType() == IngredientType.NON_VEG) {
+            throw new ApplicationException(ResourceBundle.getBundle("application.properties")
+                    .getString(("AbstractPizzaModelValidator.validateToppings.onlyOneNonVegToppingAllowedOnNonvegPizza.001")));
+        }
+    }
+
+    private void nonvegPizzaCantHavePaneerTopping(AbstractPizzaModel pizzaModel, AbstractToppingModel toppingModel) throws ApplicationException {
+        if (pizzaModel.getPizzaType() == IngredientType.NON_VEG &&
+                toppingModel.getIngredientModel().getProductCode().equals(ToppingName.PANEER.getName())) {
+            throw new ApplicationException(ResourceBundle.getBundle("application.properties")
+                    .getString("AbstractPizzaModelValidator.validateToppings.nonvegPizzaCantHavePaneerTopping.001"));
+
+        }
+    }
+
+    private void vegPizzaCantHaveNonVegTopping(AbstractPizzaModel pizzaModel, AbstractToppingModel toppingModel) throws ApplicationException {
+        if (pizzaModel.getPizzaType() == IngredientType.VEG &&
+                toppingModel.getIngredientModel().getType() == IngredientType.NON_VEG) {
+            throw new ApplicationException(
+                    ResourceBundle.getBundle("application.properties")
+                            .getString("AbstractPizzaModelValidator.validateToppings.vegPizzaCantHaveNonVegTopping.001"));
+        }
+    }
+
+
+}

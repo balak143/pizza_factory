@@ -7,6 +7,5 @@ public class VegToppingModelValidator implements ToppingModelValidator {
     @Override
     public void validate(PizzaModel pizzaModel) {
 
-        
     }
 }

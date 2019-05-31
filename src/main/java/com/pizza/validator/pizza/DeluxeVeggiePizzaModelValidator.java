@@ -1,43 +1,24 @@
 package com.pizza.validator.pizza;
 
-import com.pizza.model.crust.CrustModel;
-import com.pizza.model.pizza.AbstractPizzaModel;
-import com.pizza.model.pizza.PizzaModel;
+import com.pizza.exception.ApplicationException;
 import com.pizza.model.pizza.veg.DeluxeVeggiePizzaModel;
-import com.pizza.model.pizza.veg.VegetarianPizzaModel;
-import com.pizza.model.topping.ToppingModel;
 import com.pizza.validator.crust.CrustModelValidator;
-import com.pizza.validator.pizza.PizzaModelValidator;
 import com.pizza.validator.topping.ToppingModelValidator;
 
-import java.util.List;
-
-public class DeluxeVeggiePizzaModelValidator implements PizzaModelValidator<DeluxeVeggiePizzaModel> {
+/**
+ * Any specific validations for Deluxe Veggies Pizza would go here.
+ */
+public class DeluxeVeggiePizzaModelValidator extends AbstractPizzaModelValidator<DeluxeVeggiePizzaModel> {
     private ToppingModelValidator toppingModelValidator;
     private CrustModelValidator crustModelValidator;
-
     public DeluxeVeggiePizzaModelValidator(ToppingModelValidator toppingModelValidator,
-                                           CrustModelValidator crustModelValidator) {
+                                          CrustModelValidator crustModelValidator) {
         this.toppingModelValidator = toppingModelValidator;
         this.crustModelValidator = crustModelValidator;
     }
 
     @Override
-    public void validate(DeluxeVeggiePizzaModel pizzaModel) {
-        validateCrust(pizzaModel);
-        validateToppings(pizzaModel);
+    public void validate(DeluxeVeggiePizzaModel pizzaModel) throws ApplicationException {
+        super.validate(pizzaModel);
     }
-
-    private void validateToppings( AbstractPizzaModel pizzaModel) {
-        if(pizzaModel instanceof VegetarianPizzaModel){
-            //pizzaModel.getToppings().
-        }
-
-    }
-
-    private void validateCrust(AbstractPizzaModel crustModel) {
-
-    }
-
-
 }

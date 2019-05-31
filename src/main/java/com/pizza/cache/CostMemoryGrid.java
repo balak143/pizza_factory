@@ -2,14 +2,16 @@ package com.pizza.cache;
 
 import com.pizza.dao.CostData;
 import com.pizza.dao.CostDataKey;
-import com.pizza.dao.Data;
-import com.pizza.dao.DataKey;
 
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
+
+    CostMemoryGrid() {
+        this.gridDataLoader = new CostDataLoader();
+    }
 
     @Override
     public GridType getType() {
@@ -18,23 +20,23 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
 
     @Override
     public CostData getData(CostDataKey key) {
-        if(isExist(key)) {
+        if (isExist(key)) {
             return getData().get(key);
         }
 
         Map.Entry<CostDataKey, CostData> dataEntry = getData().floorEntry(key);
 
-        return (dataEntry != null ) ? dataEntry.getValue() : null;
+        return (dataEntry != null) ? dataEntry.getValue() : null;
     }
 
     @Override
     public void loadAll() {
-
+        this.setData((Map<CostDataKey, CostData>) this.gridDataLoader.loadAll());
     }
 
     @Override
     public CostData load(CostDataKey dataKey) {
-        return null;
+        return (CostData) this.gridDataLoader.load(dataKey);
     }
 
     @Override
@@ -42,12 +44,14 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
         return null;
     }
 
-    @Override
-    protected void createDataMap() {
-        this.setData(new TreeMap<>());
-    }
-
     public TreeMap<CostDataKey, CostData> getData() {
         return (TreeMap<CostDataKey, CostData>) super.getData();
     }
+
+    @Override
+    protected void createDataMap() {
+        this.setData((Map<CostDataKey, CostData>) this.gridDataLoader.loadAll());
+    }
+
+
 }
