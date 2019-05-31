@@ -19,7 +19,7 @@ public class PizzaModelBuilderFactory {
                 pizzaModelBuilder = new PaneerTikkaPizzaModelBuilder(pizza);
                 break;
             case CHEESE_CORN:
-                pizzaModelBuilder = new CheeseCornPizzaModelBuilder();
+                pizzaModelBuilder = new CheeseCornPizzaModelBuilder(pizza);
                 break;
             case DELUXE_VEGGIE:
                 pizzaModelBuilder = new DeluxeVeggiePizzaModelBuilder(pizza);

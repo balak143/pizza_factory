@@ -70,7 +70,7 @@ public abstract class AbstractPizzaModelBuilder implements PizzaModelBuilder {
         List<String> toppings = getPizzaInputData().getToppings();
         toppings.forEach(topping -> {
             AbstractToppingModel toppingModel = ToppingModelFactory.getInstance().createToppingModel(ToppingName.valueOf(topping));
-            toppingModel.setIngredientModel(buildIngredientModel(topping, IngredientType.VEG, 50.0, "GRAM"));
+            toppingModel.setIngredientModel(ToppingName.BARBEQUE_CHICKEN.getIngredientModel());
             toppingModels.add(toppingModel);
         });
         return toppingModels;
