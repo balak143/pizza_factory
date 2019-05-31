@@ -1,7 +1,9 @@
 package com.pizza.validator.order;
 
 import com.pizza.model.order.PizzaOrderModel;
+import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.pizza.PizzaModel;
+import com.pizza.model.sides.AbstractSidesModel;
 import com.pizza.model.sides.SidesModel;
 import com.pizza.validator.inventory.InventoryValidator;
 import com.pizza.validator.order.PizzaOrderModelValidator;
@@ -36,11 +38,11 @@ public class KalyaniPizzaStoreOrderModelValidator implements PizzaOrderModelVali
     }
 
 
-    private void validateSidesModes(List<SidesModel> sidesModels) {
+    private void validateSidesModes(List<AbstractSidesModel> sidesModels) {
         sidesModels.stream().forEach(sidesValidator::validate);
     }
 
-    private void validatePizzaModels(List<PizzaModel> pizzaModels) {
+    private void validatePizzaModels(List<AbstractPizzaModel> pizzaModels) {
         pizzaModels.stream().forEach(pizzaModelValidator::validate);
     }
 

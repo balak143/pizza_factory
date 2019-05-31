@@ -3,8 +3,12 @@ package com.pizza.cache;
 import com.pizza.dao.Data;
 import com.pizza.dao.DataKey;
 
-public interface Grid {
-    GridType getType();
-    Data getKey(DataKey key);
+import java.util.List;
 
+public interface Grid<K extends DataKey, V extends Data> {
+    GridType getType();
+    V getData(K key);
+    void loadAll();
+    V load(K dataKey);
+    List<V> load(List<K> dataKeyList);
 }

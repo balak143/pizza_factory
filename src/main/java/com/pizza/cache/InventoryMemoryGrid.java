@@ -1,5 +1,7 @@
 package com.pizza.cache;
 
+import com.pizza.dao.CostData;
+import com.pizza.dao.CostDataKey;
 import com.pizza.dao.InventoryData;
 import com.pizza.dao.InventoryDataKey;
 import com.pizza.dao.Data;
@@ -9,29 +11,39 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class InventoryMemoryGrid extends AbstractGrid {
-    Map<InventoryDataKey, InventoryData> inventoryMap = new ConcurrentHashMap<InventoryDataKey, InventoryData>();
+public class InventoryMemoryGrid extends AbstractGrid <InventoryDataKey, InventoryData> {
 
-    public InventoryMemoryGrid(CostDataLoader costDataLoader) {
-        this.gridDataLoader = costDataLoader;
+
+
+    @Override
+    protected void createDataMap() {
+
     }
 
     @Override
-    void loadAll() {
-        //inventoryMap.putAll(this.gridDataLoader.loadAll());
-    }
-
-    @Override
-    Data load(DataKey dataKey) {
+    public GridType getType() {
         return null;
     }
 
     @Override
-    List<Data> load(List<DataKey> dataKeyList) {
+    public InventoryData getData(InventoryDataKey key) {
         return null;
     }
 
-    public InventoryData getCost(InventoryDataKey key) {
-        return inventoryMap.get(key);
+
+    @Override
+    public void loadAll() {
+
+    }
+
+    @Override
+    public InventoryData load(InventoryDataKey dataKey) {
+        return null;
+    }
+
+
+    @Override
+    public List load(List dataKeyList) {
+        return null;
     }
 }

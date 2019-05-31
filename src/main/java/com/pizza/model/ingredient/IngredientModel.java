@@ -23,4 +23,20 @@ public class IngredientModel implements CostModel {
     public List<Price> cost(Date date) {
         return null;
     }
+
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public IngredientType getType() {
+        return type;
+    }
+
+    public Double getRequiredQty() {
+        return requiredQty;
+    }
+
+    public String getQtyUom() {
+        return qtyUom;
+    }
 }

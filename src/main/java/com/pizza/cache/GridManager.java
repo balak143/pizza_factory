@@ -21,4 +21,8 @@ public class GridManager {
     public Grid get(GridType gridType) {
         return grids.get(gridType);
     }
+
+    public <T extends Grid> T get(GridType gridType, Class<T> clazz) {
+        return clazz.cast(grids.get(gridType));
+    }
 }

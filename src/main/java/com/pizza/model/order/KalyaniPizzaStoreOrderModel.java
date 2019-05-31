@@ -1,6 +1,8 @@
 package com.pizza.model.order;
 
+import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.pizza.PizzaModel;
+import com.pizza.model.sides.AbstractSidesModel;
 import com.pizza.model.sides.SidesModel;
 import com.pizza.utils.Price;
 
@@ -9,8 +11,8 @@ import java.util.Date;
 import java.util.List;
 
 public class KalyaniPizzaStoreOrderModel implements PizzaOrderModel {
-    private List<PizzaModel> pizzaModels = new ArrayList<>();
-    private List<SidesModel> sidesModels = new ArrayList<>(); ;
+    private List<AbstractPizzaModel> pizzaModels = new ArrayList<>();
+    private List<AbstractSidesModel> sidesModels = new ArrayList<>(); ;
 
 
     @Override
@@ -18,22 +20,22 @@ public class KalyaniPizzaStoreOrderModel implements PizzaOrderModel {
         return null;
     }
 
-    public void addPizzaModel(PizzaModel pizzaModel){
+    public void addPizzaModel(AbstractPizzaModel pizzaModel){
         this.pizzaModels.add(pizzaModel);
     }
 
     @Override
-    public List<PizzaModel> getPizzaModels() {
+    public List<AbstractPizzaModel> getPizzaModels() {
         return this.pizzaModels;
     }
 
 
-    public void addSidesModel(SidesModel sidesModel){
+    public void addSidesModel(AbstractSidesModel sidesModel){
         this.sidesModels.add(sidesModel);
     }
 
     @Override
-    public List<SidesModel> getSidesModels() {
+    public List<AbstractSidesModel> getSidesModels() {
         return this.getSidesModels();
     }
 }

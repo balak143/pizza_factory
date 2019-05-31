@@ -6,10 +6,26 @@ import com.pizza.dao.DataKey;
 import java.util.List;
 import java.util.Map;
 
-public abstract class AbstractGrid {
+public abstract class AbstractGrid<K extends DataKey, V extends Data> implements Grid<K, V> {
     DataLoader gridDataLoader;
-    Map<DataKey, Data> data ;
-    abstract void loadAll();
-    abstract Data load(DataKey dataKey);
-    abstract List<Data> load(List<DataKey> dataKeyList);
+    private Map<K, V> data;
+
+    protected abstract void createDataMap();
+
+    public Map<K, V> getData() {
+        return data;
+    }
+
+    public AbstractGrid<K, V> setData(Map<K, V> data) {
+        this.data = data;
+        return this;
+    }
+
+    protected boolean isExist(K key) {
+        return data.containsKey(key);
+    }
+
+    protected V loadOnDemand(K key) {
+        return this.load(key);
+    }
 }

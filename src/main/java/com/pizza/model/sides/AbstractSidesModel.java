@@ -1,19 +1,10 @@
 package com.pizza.model.sides;
 
 import com.pizza.model.ingredient.IngredientModel;
-import com.pizza.utils.Price;
-
-import java.util.Date;
-import java.util.List;
 
 public class AbstractSidesModel implements SidesModel {
-    private IngredientModel ingredientModel ;
-
-    @Override
-    public List<Price> cost(Date date) {
-        return null;
-    }
-
+    private String name;
+    private IngredientModel ingredientModel;
 
     public IngredientModel getIngredientModel() {
         return ingredientModel;
@@ -22,5 +13,9 @@ public class AbstractSidesModel implements SidesModel {
     public AbstractSidesModel setIngredientModel(IngredientModel ingredientModel) {
         this.ingredientModel = ingredientModel;
         return this;
+    }
+
+    public String getName() {
+        return name;
     }
 }

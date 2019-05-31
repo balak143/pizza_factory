@@ -3,6 +3,7 @@ package com.pizza.model.pizza;
 import com.pizza.dao.CostData;
 import com.pizza.model.crust.AbstractCrustModel;
 import com.pizza.model.crust.CrustModel;
+import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
 import com.pizza.model.topping.AbstractToppingModel;
 import com.pizza.model.topping.ToppingModel;
@@ -15,10 +16,11 @@ import java.util.List;
 
 public abstract class AbstractPizzaModel implements PizzaModel {
     private Size size;
-    private AbstractCrustModel crustModel;
     protected String name;
+
+    private AbstractCrustModel crustModel;
+    protected AbstractPizzaIngredientsModel pizzaIngredientsModel;
     private List<AbstractToppingModel> toppings = new ArrayList<>();
-    protected PizzaIngredientsModel pizzaIngredientsModel;
 
     public void setSize(Size size) {
         this.size = size;
@@ -44,7 +46,7 @@ public abstract class AbstractPizzaModel implements PizzaModel {
         this.name = name;
     }
 
-    public void setPizzaIngredientsModel(PizzaIngredientsModel pizzaIngredientsModel) {
+    public void setPizzaIngredientsModel(AbstractPizzaIngredientsModel pizzaIngredientsModel) {
         this.pizzaIngredientsModel = pizzaIngredientsModel;
     }
 
@@ -53,10 +55,13 @@ public abstract class AbstractPizzaModel implements PizzaModel {
         return this;
     }
 
-    public PizzaIngredientsModel getPizzaIngredientsModel() {
+    public AbstractPizzaIngredientsModel getPizzaIngredientsModel() {
         return pizzaIngredientsModel;
     }
 
+    public String getName() {
+        return name;
+    }
 
     @Override
     public String toString() {
@@ -68,14 +73,5 @@ public abstract class AbstractPizzaModel implements PizzaModel {
             result.append(" + ").append(topping).append(System.lineSeparator());
         }
         return result.toString();
-    }
-
-    @Override
-    public List<Price> cost(Date date) {
-        CostData costData = null; //new CostDAO().getCostMap().get("Paneer");
-        double price = costData.getPrice();
-        String priceCcy = costData.getPriceCcy();
-        String priceUOM = costData.getPriceUOM();
-        return null;
     }
 }

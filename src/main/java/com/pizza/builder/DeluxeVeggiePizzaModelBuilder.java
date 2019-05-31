@@ -9,6 +9,7 @@ import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.pizza.PizzaModelFactory;
 import com.pizza.model.pizza.PizzaName;
 import com.pizza.model.pizza.Size;
+import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.DeluxeVeggiePizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
 import com.pizza.model.pizza.veg.DeluxeVeggiePizzaModel;
@@ -19,13 +20,13 @@ import com.pizza.model.topping.ToppingName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeluxeVeggiePizzaModelBuilder extends AbstractPizzaModelBuilder {
+public class DeluxeVeggiePizzaModelBuilder extends AbstractPizzaModelBuilder<DeluxeVeggiePizzaModel> {
 
     public DeluxeVeggiePizzaModelBuilder(PizzaInputData pizzaInputData) {
         super(pizzaInputData);
     }
 
-    protected PizzaIngredientsModel buildPizzaIngredientModel() {
+    protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() {
         DeluxeVeggiePizzaIngredientsModel ingredientsModel = new DeluxeVeggiePizzaIngredientsModel();
         ingredientsModel.add(buildIngredientModel("Capsicum", IngredientType.VEG, 50.0 * getMultiplier(), "GRAM"));
         ingredientsModel.add(buildIngredientModel("Sauce", IngredientType.VEG, 20.0 * getMultiplier(), "GRAM"));
@@ -33,4 +34,13 @@ public class DeluxeVeggiePizzaModelBuilder extends AbstractPizzaModelBuilder {
         return ingredientsModel;
     }
 
+    @Override
+    protected DeluxeVeggiePizzaModel createPizzaModel() {
+        return new DeluxeVeggiePizzaModel();
+    }
+
+    @Override
+    protected IngredientType getPizzaType() {
+        return IngredientType.VEG;
+    }
 }

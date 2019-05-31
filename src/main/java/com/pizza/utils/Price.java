@@ -3,7 +3,9 @@ package com.pizza.utils;
 import java.util.Currency;
 
 public class Price {
-     Double price;
+     private String name;
+     private Double price;
+     private String currency;
 
      public Double getPrice() {
           return price;
@@ -13,16 +15,18 @@ public class Price {
           return currency;
      }
 
-     public String getUom() {
-          return uom;
+     public String getName() {
+          return name;
      }
 
-     String currency;
-     String uom;
-
-     public Price(Double price, String currency, String uom) {
+     public Price(String name, Double price, String currency) {
+          this.name = name;
           this.price = price;
           this.currency = currency;
-          this.uom = uom;
+     }
+
+     public Price(Double price, String currency) {
+          this.price = price;
+          this.currency = currency;
      }
 }
