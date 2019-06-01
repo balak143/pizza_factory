@@ -1,18 +1,28 @@
-import com.pizza.model.order.builder.PizzaBuilder;
-import com.pizza.model.order.model.crust.WheatThinCrust;
-import com.pizza.model.order.model.pizza.Pizza;
-import com.pizza.model.order.model.sides.ColdDrink;
-import com.pizza.model.order.model.sides.MousseCake;
-import com.pizza.model.order.model.topping.BlackOlive;
-import com.pizza.model.order.model.topping.ChickenTikka;
-import com.pizza.model.order.service.OrderingService;
-import com.pizza.model.order.service.TerminalOrderingService;
+import com.pizza.exception.ApplicationException;
+import com.pizza.exception.ThrowingConsumer;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class Test {
     private static Logger logger = Logger.getLogger(Test.class.getName());
-    public static void main(String[] args)throws Exception {
+    public static void main(String[] args)throws ApplicationException {
+
+        try {
+            ArrayList<String> list = new ArrayList<>();
+            list.add("ONE");
+            list.add("TWO");
+            list.add("THREE");
+            list.stream().forEach(s -> {
+                try {
+                    throw new ApplicationException("Test");
+                } catch (ApplicationException e) {
+                    ThrowingConsumer.sneakyThrow(e);
+                }
+            });
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
      /*   Pizza pizza = new PizzaBuilder(VEGETARIAN.DeluxeVeggie)
                 .ofSize(Size.MEDIUM)

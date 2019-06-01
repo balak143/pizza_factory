@@ -50,10 +50,14 @@ public abstract class AbstractPizzaModel implements PizzaModel {
         this.pizzaIngredientsModel = pizzaIngredientsModel;
     }
 
-    public AbstractPizzaModel setToppings(List<AbstractToppingModel> toppings) {
+    public void setToppings(List<AbstractToppingModel> toppings) {
         this.toppings = toppings;
-        return this;
     }
+
+    public void addTopping(AbstractToppingModel... toppings) {
+        this.toppings.addAll(Arrays.asList(toppings));
+    }
+
 
     public AbstractPizzaIngredientsModel getPizzaIngredientsModel() {
         return pizzaIngredientsModel;

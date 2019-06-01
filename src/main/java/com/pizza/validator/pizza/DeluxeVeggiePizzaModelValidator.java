@@ -11,14 +11,24 @@ import com.pizza.validator.topping.ToppingModelValidator;
 public class DeluxeVeggiePizzaModelValidator extends AbstractPizzaModelValidator<DeluxeVeggiePizzaModel> {
     private ToppingModelValidator toppingModelValidator;
     private CrustModelValidator crustModelValidator;
-    public DeluxeVeggiePizzaModelValidator(ToppingModelValidator toppingModelValidator,
-                                          CrustModelValidator crustModelValidator) {
-        this.toppingModelValidator = toppingModelValidator;
+
+    @Override
+    public CrustModelValidator getCrustModelValidator() {
+        return crustModelValidator;
+    }
+
+    @Override
+    public void setCrustModelValidator(CrustModelValidator crustModelValidator) {
         this.crustModelValidator = crustModelValidator;
     }
 
     @Override
-    public void validate(DeluxeVeggiePizzaModel pizzaModel) throws ApplicationException {
-        super.validate(pizzaModel);
+    public ToppingModelValidator getToppingModelValidator() {
+        return toppingModelValidator;
+    }
+
+    @Override
+    public void setToppingModelValidator(ToppingModelValidator toppingModelValidator) {
+        this.toppingModelValidator = toppingModelValidator;
     }
 }

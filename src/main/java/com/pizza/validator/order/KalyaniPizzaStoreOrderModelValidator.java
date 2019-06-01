@@ -16,11 +16,11 @@ import com.pizza.validator.sides.SidesValidator;
 import java.util.List;
 
 public class KalyaniPizzaStoreOrderModelValidator implements PizzaOrderModelValidator<PizzaOrderModel> {
-    private AbstractPizzaModelValidator pizzaModelValidator;
+    private PizzaModelValidator pizzaModelValidator;
     private InventoryValidator inventoryValidator;
     private SidesValidator sidesValidator;
 
-    public KalyaniPizzaStoreOrderModelValidator(AbstractPizzaModelValidator pizzaModelValidator,
+       public KalyaniPizzaStoreOrderModelValidator(AbstractPizzaModelValidator pizzaModelValidator,
                                                 InventoryValidator inventoryValidator,
                                                 SidesValidator sidesValidator) {
         this.pizzaModelValidator = pizzaModelValidator;
@@ -29,23 +29,35 @@ public class KalyaniPizzaStoreOrderModelValidator implements PizzaOrderModelVali
     }
 
     @Override
-    public void validate(PizzaOrderModel pizzaOrderModel) {
+    public void validate(PizzaOrderModel pizzaOrderModel) throws ApplicationException {
         validatePizzaModels(pizzaOrderModel.getPizzaModels());
         validateSidesModes(pizzaOrderModel.getSidesModels());
         validateInventory(pizzaOrderModel);
 
     }
 
-    private void validateInventory(PizzaOrderModel pizzaOrderModel) {
-        // Call Inventory Service to Validate the stock
+    private void validateInventory(PizzaOrderModel pizzaOrderModel)throws ApplicationException {
+        if(this.inventoryValidator == null){
+            throw new ApplicationException("Inventory Validator model is required ");
+        }
+       inventoryValidator.validate(pizzaOrderModel);
     }
 
 
-    private void validateSidesModes(List<AbstractSidesModel> sidesModels) {
+    private void validateSidesModes(List<AbstractSidesModel> sidesModels)throws ApplicationException {
+        if(this.sidesValidator == null){
+            throw new ApplicationException("Sides Validator model is required ");
+        }
         sidesModels.stream().forEach(sidesValidator::validate);
     }
 
-    private void validatePizzaModels(List<AbstractPizzaModel> pizzaModels) {
+    private void validatePizzaModels(List<AbstractPizzaModel> pizzaModels) throws ApplicationException {
+           if(pizzaModels == null && pizzaModels.isEmpty()){
+               throw new ApplicationException("Pizza model not found ");
+           }
+        if(this.pizzaModelValidator == null){
+            throw new ApplicationException("Pizza Validator model is required  ");
+        }
         pizzaModels.stream().forEach(abstractPizzaModel -> {
             try {
                 pizzaModelValidator.validate(abstractPizzaModel);

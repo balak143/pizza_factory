@@ -4,6 +4,7 @@ import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.utils.Price;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +17,8 @@ public abstract class AbstractPizzaIngredientsModel implements PizzaIngredientsM
         return null;
     }
 
-    public void add(IngredientModel ingredientModel) {
-        ingredients.add(ingredientModel);
+    public void add(IngredientModel... ingredientModels) {
+        ingredients.addAll(Arrays.asList(ingredientModels));
     }
 
     public List<IngredientModel> getIngredients() {

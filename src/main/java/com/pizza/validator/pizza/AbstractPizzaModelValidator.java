@@ -1,18 +1,22 @@
 package com.pizza.validator.pizza;
 
 import com.pizza.exception.ApplicationException;
+import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.topping.AbstractToppingModel;
 import com.pizza.model.topping.ToppingName;
+import com.pizza.utils.MessageResourceUtil;
 import com.pizza.validator.crust.CrustModelValidator;
 import com.pizza.validator.topping.ToppingModelValidator;
 
+import java.text.MessageFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 
-public class AbstractPizzaModelValidator<T extends AbstractPizzaModel> implements PizzaModelValidator<T> {
+public abstract class AbstractPizzaModelValidator<T extends AbstractPizzaModel> implements PizzaModelValidator<T> {
     private ToppingModelValidator toppingModelValidator;
     private CrustModelValidator crustModelValidator;
 
@@ -38,8 +42,8 @@ public class AbstractPizzaModelValidator<T extends AbstractPizzaModel> implement
         validateToppings(pizzaModel);
     }
 
-    private void validateCrust(AbstractPizzaModel pizzaModel)throws ApplicationException {
-        if(pizzaModel.getCrustModel()==null){
+    private void validateCrust(AbstractPizzaModel pizzaModel) throws ApplicationException {
+        if (pizzaModel.getCrustModel() == null) {
             throw new ApplicationException(ResourceBundle.getBundle("application.properties")
                     .getString(("AbstractPizzaModelValidator.validateCrust.001")));
 
@@ -64,26 +68,32 @@ public class AbstractPizzaModelValidator<T extends AbstractPizzaModel> implement
                 abstractToppingModel.getIngredientModel().getType() == IngredientType.NON_VEG).count();
 
         if (noOfNonVegToppings > 2L && pizzaModel.getPizzaType() == IngredientType.NON_VEG) {
-            throw new ApplicationException(ResourceBundle.getBundle("application.properties")
-                    .getString(("AbstractPizzaModelValidator.validateToppings.onlyOneNonVegToppingAllowedOnNonvegPizza.001")));
+            throw new ApplicationException(MessageResourceUtil.getMessage("AbstractPizzaModelValidator.validateToppings.onlyOneNonVegToppingAllowedOnNonvegPizza.001"));
         }
     }
 
     private void nonvegPizzaCantHavePaneerTopping(AbstractPizzaModel pizzaModel, AbstractToppingModel toppingModel) throws ApplicationException {
         if (pizzaModel.getPizzaType() == IngredientType.NON_VEG &&
                 toppingModel.getIngredientModel().getProductCode().equals(ToppingName.PANEER.getName())) {
-            throw new ApplicationException(ResourceBundle.getBundle("application.properties")
-                    .getString("AbstractPizzaModelValidator.validateToppings.nonvegPizzaCantHavePaneerTopping.001"));
+            throw new ApplicationException(MessageResourceUtil
+                    .getMessage("AbstractPizzaModelValidator.validateToppings.nonvegPizzaCantHavePaneerTopping.001",
+                            new String[]{pizzaModel.getName(), toppingModel.getName()}));
 
         }
     }
 
     private void vegPizzaCantHaveNonVegTopping(AbstractPizzaModel pizzaModel, AbstractToppingModel toppingModel) throws ApplicationException {
+        IngredientModel ingredientModel = toppingModel.getIngredientModel();
+        if (ingredientModel == null) {
+            throw new ApplicationException("Ingredient model not found for -" + toppingModel.getName());
+        }
         if (pizzaModel.getPizzaType() == IngredientType.VEG &&
-                toppingModel.getIngredientModel().getType() == IngredientType.NON_VEG) {
+                ingredientModel.getType() == IngredientType.NON_VEG) {
+
             throw new ApplicationException(
-                    ResourceBundle.getBundle("application.properties")
-                            .getString("AbstractPizzaModelValidator.validateToppings.vegPizzaCantHaveNonVegTopping.001"));
+                    MessageResourceUtil.getMessage(
+                            "AbstractPizzaModelValidator.validateToppings.vegPizzaCantHaveNonVegTopping.001",
+                            new String[]{pizzaModel.getName(), toppingModel.getName()}));
         }
     }
 
