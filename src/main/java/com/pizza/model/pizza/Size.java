@@ -5,7 +5,7 @@ public enum Size {
     LARGE("Large"),
     REGULAR("Regular");
 
-    private String name ;
+    private String name;
 
     Size(String name) {
         this.name = name;
@@ -15,4 +15,19 @@ public enum Size {
         return name;
     }
 
+    public static Size of(String name) {
+        Size size = null;
+        switch (name) {
+            case "Medium":
+                size = MEDIUM;
+                break;
+            case "Large":
+                size = LARGE;
+                break;
+            case "Regular":
+                size = REGULAR;
+                break;
+        }
+        return size;
+    }
 }

@@ -1,7 +1,9 @@
 package com.pizza.model.sides;
 
+import com.pizza.model.pizza.PizzaName;
+
 public enum SidesName {
-    COLDD_RINK("Cold Drink"),
+    COLD_DRINK("Cold Drink"),
     MOUSSE_CAKE("Mousse Cake");
 
     private String name;
@@ -12,5 +14,14 @@ public enum SidesName {
 
     public String getName() {
         return name;
+    }
+
+    public static SidesName of(String name) {
+        if ("Cold Drink".equals(name)) {
+            return COLD_DRINK;
+        } else if ("Mousse Cake".equals(name)) {
+            return MOUSSE_CAKE;
+        }
+        return null;
     }
 }

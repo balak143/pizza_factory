@@ -32,7 +32,7 @@ public class ToppingModelFactory {
                 toppingModel = new ChickenTikkaToppingModel();
                 break;
             case GRILLED_CHICKEN:
-                toppingModel = new GrilledChickenModel();
+                toppingModel = new GrilledChickenToppingModel();
                 break;
 
         }

@@ -1,6 +1,7 @@
 package com.pizza.model.topping;
 
 import com.pizza.model.ingredient.IngredientType;
+import com.pizza.model.pizza.PizzaName;
 
 public enum ToppingName {
     BLACK_OLIVE("Black Olive", IngredientType.VEG),
@@ -29,5 +30,36 @@ public enum ToppingName {
 
     public IngredientType getType() {
         return type;
+    }
+
+    public static ToppingName of(String name) {
+        ToppingName toppingName = null;
+        switch (name) {
+            case "Black Olive":
+                toppingName = BLACK_OLIVE;
+                break;
+            case "Capsicum":
+                toppingName = CAPSICUM;
+                break;
+            case "Paneer":
+                toppingName = PANEER;
+                break;
+            case "Mushroom":
+                toppingName = MUSHROOM;
+                break;
+            case "Fresh Tomato":
+                toppingName = FRESH_TOMATO;
+                break;
+            case "Chicken Tikka":
+                toppingName = CHICKEN_TIKKA;
+                break;
+            case "Barbeque Chicken":
+                toppingName = BARBEQUE_CHICKEN;
+                break;
+            case "Grilled Chicken":
+                toppingName = GRILLED_CHICKEN;
+                break;
+        }
+        return toppingName;
     }
 }

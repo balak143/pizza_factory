@@ -12,6 +12,7 @@ import com.pizza.model.pizza.Size;
 import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.DeluxeVeggiePizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
+import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.pizza.veg.DeluxeVeggiePizzaModel;
 import com.pizza.model.topping.AbstractToppingModel;
 import com.pizza.model.topping.ToppingModelFactory;
@@ -29,7 +30,7 @@ public class DeluxeVeggiePizzaModelBuilder extends AbstractPizzaModelBuilder<Del
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() {
         DeluxeVeggiePizzaIngredientsModel ingredientsModel = new DeluxeVeggiePizzaIngredientsModel();
         ingredientsModel.add(buildIngredientModel("Capsicum", IngredientType.VEG, 50.0 * getMultiplier(), "GRAM"));
-        ingredientsModel.add(buildIngredientModel("Sauce", IngredientType.VEG, 20.0 * getMultiplier(), "GRAM"));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.SAUCE.getName(), IngredientType.VEG, 20.0 * getMultiplier(), "GRAM"));
         ingredientsModel.add(buildIngredientModel("Cheese", IngredientType.VEG, 40.0 * getMultiplier(), "GRAM"));
         return ingredientsModel;
     }

@@ -10,7 +10,7 @@ public class SidesModelFactory {
     public AbstractSidesModel createSidesModel(SidesName toppingName) {
         AbstractSidesModel sidesModel = null;
         switch (toppingName) {
-            case COLDD_RINK:
+            case COLD_DRINK:
                 sidesModel = new ColdDrink();
                 break;
             case MOUSSE_CAKE:

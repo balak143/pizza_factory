@@ -10,9 +10,7 @@ import com.pizza.utils.MessageResourceUtil;
 import com.pizza.validator.crust.CrustModelValidator;
 import com.pizza.validator.topping.ToppingModelValidator;
 
-import java.text.MessageFormat;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 
@@ -44,8 +42,7 @@ public abstract class AbstractPizzaModelValidator<T extends AbstractPizzaModel> 
 
     private void validateCrust(AbstractPizzaModel pizzaModel) throws ApplicationException {
         if (pizzaModel.getCrustModel() == null) {
-            throw new ApplicationException(ResourceBundle.getBundle("application.properties")
-                    .getString(("AbstractPizzaModelValidator.validateCrust.001")));
+            throw new ApplicationException(MessageResourceUtil.getMessage(("AbstractPizzaModelValidator.validateCrust.001")));
 
         }
     }
@@ -56,6 +53,10 @@ public abstract class AbstractPizzaModelValidator<T extends AbstractPizzaModel> 
             return;
         }
         for (AbstractToppingModel toppingModel : toppingModels) {
+            IngredientModel ingredientModel = toppingModel.getIngredientModel();
+            if (ingredientModel == null) {
+                throw new ApplicationException("Ingredient model not found for - " + toppingModel.getName());
+            }
             vegPizzaCantHaveNonVegTopping(pizzaModel, toppingModel);
             nonvegPizzaCantHavePaneerTopping(pizzaModel, toppingModel);
         }
@@ -67,7 +68,7 @@ public abstract class AbstractPizzaModelValidator<T extends AbstractPizzaModel> 
         long noOfNonVegToppings = toppingModels.stream().filter(abstractToppingModel ->
                 abstractToppingModel.getIngredientModel().getType() == IngredientType.NON_VEG).count();
 
-        if (noOfNonVegToppings > 2L && pizzaModel.getPizzaType() == IngredientType.NON_VEG) {
+        if (noOfNonVegToppings > 1L && pizzaModel.getPizzaType() == IngredientType.NON_VEG) {
             throw new ApplicationException(MessageResourceUtil.getMessage("AbstractPizzaModelValidator.validateToppings.onlyOneNonVegToppingAllowedOnNonvegPizza.001"));
         }
     }
@@ -84,9 +85,7 @@ public abstract class AbstractPizzaModelValidator<T extends AbstractPizzaModel> 
 
     private void vegPizzaCantHaveNonVegTopping(AbstractPizzaModel pizzaModel, AbstractToppingModel toppingModel) throws ApplicationException {
         IngredientModel ingredientModel = toppingModel.getIngredientModel();
-        if (ingredientModel == null) {
-            throw new ApplicationException("Ingredient model not found for -" + toppingModel.getName());
-        }
+
         if (pizzaModel.getPizzaType() == IngredientType.VEG &&
                 ingredientModel.getType() == IngredientType.NON_VEG) {
 

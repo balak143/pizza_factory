@@ -13,9 +13,8 @@ public abstract class AbstractCrustModel implements CrustModel {
         return ingredientModel;
     }
 
-    public AbstractCrustModel setIngredientModel(IngredientModel ingredientModel) {
+    public void setIngredientModel(IngredientModel ingredientModel) {
         this.ingredientModel = ingredientModel;
-        return this;
     }
 
     @Override

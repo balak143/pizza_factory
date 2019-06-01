@@ -8,12 +8,17 @@ import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.pizza.ingredients.ChickenTikkaPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.DeluxeVeggiePizzaIngredientsModel;
+import com.pizza.model.pizza.ingredients.PepperBarbecueChickenPizzaIngredientsModel;
 import com.pizza.model.pizza.nonveg.ChickenTikkaPizzaModel;
+import com.pizza.model.pizza.nonveg.PepperBarbecueChickenPizzaModel;
 import com.pizza.model.pizza.veg.DeluxeVeggiePizzaModel;
 import com.pizza.model.topping.BlackOliveToppingModel;
 import com.pizza.model.topping.ChickenTikkaToppingModel;
+import com.pizza.model.topping.GrilledChickenToppingModel;
 import com.pizza.model.topping.PaneerToppingModel;
+import com.pizza.validator.crust.CrustModelValidator;
 import com.pizza.validator.crust.SingleCrustValidator;
+import com.pizza.validator.topping.ToppingModelValidator;
 import com.pizza.validator.topping.VegToppingModelValidator;
 import org.junit.Before;
 import org.junit.Rule;
@@ -24,15 +29,17 @@ import static org.junit.Assert.*;
 
 public class DeluxeVeggiePizzaModelValidatorTest {
     AbstractPizzaModelValidator pizzaModelValidator = new DeluxeVeggiePizzaModelValidator();
-    AbstractPizzaModel pizzaModel = new DeluxeVeggiePizzaModel();
+    AbstractPizzaModel pizzaModel = null;
+    CrustModelValidator crustModelValidator = null;
+    ToppingModelValidator toppingModelValidator = null;
 
     @Rule
     public ExpectedException expected = ExpectedException.none();
 
     @Before
     public void setup() {
-        pizzaModelValidator.setCrustModelValidator(new SingleCrustValidator());
-        pizzaModelValidator.setToppingModelValidator(new VegToppingModelValidator());
+
+        pizzaModel = new DeluxeVeggiePizzaModel();
         pizzaModel.setCrustModel(new WheatThinCrustModel());
         DeluxeVeggiePizzaIngredientsModel pizzaIngredientsModel = new DeluxeVeggiePizzaIngredientsModel();
         pizzaIngredientsModel.add(IngredientDB.EXTRA_CHEESE.ingredientModel());
@@ -47,6 +54,10 @@ public class DeluxeVeggiePizzaModelValidatorTest {
     @Test
     public void validate_vegpizza_has_vegtappings() throws Exception {
         pizzaModelValidator.validate(pizzaModel);
+        pizzaModelValidator.setCrustModelValidator(new SingleCrustValidator());
+        pizzaModelValidator.setToppingModelValidator(new VegToppingModelValidator());
+        crustModelValidator =pizzaModelValidator.getCrustModelValidator();
+        toppingModelValidator = pizzaModelValidator.getToppingModelValidator();
 
     }
 
@@ -74,6 +85,61 @@ public class DeluxeVeggiePizzaModelValidatorTest {
         PaneerToppingModel paneerToppingModel = new PaneerToppingModel();
         paneerToppingModel.setIngredientModel(IngredientDB.PANEER.ingredientModel());
         pizzaModel.addTopping(paneerToppingModel);
+        pizzaModelValidator.validate(pizzaModel);
+    }
+    @Test
+    public void validate_only_one_nonveg_topping_allowed_on_nonveg_pizza()throws Exception{
+        expected.expect(ApplicationException.class);
+        expected.expectMessage("You can add only one of the non-veg toppings in non-vegetarian pizza.");
+        pizzaModel = new PepperBarbecueChickenPizzaModel();
+        pizzaModel.setCrustModel(new WheatThinCrustModel());
+        PepperBarbecueChickenPizzaIngredientsModel pizzaIngredientsModel = new PepperBarbecueChickenPizzaIngredientsModel();
+        pizzaIngredientsModel.add(IngredientDB.BARBEQUE_CHICKEN.ingredientModel());
+        pizzaIngredientsModel.add(IngredientDB.CAPSICUM.ingredientModel());
+        pizzaModel.setPizzaIngredientsModel(pizzaIngredientsModel);
+        ChickenTikkaToppingModel chickenTikkaToppingModel = new ChickenTikkaToppingModel();
+        chickenTikkaToppingModel.setIngredientModel(IngredientDB.CHICKEN_TIKKA.ingredientModel());
+        pizzaModel.addTopping(chickenTikkaToppingModel);
+        GrilledChickenToppingModel grilledChickenToppingModel = new GrilledChickenToppingModel();
+        grilledChickenToppingModel.setIngredientModel(IngredientDB.GRILLED_CHICKEN.ingredientModel());
+        pizzaModel.addTopping(grilledChickenToppingModel);
+        pizzaModelValidator.validate(pizzaModel);
+    }
+    @Test
+    public void validate_at_least_one_crust_should_be_selected_for_a_pizza()throws Exception{
+        expected.expect(ApplicationException.class);
+        expected.expectMessage("At least one type of crust must be selected for any pizza.");
+        pizzaModel = new PepperBarbecueChickenPizzaModel();
+        //pizzaModel.setCrustModel(new WheatThinCrustModel());
+        PepperBarbecueChickenPizzaIngredientsModel pizzaIngredientsModel = new PepperBarbecueChickenPizzaIngredientsModel();
+        pizzaIngredientsModel.add(IngredientDB.BARBEQUE_CHICKEN.ingredientModel());
+        pizzaModel.setPizzaIngredientsModel(pizzaIngredientsModel);
+        ChickenTikkaToppingModel chickenTikkaToppingModel = new ChickenTikkaToppingModel();
+        chickenTikkaToppingModel.setIngredientModel(IngredientDB.CHICKEN_TIKKA.ingredientModel());
+        pizzaModel.addTopping(chickenTikkaToppingModel);
+        pizzaModelValidator.validate(pizzaModel);
+    }
+    @Test
+    public void validate_with_no_toppings()throws Exception{
+        pizzaModel = new PepperBarbecueChickenPizzaModel();
+        pizzaModel.setCrustModel(new WheatThinCrustModel());
+        PepperBarbecueChickenPizzaIngredientsModel pizzaIngredientsModel = new PepperBarbecueChickenPizzaIngredientsModel();
+        pizzaIngredientsModel.add(IngredientDB.BARBEQUE_CHICKEN.ingredientModel());
+        pizzaModel.setPizzaIngredientsModel(pizzaIngredientsModel);
+        pizzaModelValidator.validate(pizzaModel);
+    }
+    @Test
+    public void validate_toppings_without_ingredient()throws Exception{
+        expected.expect(ApplicationException.class);
+        expected.expectMessage("ngredient model not found for - Chicken Tikka");
+
+        pizzaModel = new PepperBarbecueChickenPizzaModel();
+        pizzaModel.setCrustModel(new WheatThinCrustModel());
+        PepperBarbecueChickenPizzaIngredientsModel pizzaIngredientsModel = new PepperBarbecueChickenPizzaIngredientsModel();
+        pizzaModel.setPizzaIngredientsModel(pizzaIngredientsModel);
+        ChickenTikkaToppingModel chickenTikkaToppingModel = new ChickenTikkaToppingModel();
+        pizzaModel.addTopping(chickenTikkaToppingModel);
+
         pizzaModelValidator.validate(pizzaModel);
     }
 }

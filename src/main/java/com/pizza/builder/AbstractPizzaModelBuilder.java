@@ -41,7 +41,7 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
     }
 
     protected double getMultiplier() {
-        Size pizzaSize = Size.valueOf(getPizzaInputData().getPizzaSize());
+        Size pizzaSize = Size.of(getPizzaInputData().getPizzaSize());
 
         if (pizzaSize == Size.LARGE) {
             return 2;
@@ -57,19 +57,23 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
     @Override
     public AbstractPizzaModel build(BuildContext context) throws ApplicationException {
         AbstractPizzaModel model = createPizzaModel();
-            model.setSize(Size.valueOf(getPizzaInputData().getPizzaSize()));
-            model.setPizzaIngredientsModel(buildPizzaIngredientModel());
-            model.setCrustModel(buildCrustModel());
-            model.setToppings(buildToppingModels());
-            return model;
+        model.setSize(Size.of(getPizzaInputData().getPizzaSize()));
+        model.setPizzaIngredientsModel(buildPizzaIngredientModel());
+        model.setCrustModel(buildCrustModel());
+        model.setToppings(buildToppingModels());
+        return model;
     }
 
-    protected AbstractCrustModel buildCrustModel()throws ApplicationException {
-        CrustName crustName = CrustName.valueOf(getPizzaInputData().getCrustName());
+    protected AbstractCrustModel buildCrustModel() throws ApplicationException {
+        CrustName crustName = CrustName.of(getPizzaInputData().getCrustName());
         AbstractCrustModel crustModel = CrustModelFactory.getInstance().createCrustModel(crustName);
-
+        if (crustModel == null) {
+            throw new ApplicationException("Crust - " + getPizzaInputData().getCrustName() + "is not valid ");
+        }
         IngredientRequiredQty requiredQty = IngredientQtyDeriveService.getInstance().getQty(crustName.getName());
-
+        if (requiredQty == null) {
+            throw new ApplicationException("IngredientRequiredQty is not available for  Crust - " + getPizzaInputData().getCrustName());
+        }
         crustModel.setIngredientModel(buildIngredientModel(crustName.getName(), IngredientType.VEG, requiredQty.getQty(), requiredQty.getQtyUom()));
         return crustModel;
     }
@@ -78,11 +82,13 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
         List<AbstractToppingModel> toppingModels = new ArrayList<>();
         List<String> toppings = getPizzaInputData().getToppings();
         toppings.forEach(topping -> {
-            ToppingName toppingName = ToppingName.valueOf(topping);
-
+            ToppingName toppingName = ToppingName.of(topping);
             IngredientRequiredQty requiredQty = null;
             try {
                 requiredQty = IngredientQtyDeriveService.getInstance().getQty(toppingName.getName());
+                if (requiredQty == null) {
+                    throw new ApplicationException("IngredientRequiredQty is not available for  Topping - " + topping);
+                }
             } catch (ApplicationException e) {
                 ThrowingConsumer.sneakyThrow(e);
             }

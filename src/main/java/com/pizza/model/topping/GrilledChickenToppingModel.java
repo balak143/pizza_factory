@@ -6,7 +6,7 @@ import com.pizza.utils.Price;
 import java.util.Date;
 import java.util.List;
 
-public class GrilledChickenModel extends AbstractToppingModel implements NonVegetarianToppingModel{
+public class GrilledChickenToppingModel extends AbstractToppingModel implements NonVegetarianToppingModel{
 
     @Override
     public List<Price> cost(Date date) {

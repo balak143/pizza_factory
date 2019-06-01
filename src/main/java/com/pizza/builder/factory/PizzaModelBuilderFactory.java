@@ -12,7 +12,7 @@ import com.pizza.model.pizza.PizzaName;
 
 public class PizzaModelBuilderFactory {
     public PizzaModelBuilder getBuilder(PizzaInputData pizza) {
-        PizzaName pizzaName = PizzaName.valueOf(pizza.getName());
+        PizzaName pizzaName = PizzaName.of(pizza.getName());
         PizzaModelBuilder pizzaModelBuilder = null;
         switch (pizzaName) {
             case PANEER_TIKKA:

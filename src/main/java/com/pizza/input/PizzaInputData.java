@@ -23,18 +23,16 @@ public class PizzaInputData {
         return pizzaSize;
     }
 
-    public PizzaInputData setPizzaSize(String pizzaSize) {
+    public void setPizzaSize(String pizzaSize) {
         this.pizzaSize = pizzaSize;
-        return this;
     }
 
     public String getCrustName() {
         return crustName;
     }
 
-    public PizzaInputData setCrustName(String crustName) {
+    public void setCrustName(String crustName) {
         this.crustName = crustName;
-        return this;
     }
 
     public List<String> getToppings() {

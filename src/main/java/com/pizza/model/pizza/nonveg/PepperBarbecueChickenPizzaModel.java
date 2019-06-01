@@ -19,6 +19,6 @@ public class PepperBarbecueChickenPizzaModel extends AbstractPizzaModel implemen
 
     @Override
     public IngredientType getPizzaType() {
-        return null;
+        return IngredientType.NON_VEG;
     }
 }

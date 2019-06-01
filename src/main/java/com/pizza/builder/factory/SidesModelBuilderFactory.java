@@ -7,10 +7,10 @@ import com.pizza.model.sides.SidesName;
 
 public class SidesModelBuilderFactory {
     public SidesModelBuilder getBuilder(String name) {
-        SidesName sideName = SidesName.valueOf(name);
+        SidesName sideName = SidesName.of(name);
         SidesModelBuilder sidesModelBuilder = null;
         switch (sideName) {
-            case COLDD_RINK:
+            case COLD_DRINK:
                 sidesModelBuilder = new ColdDrinkSidesModelBuilder(name);
                 break;
             case MOUSSE_CAKE:
