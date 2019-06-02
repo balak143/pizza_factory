@@ -1,7 +1,7 @@
 package com.pizza.builder;
 
 import com.pizza.model.ingredient.IngredientType;
-import com.pizza.model.sides.MousseCake;
+import com.pizza.model.sides.MousseCakeSidesModel;
 
 public class MousseCakeSidesModelBuilder extends AbstractSideModelBuilder{
 
@@ -10,12 +10,12 @@ public class MousseCakeSidesModelBuilder extends AbstractSideModelBuilder{
     }
 
     @Override
-    public MousseCake build(BuildContext context) {
+    public MousseCakeSidesModel build(BuildContext context) {
         // call service to get the
-        MousseCake mousseCake = new MousseCake();
-        mousseCake.setIngredientModel(buildIngredientModel(getSidesInputData(), IngredientType.VEG, 50.0, "GRAM"));
+        MousseCakeSidesModel mousseCakeSidesModel = new MousseCakeSidesModel();
+        mousseCakeSidesModel.setIngredientModel(buildIngredientModel(getSidesInputData(), IngredientType.VEG, 50.0, "GRAM"));
 
-        mousseCake.setIngredientModel(null);
-        return mousseCake;
+        mousseCakeSidesModel.setIngredientModel(null);
+        return mousseCakeSidesModel;
     }
 }

@@ -1,18 +1,17 @@
 package com.pizza.builder;
 
+import com.pizza.exception.ApplicationException;
 import com.pizza.input.PizzaInputData;
 import com.pizza.model.crust.AbstractCrustModel;
 import com.pizza.model.crust.CrustModelFactory;
+import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.crust.CrustName;
 import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.pizza.PizzaModelFactory;
 import com.pizza.model.pizza.PizzaName;
 import com.pizza.model.pizza.Size;
-import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
-import com.pizza.model.pizza.ingredients.DeluxeVeggiePizzaIngredientsModel;
-import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
-import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
+import com.pizza.model.pizza.ingredients.*;
 import com.pizza.model.pizza.veg.DeluxeVeggiePizzaModel;
 import com.pizza.model.topping.AbstractToppingModel;
 import com.pizza.model.topping.ToppingModelFactory;
@@ -27,12 +26,19 @@ public class DeluxeVeggiePizzaModelBuilder extends AbstractPizzaModelBuilder<Del
         super(pizzaInputData);
     }
 
-    protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() {
+    protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         DeluxeVeggiePizzaIngredientsModel ingredientsModel = new DeluxeVeggiePizzaIngredientsModel();
-        ingredientsModel.add(buildIngredientModel("Capsicum", IngredientType.VEG, 50.0 * getMultiplier(), "GRAM"));
-        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.SAUCE.getName(), IngredientType.VEG, 20.0 * getMultiplier(), "GRAM"));
-        ingredientsModel.add(buildIngredientModel("Cheese", IngredientType.VEG, 40.0 * getMultiplier(), "GRAM"));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.SAUCE));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHEESE));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.ORIGANO));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.GARLIC));
         return ingredientsModel;
+    }
+
+    private IngredientModel getIngredientModel(PizzaIngredientsName pizzaIngredientsName) throws ApplicationException {
+        IngredientRequiredQty ingredientRequiredQty = getIngredientRequiredQty(PizzaIngredientsName.GARLIC.getName());
+        return buildIngredientModel(pizzaIngredientsName.getName(), IngredientType.VEG, ingredientRequiredQty.getQty()
+                * getMultiplier(), ingredientRequiredQty.getQtyUom());
     }
 
     @Override

@@ -120,7 +120,7 @@ public class DeluxeVeggiePizzaModelValidatorTest {
         pizzaModelValidator.validate(pizzaModel);
     }
     @Test
-    public void validate_with_no_toppings()throws Exception{
+    public void validate_pizza_without_toppings()throws Exception{
         pizzaModel = new PepperBarbecueChickenPizzaModel();
         pizzaModel.setCrustModel(new WheatThinCrustModel());
         PepperBarbecueChickenPizzaIngredientsModel pizzaIngredientsModel = new PepperBarbecueChickenPizzaIngredientsModel();
@@ -131,12 +131,10 @@ public class DeluxeVeggiePizzaModelValidatorTest {
     @Test
     public void validate_toppings_without_ingredient()throws Exception{
         expected.expect(ApplicationException.class);
-        expected.expectMessage("ngredient model not found for - Chicken Tikka");
+        expected.expectMessage("Ingredient model not found for - Chicken Tikka");
 
         pizzaModel = new PepperBarbecueChickenPizzaModel();
         pizzaModel.setCrustModel(new WheatThinCrustModel());
-        PepperBarbecueChickenPizzaIngredientsModel pizzaIngredientsModel = new PepperBarbecueChickenPizzaIngredientsModel();
-        pizzaModel.setPizzaIngredientsModel(pizzaIngredientsModel);
         ChickenTikkaToppingModel chickenTikkaToppingModel = new ChickenTikkaToppingModel();
         pizzaModel.addTopping(chickenTikkaToppingModel);
 

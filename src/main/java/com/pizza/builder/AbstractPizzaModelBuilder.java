@@ -34,9 +34,9 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
         return pizzaInputData;
     }
 
-    protected IngredientModel buildIngredientModel(String productName, IngredientType type, double qty, String uomCode) {
+    protected IngredientModel buildIngredientModel(String productName, IngredientType type, double requiredQty, String uomCode) {
         //Call inventoryGet Service to get the Ingredient type and set
-        return new IngredientModel(productName, type, qty, uomCode);
+        return new IngredientModel(productName, type, requiredQty, uomCode);
 
     }
 
@@ -52,7 +52,7 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
         }
     }
 
-    protected abstract AbstractPizzaIngredientsModel buildPizzaIngredientModel();
+    protected abstract AbstractPizzaIngredientsModel buildPizzaIngredientModel()throws ApplicationException;
 
     @Override
     public AbstractPizzaModel build(BuildContext context) throws ApplicationException {
@@ -70,12 +70,17 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
         if (crustModel == null) {
             throw new ApplicationException("Crust - " + getPizzaInputData().getCrustName() + "is not valid ");
         }
-        IngredientRequiredQty requiredQty = IngredientQtyDeriveService.getInstance().getQty(crustName.getName());
-        if (requiredQty == null) {
-            throw new ApplicationException("IngredientRequiredQty is not available for  Crust - " + getPizzaInputData().getCrustName());
-        }
+        IngredientRequiredQty requiredQty = getIngredientRequiredQty(crustName.getName());
         crustModel.setIngredientModel(buildIngredientModel(crustName.getName(), IngredientType.VEG, requiredQty.getQty(), requiredQty.getQtyUom()));
         return crustModel;
+    }
+
+    protected IngredientRequiredQty getIngredientRequiredQty(String productName) throws ApplicationException {
+        IngredientRequiredQty requiredQty = IngredientQtyDeriveService.getInstance().getQty(productName);
+        if (requiredQty == null) {
+            throw new ApplicationException("Ingredient is not available for  Product - " + productName);
+        }
+        return requiredQty;
     }
 
     private List<AbstractToppingModel> buildToppingModels() {
@@ -85,14 +90,10 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
             ToppingName toppingName = ToppingName.of(topping);
             IngredientRequiredQty requiredQty = null;
             try {
-                requiredQty = IngredientQtyDeriveService.getInstance().getQty(toppingName.getName());
-                if (requiredQty == null) {
-                    throw new ApplicationException("IngredientRequiredQty is not available for  Topping - " + topping);
-                }
+                requiredQty = getIngredientRequiredQty(toppingName.getName());
             } catch (ApplicationException e) {
                 ThrowingConsumer.sneakyThrow(e);
             }
-
             AbstractToppingModel toppingModel = ToppingModelFactory.getInstance().createToppingModel(toppingName);
             toppingModel.setIngredientModel(buildIngredientModel(toppingName.getName(), toppingName.getType(), requiredQty.getQty(), requiredQty.getQtyUom()));
             toppingModels.add(toppingModel);

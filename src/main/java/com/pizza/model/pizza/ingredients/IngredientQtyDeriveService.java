@@ -54,7 +54,7 @@ public class IngredientQtyDeriveService {
     public IngredientRequiredQty getQty(String name)throws ApplicationException {
 
         if(!isExist(name)) {
-            throw new ApplicationException(name + " - Not a valid product.");
+            throw new ApplicationException(name + " - not a valid product.");
         }
 
         return quantities.get(name);

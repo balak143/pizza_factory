@@ -30,6 +30,10 @@ public class InventoryMemoryGrid extends AbstractGrid <InventoryDataKey, Invento
     }
 
     @Override
+    public void updateData(InventoryDataKey key, InventoryData data) {
+        this.getData().put(key,data);
+    }
+    @Override
     public void loadAll() {
 
     }

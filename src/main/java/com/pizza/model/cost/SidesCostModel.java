@@ -11,8 +11,8 @@ import java.util.List;
 public class SidesCostModel extends AbstractCostModel {
     private AbstractSidesModel sidesModel;
 
-    public SidesCostModel(AbstractSidesModel pizzaModel) {
-        this.sidesModel = pizzaModel;
+    public SidesCostModel(AbstractSidesModel sidesModel) {
+        this.sidesModel = sidesModel;
     }
 
     @Override

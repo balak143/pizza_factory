@@ -30,7 +30,7 @@ public class Test {
                 .havingToppings(new BlackOlive(),new ChickenTikka())
                 .build();
        PizzaOrder pizzaOrder =  new PizzaOrder(pizza, 1)
-                .withSides(new ColdDrink(), new MousseCake());
+                .withSides(new ColdDrinkSidesModel(), new MousseCakeSidesModel());
         PizzaOrder pizzaOrder1 =  new PizzaOrder(pizza, 1);
 
         logger.info(pizzaOrder.toString());

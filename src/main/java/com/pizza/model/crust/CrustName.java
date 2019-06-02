@@ -1,5 +1,7 @@
 package com.pizza.model.crust;
 
+import com.pizza.exception.ApplicationException;
+
 public enum CrustName {
     NEW_HAND_TOSSED("New Hand Tossed"),
     WHEAT_THIN_CRUST("Wheat Thin"),
@@ -16,23 +18,20 @@ public enum CrustName {
         return name;
     }
 
-    public static CrustName of(String name) {
+    public static CrustName of(String name) throws ApplicationException {
         CrustName crustName = null;
         switch (name) {
             case "New Hand Tossed":
-                crustName = NEW_HAND_TOSSED;
-                break;
+                return NEW_HAND_TOSSED;
             case "Wheat Thin":
-                crustName = WHEAT_THIN_CRUST;
-                break;
+                return  WHEAT_THIN_CRUST;
             case "Cheese Burst":
-                crustName = CHEESE_BURST;
-                break;
+                return  CHEESE_BURST;
             case "Fresh Pan Pizza":
                 crustName = FRESH_PAN_PIZZA;
                 break;
         }
-        return crustName;
+        throw new ApplicationException(" Crust - "+name +" is not a valid enum constant");
     }
 
 }

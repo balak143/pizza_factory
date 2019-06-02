@@ -11,10 +11,10 @@ public class SidesModelFactory {
         AbstractSidesModel sidesModel = null;
         switch (toppingName) {
             case COLD_DRINK:
-                sidesModel = new ColdDrink();
+                sidesModel = new ColdDrinkSidesModel();
                 break;
             case MOUSSE_CAKE:
-                sidesModel = new MousseCake();
+                sidesModel = new MousseCakeSidesModel();
                 break;
         }
 

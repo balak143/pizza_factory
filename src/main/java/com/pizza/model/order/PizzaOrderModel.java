@@ -8,8 +8,7 @@ import com.pizza.model.sides.SidesModel;
 
 import java.util.List;
 
-public interface PizzaOrderModel extends CostModel {
+public interface PizzaOrderModel {
     List<AbstractPizzaModel> getPizzaModels();
     List<AbstractSidesModel> getSidesModels();
-
 }

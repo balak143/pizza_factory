@@ -3,7 +3,8 @@ package com.pizza.model.sides;
 import com.pizza.model.ingredient.IngredientModel;
 
 public class AbstractSidesModel implements SidesModel {
-    private String name;
+
+    protected String name;
     private IngredientModel ingredientModel;
 
     public IngredientModel getIngredientModel() {
@@ -18,4 +19,8 @@ public class AbstractSidesModel implements SidesModel {
     public String getName() {
         return name;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

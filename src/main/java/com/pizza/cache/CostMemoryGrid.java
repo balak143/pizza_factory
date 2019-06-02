@@ -30,6 +30,12 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
     }
 
     @Override
+    public void updateData(CostDataKey key, CostData data) {
+        getData().put(key,data);
+    }
+
+
+    @Override
     public void loadAll() {
         this.setData((Map<CostDataKey, CostData>) this.gridDataLoader.loadAll());
     }

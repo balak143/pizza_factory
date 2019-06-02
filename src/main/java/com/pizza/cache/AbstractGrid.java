@@ -16,6 +16,7 @@ public abstract class AbstractGrid<K extends DataKey, V extends Data> implements
         return data;
     }
 
+
     public void setData(Map<K, V> data) {
         this.data = data;
     }

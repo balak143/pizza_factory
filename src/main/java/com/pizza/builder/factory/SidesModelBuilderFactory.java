@@ -6,6 +6,11 @@ import com.pizza.builder.SidesModelBuilder;
 import com.pizza.model.sides.SidesName;
 
 public class SidesModelBuilderFactory {
+    private static SidesModelBuilderFactory INSTANCE = new SidesModelBuilderFactory();
+
+    public static SidesModelBuilderFactory getInstance() {
+        return INSTANCE;
+    }
     public SidesModelBuilder getBuilder(String name) {
         SidesName sideName = SidesName.of(name);
         SidesModelBuilder sidesModelBuilder = null;

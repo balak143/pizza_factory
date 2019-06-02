@@ -11,6 +11,12 @@ import com.pizza.input.PizzaInputData;
 import com.pizza.model.pizza.PizzaName;
 
 public class PizzaModelBuilderFactory {
+    private static PizzaModelBuilderFactory INSTANCE = new PizzaModelBuilderFactory();
+
+    public static PizzaModelBuilderFactory getInstance() {
+        return INSTANCE;
+    }
+
     public PizzaModelBuilder getBuilder(PizzaInputData pizza) {
         PizzaName pizzaName = PizzaName.of(pizza.getName());
         PizzaModelBuilder pizzaModelBuilder = null;
