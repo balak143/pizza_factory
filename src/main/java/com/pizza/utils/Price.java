@@ -29,4 +29,9 @@ public class Price {
           this.price = price;
           this.currency = currency;
      }
+
+     @Override
+     public String toString() {
+          return "Name - "+this.getName() +" Price - " + this.getPrice() +" Currency - "+ this.getCurrency();
+     }
 }

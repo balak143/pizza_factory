@@ -56,7 +56,7 @@ public class DeluxeVeggiePizzaModelValidatorTest {
         pizzaModelValidator.validate(pizzaModel);
         pizzaModelValidator.setCrustModelValidator(new SingleCrustValidator());
         pizzaModelValidator.setToppingModelValidator(new VegToppingModelValidator());
-        crustModelValidator =pizzaModelValidator.getCrustModelValidator();
+        crustModelValidator = pizzaModelValidator.getCrustModelValidator();
         toppingModelValidator = pizzaModelValidator.getToppingModelValidator();
 
     }
@@ -87,8 +87,9 @@ public class DeluxeVeggiePizzaModelValidatorTest {
         pizzaModel.addTopping(paneerToppingModel);
         pizzaModelValidator.validate(pizzaModel);
     }
+
     @Test
-    public void validate_only_one_nonveg_topping_allowed_on_nonveg_pizza()throws Exception{
+    public void validate_only_one_nonveg_topping_allowed_on_nonveg_pizza() throws Exception {
         expected.expect(ApplicationException.class);
         expected.expectMessage("You can add only one of the non-veg toppings in non-vegetarian pizza.");
         pizzaModel = new PepperBarbecueChickenPizzaModel();
@@ -105,8 +106,9 @@ public class DeluxeVeggiePizzaModelValidatorTest {
         pizzaModel.addTopping(grilledChickenToppingModel);
         pizzaModelValidator.validate(pizzaModel);
     }
+
     @Test
-    public void validate_at_least_one_crust_should_be_selected_for_a_pizza()throws Exception{
+    public void validate_at_least_one_crust_should_be_selected_for_a_pizza() throws Exception {
         expected.expect(ApplicationException.class);
         expected.expectMessage("At least one type of crust must be selected for any pizza.");
         pizzaModel = new PepperBarbecueChickenPizzaModel();
@@ -119,8 +121,9 @@ public class DeluxeVeggiePizzaModelValidatorTest {
         pizzaModel.addTopping(chickenTikkaToppingModel);
         pizzaModelValidator.validate(pizzaModel);
     }
+
     @Test
-    public void validate_pizza_without_toppings()throws Exception{
+    public void validate_pizza_without_toppings() throws Exception {
         pizzaModel = new PepperBarbecueChickenPizzaModel();
         pizzaModel.setCrustModel(new WheatThinCrustModel());
         PepperBarbecueChickenPizzaIngredientsModel pizzaIngredientsModel = new PepperBarbecueChickenPizzaIngredientsModel();
@@ -128,8 +131,9 @@ public class DeluxeVeggiePizzaModelValidatorTest {
         pizzaModel.setPizzaIngredientsModel(pizzaIngredientsModel);
         pizzaModelValidator.validate(pizzaModel);
     }
+
     @Test
-    public void validate_toppings_without_ingredient()throws Exception{
+    public void validate_toppings_without_ingredient() throws Exception {
         expected.expect(ApplicationException.class);
         expected.expectMessage("Ingredient model not found for - Chicken Tikka");
 

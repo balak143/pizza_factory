@@ -11,9 +11,6 @@ import java.util.List;
 public class SidesCostModel extends AbstractCostModel {
     private AbstractSidesModel sidesModel;
 
-    public SidesCostModel(AbstractSidesModel sidesModel) {
-        this.sidesModel = sidesModel;
-    }
 
     @Override
     public List<Price> cost(Date orderDate) {
@@ -26,5 +23,8 @@ public class SidesCostModel extends AbstractCostModel {
         return prices;
     }
 
-
+    public SidesCostModel setSidesModel(AbstractSidesModel sidesModel) {
+        this.sidesModel = sidesModel;
+        return this;
+    }
 }

@@ -26,7 +26,7 @@ public class DeluxeVeggiePizzaModelBuilderTest {
         pizzaInputData.setName(PizzaName.DELUXE_VEGGIE.getName());
         pizzaInputData.addToppings(ToppingName.CHICKEN_TIKKA.getName());
         pizzaInputData.addToppings(ToppingName.BLACK_OLIVE.getName());
-        pizzaOrderInputData.setPizzaInputData(pizzaInputData);
+        pizzaOrderInputData.setPizzaInputDatas(pizzaInputData);
         pizzaOrderInputData.addSides(SidesName.COLD_DRINK.getName());
         context.setPizzaOrderInputData(pizzaOrderInputData);
         deluxeVeggiePizzaModelBuilder = new DeluxeVeggiePizzaModelBuilder(pizzaInputData);

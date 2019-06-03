@@ -5,6 +5,7 @@ import com.pizza.service.inventory.InventoryService;
 
 public class InventoryUpdateCommand implements Command{
     @Override
-    public void execute(CommandContext context) {
+    public boolean execute(Context context) {
+        return true;
     }
 }

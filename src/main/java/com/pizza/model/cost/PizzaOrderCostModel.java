@@ -10,6 +10,9 @@ import java.util.List;
 public class PizzaOrderCostModel extends AbstractCostModel {
     private PizzaOrderModel pizzaOrderModel;
 
+    private PizzaCostModel pizzaCostModel;
+    private SidesCostModel sidesCostModel;
+
     public PizzaOrderCostModel(PizzaOrderModel pizzaOrderModel) {
         this.pizzaOrderModel = pizzaOrderModel;
     }
@@ -30,16 +33,37 @@ public class PizzaOrderCostModel extends AbstractCostModel {
     private List<Price> addPizzasPrices(Date orderDate) {
         List<Price> prices = new ArrayList<>();
         pizzaOrderModel.getPizzaModels().forEach(pizzaModel -> {
-            prices.addAll(new PizzaCostModel(pizzaModel).cost(orderDate));
+            pizzaCostModel.setPizzaModel(pizzaModel);
+            prices.addAll(pizzaCostModel.cost(orderDate));
         });
         return prices;
     }
 
     private List<Price> addSidesPrices(Date orderDate) {
+
         List<Price> prices = new ArrayList<>();
         pizzaOrderModel.getSidesModels().forEach(sidesModel -> {
-            prices.addAll(new SidesCostModel(sidesModel).cost(orderDate));
+            sidesCostModel.setSidesModel(sidesModel);
+            prices.addAll(sidesCostModel.cost(orderDate));
         });
         return prices;
+    }
+
+    public PizzaCostModel getPizzaCostModel() {
+        return pizzaCostModel;
+    }
+
+    public PizzaOrderCostModel setPizzaCostModel(PizzaCostModel pizzaCostModel) {
+        this.pizzaCostModel = pizzaCostModel;
+        return this;
+    }
+
+    public SidesCostModel getSidesCostModel() {
+        return sidesCostModel;
+    }
+
+    public PizzaOrderCostModel setSidesCostModel(SidesCostModel sidesCostModel) {
+        this.sidesCostModel = sidesCostModel;
+        return this;
     }
 }

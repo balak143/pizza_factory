@@ -57,7 +57,11 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
     @Override
     public AbstractPizzaModel build(BuildContext context) throws ApplicationException {
         AbstractPizzaModel model = createPizzaModel();
-        model.setSize(Size.of(getPizzaInputData().getPizzaSize()));
+        String pizzaSize = getPizzaInputData().getPizzaSize();
+        if(pizzaSize ==null){
+            throw new ApplicationException("Please specify Size of a Pizza");
+        }
+        model.setSize(Size.of(pizzaSize));
         model.setPizzaIngredientsModel(buildPizzaIngredientModel());
         model.setCrustModel(buildCrustModel());
         model.setToppings(buildToppingModels());

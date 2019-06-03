@@ -6,8 +6,8 @@ import com.pizza.dao.DataKey;
 import java.util.List;
 import java.util.Map;
 
-public abstract class DataLoader {
-    public abstract Map<? extends DataKey, ? extends Data> loadAll();
-    public abstract <T extends Data> Data load(DataKey dataKey);
-    public abstract List<? extends Data> load(List<? extends DataKey> list);
+public abstract class DataLoader<K extends DataKey, V extends Data> {
+    public abstract Map<K, V> loadAll();
+    public abstract <V> Data load(K dataKey);
+    public abstract List<V> load(List<K> keys);
 }

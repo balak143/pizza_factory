@@ -1,6 +1,7 @@
 package com.pizza.command;
 
 import com.pizza.builder.BuildContext;
+import com.pizza.builder.KalyaniPizzaStoreOrderModelBuilder;
 import com.pizza.builder.PizzaModelBuilder;
 import com.pizza.builder.SidesModelBuilder;
 import com.pizza.builder.factory.PizzaModelBuilderFactory;
@@ -17,29 +18,19 @@ import com.pizza.model.sides.AbstractSidesModel;
 import java.util.List;
 
 public class PizzaOrderModelBuilderCommand implements Command {
+
     @Override
-    public void execute(CommandContext context) throws ApplicationException {
-        KalyaniPizzaStoreOrderModel pizzaOrderModel = new KalyaniPizzaStoreOrderModel();
-        BuildContext buildContext = context.getBuildContext();
-        PizzaOrderInputData pizzaOrderInputData = buildContext.getPizzaOrderInputData();
-        pizzaOrderInputData.getPizzaInputData().forEach(pizzaInputData -> {
-                    PizzaModelBuilder modelBuilder = PizzaModelBuilderFactory.getInstance()
-                            .getBuilder(pizzaInputData);
-                    try {
-                        AbstractPizzaModel pizzaModel = modelBuilder.build(buildContext);
-                        pizzaOrderModel.addPizzaModel(pizzaModel);
-                    } catch (ApplicationException e) {
-                        ThrowingConsumer.sneakyThrow(e);
-                    }
-                }
-        );
-        pizzaOrderInputData.getSides().forEach(pizzaInputData -> {
-                    SidesModelBuilder modelBuilder = SidesModelBuilderFactory.getInstance()
-                            .getBuilder(pizzaInputData);
-                        AbstractSidesModel pizzaModel = modelBuilder.build(buildContext);
-                        pizzaOrderModel.addSidesModel(pizzaModel);
-                }
-        );
-        context.setPizzaOrderModel(pizzaOrderModel);
+    public boolean execute(Context context) {
+        PizzaOrderInputData pizzaOrderInputData = (PizzaOrderInputData)context.getData("PIZZA_ORDER_INPUT");
+
+        KalyaniPizzaStoreOrderModelBuilder orderModelBuilder = new KalyaniPizzaStoreOrderModelBuilder();
+
+        BuildContext buildContext = new BuildContext();
+        buildContext.setPizzaOrderInputData(pizzaOrderInputData);
+
+        KalyaniPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
+
+        context.setData("PIZZA_ORDER_MODEL", pizzaOrderModel);
+        return true;
     }
 }

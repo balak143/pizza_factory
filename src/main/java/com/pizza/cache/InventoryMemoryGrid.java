@@ -14,6 +14,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class InventoryMemoryGrid extends AbstractGrid <InventoryDataKey, InventoryData> {
 
 
+    public InventoryMemoryGrid() {
+        super(new InventoryDataLoader());
+    }
+
     @Override
     protected void createDataMap() {
         this.setData(new ConcurrentHashMap<>());

@@ -14,7 +14,7 @@ import java.util.List;
 public class KalyaniPizzaStoreOrderModel implements PizzaOrderModel {
     private List<AbstractPizzaModel> pizzaModels = new ArrayList<>();
     private List<AbstractSidesModel> sidesModels = new ArrayList<>();
-    ;
+
 
     public void addPizzaModel(AbstractPizzaModel... pizzaModels) {
         this.pizzaModels.addAll(Arrays.asList(pizzaModels));
@@ -32,6 +32,16 @@ public class KalyaniPizzaStoreOrderModel implements PizzaOrderModel {
 
     @Override
     public List<AbstractSidesModel> getSidesModels() {
-        return this.getSidesModels();
+        return this.sidesModels;
+    }
+
+    public KalyaniPizzaStoreOrderModel setPizzaModels(List<AbstractPizzaModel> pizzaModels) {
+        this.pizzaModels = pizzaModels;
+        return this;
+    }
+
+    public KalyaniPizzaStoreOrderModel setSidesModels(List<AbstractSidesModel> sidesModels) {
+        this.sidesModels = sidesModels;
+        return this;
     }
 }

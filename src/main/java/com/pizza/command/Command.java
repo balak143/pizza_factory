@@ -4,5 +4,5 @@ import com.pizza.builder.BuildContext;
 import com.pizza.exception.ApplicationException;
 
 public interface Command {
-    void execute(CommandContext context) throws ApplicationException;
+    boolean execute(Context context);
 }

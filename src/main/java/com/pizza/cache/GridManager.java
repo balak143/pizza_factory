@@ -7,7 +7,8 @@ public class GridManager {
     Map<GridType, Grid> grids = new HashMap<>();
 
     private GridManager() {
-
+        registerGrid(new CostMemoryGrid());
+        registerGrid(new InventoryMemoryGrid());
     }
 
     public static GridManager getInstance() {

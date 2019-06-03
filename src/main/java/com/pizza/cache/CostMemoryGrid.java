@@ -2,6 +2,7 @@ package com.pizza.cache;
 
 import com.pizza.dao.CostData;
 import com.pizza.dao.CostDataKey;
+import com.pizza.dao.InventoryDataKey;
 
 import java.util.List;
 import java.util.Map;
@@ -9,8 +10,13 @@ import java.util.TreeMap;
 
 public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
 
-    CostMemoryGrid() {
-        this.gridDataLoader = new CostDataLoader();
+    public CostMemoryGrid() {
+        super(new CostDataLoader());
+        setData(this.getDataLoader().loadAll());
+    }
+
+    public CostMemoryGrid(DataLoader dataLoader) {
+        super(dataLoader);
     }
 
     @Override
@@ -18,6 +24,9 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
         return GridType.COST;
     }
 
+    protected boolean isExist(InventoryDataKey key) {
+        return getData().containsKey(key);
+    }
     @Override
     public CostData getData(CostDataKey key) {
         if (isExist(key)) {
@@ -37,12 +46,12 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
 
     @Override
     public void loadAll() {
-        this.setData((Map<CostDataKey, CostData>) this.gridDataLoader.loadAll());
+        this.setData((Map<CostDataKey, CostData>) this.getDataLoader().loadAll());
     }
 
     @Override
     public CostData load(CostDataKey dataKey) {
-        return (CostData) this.gridDataLoader.load(dataKey);
+        return (CostData) this.getDataLoader().load(dataKey);
     }
 
     @Override
@@ -51,12 +60,16 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
     }
 
     public TreeMap<CostDataKey, CostData> getData() {
-        return (TreeMap<CostDataKey, CostData>) super.getData();
+        TreeMap<CostDataKey, CostData> data = (TreeMap<CostDataKey, CostData>) super.getData();
+        if(data.isEmpty()){
+
+        }
+        return data;
     }
 
     @Override
     protected void createDataMap() {
-        this.setData((Map<CostDataKey, CostData>) this.gridDataLoader.loadAll());
+        this.setData((Map<CostDataKey, CostData>) this.getDataLoader().loadAll());
     }
 
 

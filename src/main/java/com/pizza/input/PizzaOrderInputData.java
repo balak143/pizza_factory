@@ -2,17 +2,19 @@ package com.pizza.input;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class PizzaOrderInputData {
+    private Date orderDate;
     private List<PizzaInputData> pizzaInputDatas = new ArrayList<>();
     private List<String> sides = new ArrayList<>() ;
 
-    public List<PizzaInputData> getPizzaInputData() {
+    public List<PizzaInputData> getPizzaInputDatas() {
         return pizzaInputDatas;
     }
 
-    public void setPizzaInputData(PizzaInputData... pizzaInputDatas) {
+    public void setPizzaInputDatas(PizzaInputData... pizzaInputDatas) {
         this.pizzaInputDatas.addAll(Arrays.asList(pizzaInputDatas));
     }
 
@@ -27,4 +29,12 @@ public class PizzaOrderInputData {
         this.sides.addAll(Arrays.asList(sides));
     }
 
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public PizzaOrderInputData setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+        return this;
+    }
 }

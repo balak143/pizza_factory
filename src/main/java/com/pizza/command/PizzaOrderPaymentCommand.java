@@ -6,7 +6,7 @@ public class PizzaOrderPaymentCommand implements Command {
     PizzaOrderModel pizzaOrderModel;
 
     @Override
-    public void execute(CommandContext context) {
-
+    public boolean execute(Context context) {
+        return true;
     }
 }

@@ -6,8 +6,8 @@ import com.pizza.model.order.PizzaOrderModel;
 public class PizzaOrderConfirmationCommand implements Command {
 
     @Override
-    public void execute(CommandContext context) {
+    public boolean execute(Context context) {
 
-
+        return true;
     }
 }
