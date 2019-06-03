@@ -7,7 +7,9 @@ import java.util.Date;
 import java.util.List;
 
 public class FreshPanCrustModel extends AbstractCrustModel {
-
+    public FreshPanCrustModel(){
+        this.setName(CrustName.FRESH_PAN_PIZZA.getName());
+    }
     @Override
     public List<Price> cost(Date date) {
         return null;

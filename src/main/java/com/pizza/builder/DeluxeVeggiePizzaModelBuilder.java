@@ -30,7 +30,7 @@ public class DeluxeVeggiePizzaModelBuilder extends AbstractPizzaModelBuilder<Del
         DeluxeVeggiePizzaIngredientsModel ingredientsModel = new DeluxeVeggiePizzaIngredientsModel();
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.SAUCE));
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHEESE));
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.ORIGANO));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.OREGANO));
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.GARLIC));
         return ingredientsModel;
     }

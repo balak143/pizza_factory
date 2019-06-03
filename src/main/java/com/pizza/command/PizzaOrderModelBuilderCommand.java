@@ -29,6 +29,7 @@ public class PizzaOrderModelBuilderCommand implements Command {
         buildContext.setPizzaOrderInputData(pizzaOrderInputData);
 
         KalyaniPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
+        System.out.println(pizzaOrderModel);
 
         context.setData("PIZZA_ORDER_MODEL", pizzaOrderModel);
         return true;

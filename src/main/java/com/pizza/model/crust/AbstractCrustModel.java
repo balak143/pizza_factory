@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public abstract class AbstractCrustModel implements CrustModel {
+    private String name;
     protected IngredientModel ingredientModel;
 
     public IngredientModel getIngredientModel() {
@@ -22,5 +23,12 @@ public abstract class AbstractCrustModel implements CrustModel {
         return null;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public AbstractCrustModel setName(String name) {
+        this.name = name;
+        return this;
+    }
 }

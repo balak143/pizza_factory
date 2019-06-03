@@ -22,7 +22,7 @@ public class IngredientQtyDeriveService {
         addRequiredQty(new IngredientRequiredQty(CrustName.NEW_HAND_TOSSED.getName(), 110, "GRAM"));
         // INGREDIENTS
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.SAUCE.getName(), 10, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.ORIGANO.getName(), 5, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.OREGANO.getName(), 5, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.PEPERONI.getName(), 10, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_PEPPER.getName(), 5, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.GARLIC.getName(), 20, "GRAM"));
@@ -74,7 +74,7 @@ public class IngredientQtyDeriveService {
         addRequiredQty(new IngredientRequiredQty(CrustName.NEW_HAND_TOSSED.getName(), 110, "GRAM"));
         // INGREDIENTS
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.SAUCE.getName(), 10, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.ORIGANO.getName(), 5, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.OREGANO.getName(), 5, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.PEPERONI.getName(), 10, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_PEPPER.getName(), 5, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.GARLIC.getName(), 20, "GRAM"));

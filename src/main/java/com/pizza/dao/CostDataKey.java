@@ -13,6 +13,23 @@ public final class CostDataKey implements DataKey, Comparable<CostDataKey> {
         this.effectiveDate = effectiveDate;
     }
 
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public CostDataKey setProductCode(String productCode) {
+        this.productCode = productCode;
+        return this;
+    }
+
+    public Date getEffectiveDate() {
+        return effectiveDate;
+    }
+
+    public CostDataKey setEffectiveDate(Date effectiveDate) {
+        this.effectiveDate = effectiveDate;
+        return this;
+    }
     /*
      * IntelliJ Generated
      */

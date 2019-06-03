@@ -5,6 +5,7 @@ import com.pizza.model.pizza.PizzaModel;
 import com.pizza.model.sides.AbstractSidesModel;
 import com.pizza.model.sides.SidesModel;
 import com.pizza.utils.Price;
+import com.sun.deploy.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,5 +44,15 @@ public class KalyaniPizzaStoreOrderModel implements PizzaOrderModel {
     public KalyaniPizzaStoreOrderModel setSidesModels(List<AbstractSidesModel> sidesModels) {
         this.sidesModels = sidesModels;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer string = new StringBuffer("List of Pizzas Ordered - ");
+        string.append(System.lineSeparator());
+        pizzaModels.forEach(abstractPizzaModel -> string.append(abstractPizzaModel.toString()).append(System.lineSeparator()));
+        string.append(System.lineSeparator());
+        sidesModels.forEach(sidesModel -> string.append(sidesModel.toString()));
+        return string.toString();
     }
 }

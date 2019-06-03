@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GridManager {
+    private static final GridManager INSTANCE = new GridManager();
+
     Map<GridType, Grid> grids = new HashMap<>();
 
     private GridManager() {
-        registerGrid(new CostMemoryGrid());
-        registerGrid(new InventoryMemoryGrid());
     }
 
     public static GridManager getInstance() {
-        return new GridManager();
+        return INSTANCE;
     }
 
     public void registerGrid(Grid grid) {
@@ -24,6 +24,7 @@ public class GridManager {
     }
 
     public <T extends Grid> T get(GridType gridType, Class<T> clazz) {
-        return clazz.cast(grids.get(gridType));
+        Grid obj = grids.get(gridType);
+        return clazz.cast(obj);
     }
 }

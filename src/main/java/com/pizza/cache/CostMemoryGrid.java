@@ -10,11 +10,6 @@ import java.util.TreeMap;
 
 public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
 
-    public CostMemoryGrid() {
-        super(new CostDataLoader());
-        setData(this.getDataLoader().loadAll());
-    }
-
     public CostMemoryGrid(DataLoader dataLoader) {
         super(dataLoader);
     }
@@ -32,10 +27,9 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
         if (isExist(key)) {
             return getData().get(key);
         }
-
-        Map.Entry<CostDataKey, CostData> dataEntry = getData().floorEntry(key);
-
-        return (dataEntry != null) ? dataEntry.getValue() : null;
+        //Map.Entry<CostDataKey, CostData> dataEntry = getData().floorEntry(key);
+        //(dataEntry != null) ? dataEntry.getValue() : null;
+        return new CostData(key.getProductCode(), key.getEffectiveDate(),0.0,"INR" , "GRAM");
     }
 
     @Override
@@ -46,7 +40,7 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
 
     @Override
     public void loadAll() {
-        this.setData((Map<CostDataKey, CostData>) this.getDataLoader().loadAll());
+        this.setData(this.getDataLoader().loadAll());
     }
 
     @Override
@@ -61,15 +55,12 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
 
     public TreeMap<CostDataKey, CostData> getData() {
         TreeMap<CostDataKey, CostData> data = (TreeMap<CostDataKey, CostData>) super.getData();
-        if(data.isEmpty()){
-
-        }
         return data;
     }
 
     @Override
-    protected void createDataMap() {
-        this.setData((Map<CostDataKey, CostData>) this.getDataLoader().loadAll());
+    public void createDataMap() {
+        this.setData( this.getDataLoader().loadAll());
     }
 
 
