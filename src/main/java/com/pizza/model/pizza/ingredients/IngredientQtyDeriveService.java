@@ -14,37 +14,11 @@ import java.util.Map;
 public class IngredientQtyDeriveService {
     private static final IngredientQtyDeriveService INSTANCE = new IngredientQtyDeriveService();
 
-    private static Map<String, IngredientRequiredQty> quantities = new HashMap<>();
-    static {
-        addRequiredQty(new IngredientRequiredQty(CrustName.WHEAT_THIN_CRUST.getName(), 100, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(CrustName.CHEESE_BURST.getName(), 100, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(CrustName.FRESH_PAN_PIZZA.getName(), 150, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(CrustName.NEW_HAND_TOSSED.getName(), 110, "GRAM"));
-        // INGREDIENTS
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.SAUCE.getName(), 10, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.OREGANO.getName(), 5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.PEPERONI.getName(), 10, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_PEPPER.getName(), 5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.GARLIC.getName(), 20, "GRAM"));
-
-        // Toppings
-        addRequiredQty(new IngredientRequiredQty(ToppingName.PANEER.getName(), 50, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.CAPSICUM.getName(), 40, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.FRESH_TOMATO.getName(), 60, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.MUSHROOM.getName(), 50, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.BLACK_OLIVE.getName(), 30, "GRAM"));
-
-        addRequiredQty(new IngredientRequiredQty(ToppingName.CHICKEN_TIKKA.getName(), 100, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.BARBEQUE_CHICKEN.getName(), 90.5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.GRILLED_CHICKEN.getName(), 100, "GRAM"));
-
-        addRequiredQty(new IngredientRequiredQty(SidesName.COLD_DRINK.getName(), 250, "ML"));
-        addRequiredQty(new IngredientRequiredQty(SidesName.MOUSSE_CAKE.getName(), 100, "GRAM"));
-
-    }
+    private Map<String, IngredientRequiredQty> quantities = new HashMap<>();
 
     private IngredientQtyDeriveService() {
         //Don't allow to create Objects from Outside
+        defaultQuantities();
     }
 
     public static IngredientQtyDeriveService getInstance() {
@@ -74,10 +48,12 @@ public class IngredientQtyDeriveService {
         addRequiredQty(new IngredientRequiredQty(CrustName.NEW_HAND_TOSSED.getName(), 110, "GRAM"));
         // INGREDIENTS
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.SAUCE.getName(), 10, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CHEESE.getName(), 20, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.OREGANO.getName(), 5, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.PEPERONI.getName(), 10, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_PEPPER.getName(), 5, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.GARLIC.getName(), 20, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CORN.getName(), 20, "GRAM"));
 
         // Toppings
         addRequiredQty(new IngredientRequiredQty(ToppingName.PANEER.getName(), 50, "GRAM"));
@@ -94,7 +70,7 @@ public class IngredientQtyDeriveService {
         addRequiredQty(new IngredientRequiredQty(SidesName.MOUSSE_CAKE.getName(), 100, "GRAM"));
     }
 
-    static void addRequiredQty(IngredientRequiredQty requiredQty) {
+    private void addRequiredQty(IngredientRequiredQty requiredQty) {
         quantities.put(requiredQty.getName(), requiredQty);
     }
 }

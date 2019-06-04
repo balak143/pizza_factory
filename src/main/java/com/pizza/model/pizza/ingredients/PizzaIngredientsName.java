@@ -7,7 +7,8 @@ public enum PizzaIngredientsName {
     PEPERONI("Pepperoni"),
     RED_PEPPER("Red Pepper"),
     OREGANO("Oregano"),
-    GARLIC("Garlic");
+    GARLIC("Garlic"),
+    CORN("Corn");
 
     private String name = null;
 
@@ -39,6 +40,9 @@ public enum PizzaIngredientsName {
                 break;
             case "Garlic":
                 crustName = GARLIC;
+                break;
+            case "Corn":
+                crustName = CORN;
                 break;
         }
         return crustName;

@@ -2,6 +2,8 @@ package com.pizza.model.cost;
 
 import com.pizza.exception.ApplicationException;
 import com.pizza.model.ingredient.IngredientModel;
+import com.pizza.model.pizza.AbstractPizzaModel;
+import com.pizza.model.pizza.Size;
 import com.pizza.service.cost.CostService;
 import com.pizza.utils.Price;
 
@@ -11,6 +13,7 @@ import java.util.List;
 public abstract class AbstractCostModel implements CostModel {
 
     private CostService costService;
+    protected AbstractPizzaModel pizzaModel;
 
 
     protected Price getPrice(Date orderDate, List<IngredientModel> ingredients){
@@ -27,11 +30,13 @@ public abstract class AbstractCostModel implements CostModel {
             if (imPrice == null) {
                 throw new IllegalArgumentException("Price not found for " + ingredient.getProductCode());
             }
-            totalPrice += imPrice.getPrice();
+            totalPrice += imPrice.getPrice()*ingredient.getRequiredQty();
         }
 
         return new Price(totalPrice, imPrice.getCurrency());
     }
+
+
 
     protected Price getPrice(Date orderDate, IngredientModel ingredient) {
         Price imPrice = null;

@@ -63,6 +63,7 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
         }
         model.setSize(Size.of(pizzaSize));
         model.setPizzaIngredientsModel(buildPizzaIngredientModel());
+        model.setName(getPizzaInputData().getName());
         model.setCrustModel(buildCrustModel());
         model.setToppings(buildToppingModels());
         return model;

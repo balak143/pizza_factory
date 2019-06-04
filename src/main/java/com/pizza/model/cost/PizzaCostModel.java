@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PizzaCostModel extends AbstractCostModel {
-    private AbstractPizzaModel pizzaModel;
+    //private AbstractPizzaModel pizzaModel;
 
     @Override
     public List<Price> cost(Date orderDate) {
@@ -53,15 +53,16 @@ public class PizzaCostModel extends AbstractCostModel {
 
 
     protected List<IngredientModel> checkOffer(List<IngredientModel> ingredients) {
-        List<IngredientModel> targetIngredients = new ArrayList<>();
+        List<IngredientModel> targetIngredients = ingredients;
         int size = ingredients.size();
 
         if (isLargeSize() && !ingredients.isEmpty()) {
-            if (size > 2) {
-                targetIngredients = ingredients.subList(2, size - 1);
-            } else if (size > 1) {
-                targetIngredients = ingredients.subList(1, size - 1);
+            if (size >= 2) {
+                targetIngredients = ingredients.subList(0, size - 2);
+            }else if(size == 1){
+                targetIngredients = ingredients.subList(0, size - 1);
             }
+
         }
         return targetIngredients;
     }

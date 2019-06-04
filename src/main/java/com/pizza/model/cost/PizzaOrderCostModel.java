@@ -21,12 +21,16 @@ public class PizzaOrderCostModel extends AbstractCostModel {
     public List<Price> cost(Date orderDate) {
         List<Price> prices = new ArrayList<>();
         List<Price> pizzaPrices = addPizzasPrices(orderDate);
+
         PizzaPriceMerger merger = new PizzaPriceMerger();
-        Price mergePizzasPrice = merger.merge(pizzaPrices);
-        prices.add(mergePizzasPrice);
+        pizzaPrices = merger.merge(pizzaPrices);
+
+        prices.addAll(pizzaPrices);
+
         List<Price> sidesPrices = addSidesPrices(orderDate);
-        Price mergeSidesPrice = merger.merge(sidesPrices);
-        prices.add(mergeSidesPrice);
+        sidesPrices = merger.merge(sidesPrices);
+
+        prices.addAll(sidesPrices);
         return prices;
     }
 
