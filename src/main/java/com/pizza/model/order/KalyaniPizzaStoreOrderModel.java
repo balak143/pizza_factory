@@ -1,15 +1,10 @@
 package com.pizza.model.order;
 
 import com.pizza.model.pizza.AbstractPizzaModel;
-import com.pizza.model.pizza.PizzaModel;
 import com.pizza.model.sides.AbstractSidesModel;
-import com.pizza.model.sides.SidesModel;
-import com.pizza.utils.Price;
-import com.sun.deploy.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 public class KalyaniPizzaStoreOrderModel implements PizzaOrderModel {

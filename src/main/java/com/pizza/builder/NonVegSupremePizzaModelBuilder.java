@@ -8,6 +8,7 @@ import com.pizza.model.pizza.Size;
 import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.NonVegSupremePizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
+import com.pizza.model.pizza.nonveg.NonVegSupremePizzaModel;
 
 public class NonVegSupremePizzaModelBuilder extends AbstractPizzaModelBuilder {
 
@@ -38,7 +39,7 @@ public class NonVegSupremePizzaModelBuilder extends AbstractPizzaModelBuilder {
 
     @Override
     protected AbstractPizzaModel createPizzaModel() {
-        return null;
+        return new NonVegSupremePizzaModel();
     }
 
     @Override

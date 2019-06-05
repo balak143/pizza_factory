@@ -10,7 +10,7 @@ import com.pizza.model.pizza.ingredients.PepperBarbecueChickenPizzaIngredientsMo
 import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.pizza.nonveg.PepperBarbecueChickenPizzaModel;
 
-public class PepperBarbecueChickenPizzaModelBuilder extends AbstractPizzaModelBuilder {
+public class PepperBarbecueChickenPizzaModelBuilder extends AbstractPizzaModelBuilder<PepperBarbecueChickenPizzaModel> {
     public PepperBarbecueChickenPizzaModelBuilder(PizzaInputData pizzaInputData) {
         super(pizzaInputData);
     }
@@ -38,7 +38,7 @@ public class PepperBarbecueChickenPizzaModelBuilder extends AbstractPizzaModelBu
         }
     }
     @Override
-    protected AbstractPizzaModel createPizzaModel() {
+    protected PepperBarbecueChickenPizzaModel createPizzaModel() {
         return new PepperBarbecueChickenPizzaModel();
     }
 

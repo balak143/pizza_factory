@@ -18,8 +18,7 @@ public enum CrustName {
         return name;
     }
 
-    public static CrustName of(String name) throws ApplicationException {
-        CrustName crustName = null;
+    public static CrustName of(String name) {
         switch (name) {
             case "New Hand Tossed":
                 return NEW_HAND_TOSSED;
@@ -28,10 +27,9 @@ public enum CrustName {
             case "Cheese Burst":
                 return  CHEESE_BURST;
             case "Fresh Pan Pizza":
-                crustName = FRESH_PAN_PIZZA;
-                break;
+                return FRESH_PAN_PIZZA;
         }
-        throw new ApplicationException(" Crust - "+name +" is not a valid enum constant");
+        throw new RuntimeException(" Crust - '"+ name +"'  is not available in store");
     }
 
 }

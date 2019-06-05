@@ -18,6 +18,27 @@ public class PizzaCostExecutorTest {
 
     public static void main(String[] args) throws Exception {
         //Prepare PizzaOrderInputData
+        //DeluxeVeg();
+        PizzaOrderInputData pizzaOrderInputData = new PizzaOrderInputData();
+        pizzaOrderInputData.setOrderDate(today());
+        PizzaInputData pizzaInputData = new PizzaInputData();
+        pizzaInputData.setName("Paneer Tikka");
+        pizzaInputData.setPizzaSize("Regular");
+        pizzaInputData.setCrustName("Wheat Thin");
+        pizzaInputData.addToppings("Black Olive");
+        pizzaOrderInputData.setPizzaInputDatas(pizzaInputData);
+
+        //Create Pizza Cost Task
+        PizzaTask pizzaCostTask = new PizzaCostTask(pizzaOrderInputData);
+
+        pizzaCostTask.setCommandExecutor(new CommandExecutor());
+
+        pizzaCostTask.call();
+
+
+    }
+
+    private static void DeluxeVeg() throws Exception {
         PizzaOrderInputData pizzaOrderInputData = new PizzaOrderInputData();
         pizzaOrderInputData.setOrderDate(today());
         PizzaInputData pizzaInputData = new PizzaInputData();
@@ -34,7 +55,6 @@ public class PizzaCostExecutorTest {
         pizzaCostTask.setCommandExecutor(new CommandExecutor());
 
         pizzaCostTask.call();
-
     }
 
     private static Date today() {

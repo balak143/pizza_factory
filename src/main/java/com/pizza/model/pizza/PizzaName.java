@@ -1,5 +1,7 @@
 package com.pizza.model.pizza;
 
+import com.pizza.exception.ApplicationException;
+
 public enum PizzaName {
     DELUXE_VEGGIE("Deluxe Veggie"),
     CHEESE_CORN("Cheese And Corn"),
@@ -19,28 +21,22 @@ public enum PizzaName {
         return name;
     }
 
-    public static PizzaName of(String name) {
-        PizzaName pizzaName = null;
+    public static PizzaName of(String name){
         switch (name) {
             case "Deluxe Veggie":
-                pizzaName = DELUXE_VEGGIE;
-                break;
+                return DELUXE_VEGGIE;
             case "Cheese And Corn":
-                pizzaName = CHEESE_CORN;
-                break;
+                return CHEESE_CORN;
             case "Paneer Tikka":
-                pizzaName = PANEER_TIKKA;
-                break;
+                return PANEER_TIKKA;
             case "Non-Veg Supreme":
-                pizzaName = NONVEG_SUPREME;
-                break;
+                return NONVEG_SUPREME;
             case "Chicken Tikka":
-                pizzaName = CHICKEN_TIKKA;
-                break;
+                return CHICKEN_TIKKA;
             case "Pepper Barbecue":
-                pizzaName = PEPPER_BARBECUE;
-                break;
+                return PEPPER_BARBECUE;
         }
-        return pizzaName;
+        throw new RuntimeException(" Pizza - '"+ name +"'  is not available in store");
+
     }
 }

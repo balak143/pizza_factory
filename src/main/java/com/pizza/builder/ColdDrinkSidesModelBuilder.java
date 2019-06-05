@@ -1,11 +1,12 @@
 package com.pizza.builder;
 
+import com.pizza.model.sides.ColdDrinkSidesModel;
 import com.pizza.model.sides.SidesModelFactory;
 import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.sides.AbstractSidesModel;
 import com.pizza.model.sides.SidesName;
 
-public class ColdDrinkSidesModelBuilder extends AbstractSideModelBuilder{
+public class ColdDrinkSidesModelBuilder extends AbstractSideModelBuilder<ColdDrinkSidesModel>{
 
     public ColdDrinkSidesModelBuilder(String sidesInputData) {
         super(sidesInputData);

@@ -60,18 +60,19 @@ public class IngredientQtyDeriveService {
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.FISH.getName(), 4, "GRAM"));
 
         // Toppings
-        addRequiredQty(new IngredientRequiredQty(ToppingName.PANEER.getName(), 50, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.CAPSICUM.getName(), 40, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.FRESH_TOMATO.getName(), 60, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.MUSHROOM.getName(), 50, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.BLACK_OLIVE.getName(), 30, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.PANEER.getName(), 5, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.CAPSICUM.getName(), 5, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.FRESH_TOMATO.getName(), 2, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.MUSHROOM.getName(), 5, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.BLACK_OLIVE.getName(), 4, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.EXTRA_CHEESE.getName(), 5, "GRAM"));
+
+        addRequiredQty(new IngredientRequiredQty(ToppingName.CHICKEN_TIKKA.getName(), 5, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.BARBEQUE_CHICKEN.getName(), 5, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.GRILLED_CHICKEN.getName(), 5, "GRAM"));
         
-        addRequiredQty(new IngredientRequiredQty(ToppingName.CHICKEN_TIKKA.getName(), 100, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.BARBEQUE_CHICKEN.getName(), 90.5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.GRILLED_CHICKEN.getName(), 100, "GRAM"));
-        
-        addRequiredQty(new IngredientRequiredQty(SidesName.COLD_DRINK.getName(), 250, "ML"));
-        addRequiredQty(new IngredientRequiredQty(SidesName.MOUSSE_CAKE.getName(), 100, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(SidesName.COLD_DRINK.getName(), 5.5, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(SidesName.MOUSSE_CAKE.getName(), 9, "GRAM"));
     }
 
     private void addRequiredQty(IngredientRequiredQty requiredQty) {

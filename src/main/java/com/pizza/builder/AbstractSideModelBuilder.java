@@ -2,8 +2,9 @@ package com.pizza.builder;
 
 import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.model.ingredient.IngredientType;
+import com.pizza.model.sides.AbstractSidesModel;
 
-public abstract class AbstractSideModelBuilder implements SidesModelBuilder {
+public abstract class AbstractSideModelBuilder<T extends AbstractSidesModel> implements SidesModelBuilder {
     private String sidesInputData;
 
     public AbstractSideModelBuilder(String sidesInputData) {

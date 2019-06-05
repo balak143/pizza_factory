@@ -14,7 +14,7 @@ import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.pizza.nonveg.ChickenTikkaPizzaModel;
 import com.pizza.model.pizza.veg.CheeseAndCornPizzaModel;
 
-public class CheeseCornPizzaModelBuilder extends AbstractPizzaModelBuilder<ChickenTikkaPizzaModel> {
+public class CheeseCornPizzaModelBuilder extends AbstractPizzaModelBuilder<CheeseAndCornPizzaModel> {
 
 
     public CheeseCornPizzaModelBuilder(PizzaInputData pizzaInputData) {
@@ -42,8 +42,8 @@ public class CheeseCornPizzaModelBuilder extends AbstractPizzaModelBuilder<Chick
     }
 
     @Override
-    protected ChickenTikkaPizzaModel createPizzaModel() {
-        return new ChickenTikkaPizzaModel();
+    protected CheeseAndCornPizzaModel createPizzaModel() {
+        return new CheeseAndCornPizzaModel();
     }
 
     @Override

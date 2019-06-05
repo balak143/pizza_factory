@@ -28,40 +28,29 @@ public enum PizzaIngredientsName {
         PizzaIngredientsName ingredientsName = null;
         switch (name) {
             case "Sauce":
-                ingredientsName = SAUCE;
-                break;
+                return SAUCE;
             case "Cheese":
-                ingredientsName = CHEESE;
-                break;
+                return CHEESE;
             case "Corn":
-                ingredientsName = CORN;
-                break;
+                return CORN;
             case "Pepperoni":
-                ingredientsName = PEPPERONI;
-                break;
+                return PEPPERONI;
             case "Red Pepper":
-                ingredientsName = RED_PEPPER;
-                break;
+                return RED_PEPPER;
             case "Oregano":
-                ingredientsName = OREGANO;
-                break;
+                return OREGANO;
             case "Garlic":
-                ingredientsName = GARLIC;
-                break;
+                return GARLIC;
             case "Paneer":
-                ingredientsName = PANEER_CHOP;
-                break;
+                return PANEER_CHOP;
             case "Grill Chicken":
-                ingredientsName = CHICKEN;
-                break;
+                return CHICKEN;
             case "Red meat":
-                ingredientsName = RED_MEAT;
-                break;
+                return RED_MEAT;
             case "Fish":
-                ingredientsName = FISH;
-                break;
+                return FISH;
         }
-        return ingredientsName;
+        throw new RuntimeException(" Pizza Ingredients - '" + name + "'  is not available in store");
     }
 
 }

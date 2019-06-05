@@ -8,6 +8,7 @@ import com.pizza.model.pizza.Size;
 import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.PaneerTikkaPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
+import com.pizza.model.pizza.veg.PaneerTikkaPizzaModel;
 
 public class PaneerTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder {
 
@@ -36,7 +37,7 @@ public class PaneerTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder {
 
     @Override
     protected AbstractPizzaModel createPizzaModel() {
-        return null;
+        return new PaneerTikkaPizzaModel();
     }
 
     @Override
