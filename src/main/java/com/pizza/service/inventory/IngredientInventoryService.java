@@ -1,17 +1,11 @@
 package com.pizza.service.inventory;
 
-import com.pizza.cache.CostMemoryGrid;
-import com.pizza.cache.GridManager;
-import com.pizza.cache.GridType;
-import com.pizza.cache.InventoryMemoryGrid;
-import com.pizza.dao.CostData;
-import com.pizza.dao.CostDataKey;
+import com.pizza.grid.GridManager;
+import com.pizza.grid.GridType;
+import com.pizza.grid.InventoryMemoryGrid;
 import com.pizza.dao.InventoryData;
 import com.pizza.dao.InventoryDataKey;
 import com.pizza.model.ingredient.IngredientModel;
-import com.pizza.utils.Price;
-
-import java.util.Date;
 
 public class IngredientInventoryService implements InventoryService {
     @Override

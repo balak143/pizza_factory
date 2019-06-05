@@ -26,6 +26,7 @@ public class PizzaCostExecutorTest {
         pizzaInputData.setPizzaSize("Regular");
         pizzaInputData.setCrustName("Wheat Thin");
         pizzaInputData.addToppings("Black Olive");
+        pizzaInputData.addToppings("Chicken Tikka");
         pizzaOrderInputData.setPizzaInputDatas(pizzaInputData);
 
         //Create Pizza Cost Task

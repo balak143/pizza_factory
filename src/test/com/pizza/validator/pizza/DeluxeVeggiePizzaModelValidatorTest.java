@@ -1,6 +1,6 @@
 package com.pizza.validator.pizza;
 
-import com.pizza.cache.IngredientDB;
+import com.pizza.grid.IngredientDB;
 import com.pizza.exception.ApplicationException;
 import com.pizza.model.crust.WheatThinCrustModel;
 import com.pizza.model.ingredient.IngredientModel;

@@ -1,14 +1,10 @@
-package com.pizza.cache;
+package com.pizza.grid;
 
 import com.pizza.dao.CostData;
 import com.pizza.dao.CostDataKey;
-import com.pizza.dao.DataKey;
-import com.pizza.model.ingredient.IngredientModel;
-import com.pizza.model.ingredient.IngredientType;
 import com.pizza.utils.PizzaDateTime;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class CostDataLoader extends DataLoader<CostDataKey, CostData> {
     private Map<CostDataKey, CostData> costData = new TreeMap<>();

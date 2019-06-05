@@ -1,9 +1,8 @@
-package com.pizza.cache;
+package com.pizza.grid;
 
 import com.pizza.dao.Data;
 import com.pizza.dao.DataKey;
 
-import java.util.List;
 import java.util.Map;
 
 public abstract class AbstractGrid<K extends DataKey, V extends Data> implements Grid<K, V> {

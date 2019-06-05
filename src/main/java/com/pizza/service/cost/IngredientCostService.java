@@ -1,8 +1,8 @@
 package com.pizza.service.cost;
 
-import com.pizza.cache.CostMemoryGrid;
-import com.pizza.cache.GridManager;
-import com.pizza.cache.GridType;
+import com.pizza.grid.CostMemoryGrid;
+import com.pizza.grid.GridManager;
+import com.pizza.grid.GridType;
 import com.pizza.dao.CostData;
 import com.pizza.dao.CostDataKey;
 import com.pizza.model.ingredient.IngredientModel;

@@ -1,8 +1,8 @@
 package com.pizza.task;
 
-import com.pizza.cache.CostDataLoader;
-import com.pizza.cache.CostMemoryGrid;
-import com.pizza.cache.GridManager;
+import com.pizza.grid.CostDataLoader;
+import com.pizza.grid.CostMemoryGrid;
+import com.pizza.grid.GridManager;
 import com.pizza.command.Command;
 import com.pizza.command.Context;
 import com.pizza.input.PizzaOrderInputData;
