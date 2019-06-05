@@ -4,11 +4,15 @@ public enum PizzaIngredientsName {
 
     SAUCE("Sauce"),
     CHEESE("Cheese"),
-    PEPERONI("Pepperoni"),
+    CORN("Corn"),
+    PANEER_CHOP("Paneer Chop"),
+    PEPPERONI("Pepperoni"),
+    CHICKEN("Chicken"),
+    RED_MEAT("Red meat"),
+    FISH("Fish"),
     RED_PEPPER("Red Pepper"),
     OREGANO("Oregano"),
-    GARLIC("Garlic"),
-    CORN("Corn");
+    GARLIC("Garlic");
 
     private String name = null;
 
@@ -21,31 +25,43 @@ public enum PizzaIngredientsName {
     }
 
     public static PizzaIngredientsName of(String name) {
-        PizzaIngredientsName crustName = null;
+        PizzaIngredientsName ingredientsName = null;
         switch (name) {
             case "Sauce":
-                crustName = SAUCE;
+                ingredientsName = SAUCE;
                 break;
             case "Cheese":
-                crustName = CHEESE;
-                break;
-            case "Pepperoni":
-                crustName = PEPERONI;
-                break;
-            case "Red Pepper":
-                crustName = RED_PEPPER;
-                break;
-            case "Oregano":
-                crustName = OREGANO;
-                break;
-            case "Garlic":
-                crustName = GARLIC;
+                ingredientsName = CHEESE;
                 break;
             case "Corn":
-                crustName = CORN;
+                ingredientsName = CORN;
+                break;
+            case "Pepperoni":
+                ingredientsName = PEPPERONI;
+                break;
+            case "Red Pepper":
+                ingredientsName = RED_PEPPER;
+                break;
+            case "Oregano":
+                ingredientsName = OREGANO;
+                break;
+            case "Garlic":
+                ingredientsName = GARLIC;
+                break;
+            case "Paneer":
+                ingredientsName = PANEER_CHOP;
+                break;
+            case "Grill Chicken":
+                ingredientsName = CHICKEN;
+                break;
+            case "Red meat":
+                ingredientsName = RED_MEAT;
+                break;
+            case "Fish":
+                ingredientsName = FISH;
                 break;
         }
-        return crustName;
+        return ingredientsName;
     }
 
 }

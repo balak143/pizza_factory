@@ -28,17 +28,21 @@ public class DeluxeVeggiePizzaModelBuilder extends AbstractPizzaModelBuilder<Del
 
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         DeluxeVeggiePizzaIngredientsModel ingredientsModel = new DeluxeVeggiePizzaIngredientsModel();
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.SAUCE));
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHEESE));
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.OREGANO));
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.GARLIC));
+        addCommonIngredients(ingredientsModel);
         return ingredientsModel;
     }
 
-    private IngredientModel getIngredientModel(PizzaIngredientsName pizzaIngredientsName) throws ApplicationException {
-        IngredientRequiredQty ingredientRequiredQty = getIngredientRequiredQty(PizzaIngredientsName.GARLIC.getName());
-        return buildIngredientModel(pizzaIngredientsName.getName(), IngredientType.VEG, ingredientRequiredQty.getQty()
-                * getMultiplier(), ingredientRequiredQty.getQtyUom());
+    @Override
+    protected double getMultiplier() {
+        Size pizzaSize = Size.of(getPizzaInputData().getPizzaSize());
+
+        if (pizzaSize == Size.LARGE) {
+            return 2.168;
+        } else if (pizzaSize == Size.MEDIUM) {
+            return 1.338;
+        } else {
+            return 1;
+        }
     }
 
     @Override

@@ -1,11 +1,13 @@
 package com.pizza.builder;
 
+import com.pizza.exception.ApplicationException;
 import com.pizza.input.PizzaInputData;
 import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.pizza.AbstractPizzaModel;
+import com.pizza.model.pizza.Size;
 import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.ChickenTikkaPizzaIngredientsModel;
-import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
+import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.pizza.nonveg.ChickenTikkaPizzaModel;
 
 public class ChickenTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder {
@@ -14,12 +16,25 @@ public class ChickenTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder {
     }
 
     @Override
-    protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() {
+    protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         ChickenTikkaPizzaIngredientsModel ingredientsModel = new ChickenTikkaPizzaIngredientsModel();
-        ingredientsModel.add(buildIngredientModel("Chicken", IngredientType.NON_VEG, 100.0 * getMultiplier(), "GRAM"));
-        ingredientsModel.add(buildIngredientModel("Sauce", IngredientType.NON_VEG, 20.0 * getMultiplier(), "GRAM"));
-        ingredientsModel.add(buildIngredientModel("Cheese", IngredientType.NON_VEG, 40.0 * getMultiplier(), "GRAM"));
+        addCommonIngredients(ingredientsModel);
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CORN));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHICKEN));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.FISH));
         return ingredientsModel;
+    }
+
+    @Override
+    protected double getMultiplier() {
+        Size pizzaSize = Size.of(getPizzaInputData().getPizzaSize());
+        if (pizzaSize == Size.LARGE) {
+            return 2.383;
+        } else if (pizzaSize == Size.MEDIUM) {
+            return 1.755;
+        } else {
+            return 1;
+        }
     }
 
     @Override

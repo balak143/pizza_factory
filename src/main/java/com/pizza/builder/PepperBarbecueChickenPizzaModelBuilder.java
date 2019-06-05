@@ -1,13 +1,13 @@
 package com.pizza.builder;
 
+import com.pizza.exception.ApplicationException;
 import com.pizza.input.PizzaInputData;
 import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.pizza.AbstractPizzaModel;
-import com.pizza.model.pizza.PizzaModel;
+import com.pizza.model.pizza.Size;
 import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
-import com.pizza.model.pizza.ingredients.CheeseCornPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.PepperBarbecueChickenPizzaIngredientsModel;
-import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
+import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.pizza.nonveg.PepperBarbecueChickenPizzaModel;
 
 public class PepperBarbecueChickenPizzaModelBuilder extends AbstractPizzaModelBuilder {
@@ -16,15 +16,27 @@ public class PepperBarbecueChickenPizzaModelBuilder extends AbstractPizzaModelBu
     }
 
     @Override
-    protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() {
+    protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         PepperBarbecueChickenPizzaIngredientsModel ingredientsModel = new PepperBarbecueChickenPizzaIngredientsModel();
-        ingredientsModel.add(buildIngredientModel("Capsicum", IngredientType.VEG, 50.0 * getMultiplier(), "GRAM"));
-        ingredientsModel.add(buildIngredientModel("Sauce", IngredientType.VEG, 20.0 * getMultiplier(), "GRAM"));
-        ingredientsModel.add(buildIngredientModel("Cheese", IngredientType.VEG, 40.0 * getMultiplier(), "GRAM"));
+        addCommonIngredients(ingredientsModel);
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CORN));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHICKEN));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.RED_MEAT));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.FISH));
         return ingredientsModel;
 
     }
-
+    @Override
+    protected double getMultiplier() {
+        Size pizzaSize = Size.of(getPizzaInputData().getPizzaSize());
+        if (pizzaSize == Size.LARGE) {
+            return 2.39;
+        } else if (pizzaSize == Size.MEDIUM) {
+            return 1.73;
+        } else {
+            return 1;
+        }
+    }
     @Override
     protected AbstractPizzaModel createPizzaModel() {
         return new PepperBarbecueChickenPizzaModel();

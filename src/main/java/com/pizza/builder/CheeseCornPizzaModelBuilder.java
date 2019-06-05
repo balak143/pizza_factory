@@ -1,13 +1,16 @@
 package com.pizza.builder;
 
+import com.pizza.exception.ApplicationException;
 import com.pizza.input.PizzaInputData;
 import com.pizza.input.PizzaOrderInputData;
 import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.pizza.AbstractPizzaModel;
+import com.pizza.model.pizza.Size;
 import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.CheeseCornPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.DeluxeVeggiePizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
+import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.pizza.nonveg.ChickenTikkaPizzaModel;
 import com.pizza.model.pizza.veg.CheeseAndCornPizzaModel;
 
@@ -19,12 +22,23 @@ public class CheeseCornPizzaModelBuilder extends AbstractPizzaModelBuilder<Chick
     }
 
     @Override
-    protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() {
+    protected AbstractPizzaIngredientsModel buildPizzaIngredientModel()throws ApplicationException {
         CheeseCornPizzaIngredientsModel ingredientsModel = new CheeseCornPizzaIngredientsModel();
-        ingredientsModel.add(buildIngredientModel("Capsicum", IngredientType.VEG, 50.0 * getMultiplier(), "GRAM"));
-        ingredientsModel.add(buildIngredientModel("Sauce", IngredientType.VEG, 20.0 * getMultiplier(), "GRAM"));
-        ingredientsModel.add(buildIngredientModel("Cheese", IngredientType.VEG, 40.0 * getMultiplier(), "GRAM"));
+        addCommonIngredients(ingredientsModel);
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CORN));
         return ingredientsModel;
+    }
+
+    @Override
+    protected double getMultiplier() {
+        Size pizzaSize = Size.of(getPizzaInputData().getPizzaSize());
+        if (pizzaSize == Size.LARGE) {
+            return 2.7143;
+        } else if (pizzaSize == Size.MEDIUM) {
+            return 2.145;
+        } else {
+            return 1;
+        }
     }
 
     @Override

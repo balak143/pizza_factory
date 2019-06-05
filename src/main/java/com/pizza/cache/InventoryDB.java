@@ -33,7 +33,7 @@ public enum InventoryDB {
 
     /*
      CAPSICUM("Capsicum", ()-> new IngredientModel("Capsicum", IngredientType.VEG, 30.00, "GRAM")),
-     PANEER("Paneer", ()-> new IngredientModel("Paneer", IngredientType.VEG, 50.00, "GRAM")),
+     PANEER_CHOP("Paneer", ()-> new IngredientModel("Paneer", IngredientType.VEG, 50.00, "GRAM")),
      MUSHROOM("Mushroom",()-> new IngredientModel("Mushroom", IngredientType.VEG, 50.00, "GRAM")),
      FRESH_TOMATO("Fresh Tomato",()-> new IngredientModel("Mushroom", IngredientType.VEG, 50.00, "GRAM")),
      // Non Veg

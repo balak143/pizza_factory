@@ -27,7 +27,6 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
         if (isExist(key)) {
             return getData().get(key);
         }
-        new CostData(key.getProductCode(), key.getEffectiveDate(),0.0,"INR" , "GRAM");
         Map.Entry<CostDataKey, CostData> dataEntry = getData().floorEntry(key);
 
         return(dataEntry != null) ? dataEntry.getValue() : null;

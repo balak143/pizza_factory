@@ -22,7 +22,7 @@ public class PizzaCostExecutorTest {
         pizzaOrderInputData.setOrderDate(today());
         PizzaInputData pizzaInputData = new PizzaInputData();
         pizzaInputData.setName("Deluxe Veggie");
-        pizzaInputData.setPizzaSize("Large");
+        pizzaInputData.setPizzaSize("Regular");
         pizzaInputData.setCrustName("Wheat Thin");
         pizzaInputData.addToppings("Black Olive");
         pizzaInputData.addToppings("Chicken Tikka");

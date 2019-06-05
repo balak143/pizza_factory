@@ -21,7 +21,7 @@ public class PizzaCostModel extends AbstractCostModel {
         Price crustPrice = getCrustPrice(orderDate);
         pizzaPrice += crustPrice.getPrice();
 
-        pizzaPrice += getPizzaIngredientsPrice(orderDate).getPrice();
+        pizzaPrice += Math.floor(getPizzaIngredientsPrice(orderDate).getPrice());
 
         pizzaPrice += getPizzaToppingsPrice(orderDate).getPrice();
 

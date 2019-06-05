@@ -16,6 +16,7 @@ import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.IngredientQtyDeriveService;
 import com.pizza.model.pizza.ingredients.IngredientRequiredQty;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
+import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.topping.AbstractToppingModel;
 import com.pizza.model.topping.ToppingModelFactory;
 import com.pizza.model.topping.ToppingName;
@@ -52,13 +53,30 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
         }
     }
 
-    protected abstract AbstractPizzaIngredientsModel buildPizzaIngredientModel()throws ApplicationException;
+    protected IngredientModel getIngredientModel(PizzaIngredientsName pizzaIngredientsName) throws ApplicationException {
+        IngredientRequiredQty ingredientRequiredQty = getIngredientRequiredQty(pizzaIngredientsName.getName());
+        return buildIngredientModel(pizzaIngredientsName.getName(), IngredientType.VEG, ingredientRequiredQty.getQty()
+                * getMultiplier(), ingredientRequiredQty.getQtyUom());
+    }
+
+
+    protected abstract AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException;
+
+    protected void addCommonIngredients(AbstractPizzaIngredientsModel ingredientsModel) throws ApplicationException {
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.SAUCE));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHEESE));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.PEPPERONI));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.RED_PEPPER));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.OREGANO));
+        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.GARLIC));
+    }
+
 
     @Override
     public AbstractPizzaModel build(BuildContext context) throws ApplicationException {
         AbstractPizzaModel model = createPizzaModel();
         String pizzaSize = getPizzaInputData().getPizzaSize();
-        if(pizzaSize ==null){
+        if (pizzaSize == null) {
             throw new ApplicationException("Please specify Size of a Pizza");
         }
         model.setSize(Size.of(pizzaSize));

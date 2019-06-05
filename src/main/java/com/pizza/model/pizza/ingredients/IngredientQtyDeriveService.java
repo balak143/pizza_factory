@@ -47,13 +47,17 @@ public class IngredientQtyDeriveService {
         addRequiredQty(new IngredientRequiredQty(CrustName.FRESH_PAN_PIZZA.getName(), 150, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(CrustName.NEW_HAND_TOSSED.getName(), 110, "GRAM"));
         // INGREDIENTS
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.SAUCE.getName(), 10, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CHEESE.getName(), 20, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.OREGANO.getName(), 5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.PEPERONI.getName(), 10, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_PEPPER.getName(), 5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.GARLIC.getName(), 20, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CORN.getName(), 20, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.SAUCE.getName(), 8, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CHEESE.getName(), 10, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CORN.getName(), 5, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.PANEER_CHOP.getName(), 2, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.PEPPERONI.getName(), 5, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_PEPPER.getName(), 6, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.OREGANO.getName(), 2, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.GARLIC.getName(), 2, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CHICKEN.getName(), 3, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_MEAT.getName(), 2, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.FISH.getName(), 4, "GRAM"));
 
         // Toppings
         addRequiredQty(new IngredientRequiredQty(ToppingName.PANEER.getName(), 50, "GRAM"));
