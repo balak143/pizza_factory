@@ -7,5 +7,6 @@ import com.pizza.utils.Price;
 import java.util.Date;
 
 public interface InventoryService {
-    InventoryData inventory(IngredientModel model);
+    InventoryData getInventory(IngredientModel model);
+    void updateInventory(IngredientModel model);
 }

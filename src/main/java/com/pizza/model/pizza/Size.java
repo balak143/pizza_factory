@@ -19,15 +19,12 @@ public enum Size {
         Size size = null;
         switch (name) {
             case "Medium":
-                size = MEDIUM;
-                break;
+               return MEDIUM;
             case "Large":
-                size = LARGE;
-                break;
+                return LARGE;
             case "Regular":
-                size = REGULAR;
-                break;
+                return REGULAR;
         }
-        return size;
+        throw new RuntimeException(" Size - '"+ name +"'  is not valid");
     }
 }

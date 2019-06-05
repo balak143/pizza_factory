@@ -10,9 +10,9 @@ public enum ToppingName {
     MUSHROOM("Mushroom", IngredientType.VEG),
     FRESH_TOMATO("Fresh Tomato", IngredientType.VEG),
     // Non Veg
-    CHICKEN_TIKKA("Chicken Tikka", IngredientType.VEG),
-    BARBEQUE_CHICKEN("Barbeque Chicken", IngredientType.VEG),
-    GRILLED_CHICKEN("Grilled Chicken", IngredientType.VEG),
+    CHICKEN_TIKKA("Chicken Tikka", IngredientType.NON_VEG),
+    BARBEQUE_CHICKEN("Barbeque Chicken", IngredientType.NON_VEG),
+    GRILLED_CHICKEN("Grilled Chicken", IngredientType.NON_VEG),
     // Extra Cheese
     EXTRA_CHEESE("Extra Cheese", IngredientType.VEG);
 

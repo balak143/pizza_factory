@@ -1,10 +1,6 @@
 package com.pizza.workflow;
 
-import com.pizza.command.Command;
-import com.pizza.command.InventoryUpdateCommand;
-import com.pizza.command.PizzaOrderCostCommand;
-import com.pizza.command.PizzaOrderModelBuilderCommand;
-import com.pizza.command.PizzaOrderValidatorCommand;
+import com.pizza.command.*;
 import com.pizza.validator.order.PizzaOrderModelValidator;
 
 import java.util.ArrayList;
@@ -18,10 +14,17 @@ public class PizzaWorkflowBeans {
         chain.add(new PizzaOrderCostCommand());
         return chain;
     }
-
+    public List<Command> pizzaOrder() {
+        List<Command> chain = new ArrayList<>();
+        chain.addAll(pizzaInventoryUpdate());
+        chain.add(new PizzaOrderPaymentCommand());
+        chain.add(new InventoryUpdateCommand());
+        chain.add(new PizzaOrderConfirmationCommand());
+        return chain;
+    }
     public List<Command> pizzaInventoryUpdate() {
         List<Command> chain = new ArrayList<>();
-        chain.addAll(pizzaCreation());
+        chain.addAll(pizzaCost());
         chain.add(new InventoryUpdateCommand());
         return chain;
     }

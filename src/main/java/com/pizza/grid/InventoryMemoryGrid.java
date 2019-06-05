@@ -9,18 +9,18 @@ import java.util.concurrent.ConcurrentHashMap;
 public class InventoryMemoryGrid extends AbstractGrid <InventoryDataKey, InventoryData> {
 
 
-    public InventoryMemoryGrid() {
-        super(new InventoryDataLoader());
+    public InventoryMemoryGrid(InventoryDataLoader inventoryDataLoader) {
+        super(inventoryDataLoader);
     }
 
     @Override
-    protected void createDataMap() {
+    public void createDataMap() {
         this.setData(new ConcurrentHashMap<>());
     }
 
     @Override
     public GridType getType() {
-        return null;
+        return GridType.INVENTORY;
     }
 
     @Override

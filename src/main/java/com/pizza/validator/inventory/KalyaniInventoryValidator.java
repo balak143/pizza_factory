@@ -27,7 +27,7 @@ public class KalyaniInventoryValidator implements InventoryValidator {
                 sidesModel -> {
                     IngredientModel ingredientModel = sidesModel.getIngredientModel();
                     try {
-                        validateStock(ingredientModel, inventoryService.inventory(ingredientModel));
+                        validateStock(ingredientModel, inventoryService.getInventory(ingredientModel));
                     } catch (ApplicationException e) {
                         ThrowingConsumer.sneakyThrow(e);
                     }
@@ -40,7 +40,7 @@ public class KalyaniInventoryValidator implements InventoryValidator {
                 toppingModel -> {
                     try {
                         IngredientModel ingredientModel = toppingModel.getIngredientModel();
-                        validateStock(ingredientModel, inventoryService.inventory(ingredientModel));
+                        validateStock(ingredientModel, inventoryService.getInventory(ingredientModel));
                     } catch (ApplicationException e) {
                         ThrowingConsumer.sneakyThrow(e);
                     }
@@ -52,7 +52,7 @@ public class KalyaniInventoryValidator implements InventoryValidator {
         abstractPizzaModel.getPizzaIngredientsModel().getIngredients().stream().forEach(
                 ingredientModel -> {
                     try {
-                        validateStock(ingredientModel, inventoryService.inventory(ingredientModel));
+                        validateStock(ingredientModel, inventoryService.getInventory(ingredientModel));
                     } catch (ApplicationException e) {
                         ThrowingConsumer.sneakyThrow(e);
                     }

@@ -25,6 +25,7 @@ public class PizzaOrderCostCommand implements Command {
         List<Price> prices = pizzaOrderCostModel.cost(pizzaOrderInputData.getOrderDate());
 
         context.setData("ORDER_PRICE", prices);
+        System.out.println(prices);
 
         return true;
     }

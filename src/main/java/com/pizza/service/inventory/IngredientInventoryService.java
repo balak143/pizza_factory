@@ -9,9 +9,15 @@ import com.pizza.model.ingredient.IngredientModel;
 
 public class IngredientInventoryService implements InventoryService {
     @Override
-    public InventoryData inventory(IngredientModel model) {
+    public InventoryData getInventory(IngredientModel model) {
         InventoryMemoryGrid inventoryMemoryGrid = GridManager.getInstance().get(GridType.INVENTORY, InventoryMemoryGrid.class);
         InventoryData inventoryData = inventoryMemoryGrid.getData(new InventoryDataKey(model.getProductCode()));
         return inventoryData;
+    }
+
+    @Override
+    public void updateInventory(IngredientModel model) {
+        InventoryMemoryGrid inventoryMemoryGrid = GridManager.getInstance().get(GridType.INVENTORY, InventoryMemoryGrid.class);
+        inventoryMemoryGrid.updateData(new InventoryDataKey(model.getProductCode()),new InventoryData(model.getProductCode(),model.getRequiredQty(),model.getQtyUom()));
     }
 }

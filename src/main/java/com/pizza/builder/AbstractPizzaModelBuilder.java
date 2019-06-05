@@ -76,9 +76,6 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
     public AbstractPizzaModel build(BuildContext context) throws ApplicationException {
         AbstractPizzaModel model = createPizzaModel();
         String pizzaSize = getPizzaInputData().getPizzaSize();
-        if (pizzaSize == null) {
-            throw new ApplicationException("Please specify Size of a Pizza");
-        }
         model.setSize(Size.of(pizzaSize));
         model.setPizzaIngredientsModel(buildPizzaIngredientModel());
         model.setName(getPizzaInputData().getName());
@@ -90,9 +87,6 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
     protected AbstractCrustModel buildCrustModel() throws ApplicationException {
         CrustName crustName = CrustName.of(getPizzaInputData().getCrustName());
         AbstractCrustModel crustModel = CrustModelFactory.getInstance().createCrustModel(crustName);
-        if (crustModel == null) {
-            throw new ApplicationException("Crust - " + getPizzaInputData().getCrustName() + "is not valid ");
-        }
         IngredientRequiredQty requiredQty = getIngredientRequiredQty(crustName.getName());
         crustModel.setIngredientModel(buildIngredientModel(crustName.getName(), IngredientType.VEG, requiredQty.getQty(), requiredQty.getQtyUom()));
         return crustModel;

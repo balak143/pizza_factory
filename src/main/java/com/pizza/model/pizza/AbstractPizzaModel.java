@@ -71,9 +71,9 @@ public abstract class AbstractPizzaModel implements PizzaModel {
     public String toString() {
         StringBuilder result = new StringBuilder().append(this.name + " Pizza ")
                 .append("of " + getSize().getName()).append(" Size ").append(System.lineSeparator())
-                .append("With " + getCrustModel().getName()).append(" as crust ").append(System.lineSeparator())
-                .append("Having toppings ").append(System.lineSeparator());
+                .append("With " + getCrustModel().getName()).append(" as crust ").append(System.lineSeparator());
         for (AbstractToppingModel topping : this.toppings) {
+            result.append("Having toppings ").append(System.lineSeparator());
             result.append(" + ").append(topping.getName()).append(System.lineSeparator());
         }
         return result.toString();
