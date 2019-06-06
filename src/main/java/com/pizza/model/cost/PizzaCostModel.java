@@ -71,9 +71,6 @@ public class PizzaCostModel extends AbstractCostModel {
         return pizzaModel.getSize() == Size.LARGE;
     }
 
-    public AbstractPizzaModel getPizzaModel() {
-        return pizzaModel;
-    }
 
     public PizzaCostModel setPizzaModel(AbstractPizzaModel pizzaModel) {
         this.pizzaModel = pizzaModel;

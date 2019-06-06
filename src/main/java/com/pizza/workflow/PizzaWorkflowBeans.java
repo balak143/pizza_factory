@@ -1,6 +1,7 @@
 package com.pizza.workflow;
 
 import com.pizza.command.*;
+import com.pizza.validator.inventory.KalyaniInventoryValidator;
 import com.pizza.validator.order.PizzaOrderModelValidator;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class PizzaWorkflowBeans {
     public List<Command> pizzaCost() {
         List<Command> chain = new ArrayList<>();
         chain.addAll(pizzaCreation());
+        chain.add(new InventoryValidatorCommand());
         chain.add(new PizzaOrderCostCommand());
         return chain;
     }

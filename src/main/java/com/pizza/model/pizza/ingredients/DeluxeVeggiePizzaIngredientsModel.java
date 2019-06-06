@@ -5,8 +5,4 @@ import com.pizza.model.ingredient.IngredientType;
 
 public class DeluxeVeggiePizzaIngredientsModel extends AbstractPizzaIngredientsModel {
 
-    /*@Override
-    public void add(IngredientModel ingredientModel) {
-
-    }*/
 }

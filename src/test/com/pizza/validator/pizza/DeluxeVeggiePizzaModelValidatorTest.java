@@ -18,6 +18,7 @@ import com.pizza.model.topping.GrilledChickenToppingModel;
 import com.pizza.model.topping.PaneerToppingModel;
 import com.pizza.validator.crust.CrustModelValidator;
 import com.pizza.validator.crust.SingleCrustValidator;
+import com.pizza.validator.topping.NonVegToppingModelValidator;
 import com.pizza.validator.topping.ToppingModelValidator;
 import com.pizza.validator.topping.VegToppingModelValidator;
 import org.junit.Before;
@@ -104,6 +105,7 @@ public class DeluxeVeggiePizzaModelValidatorTest {
         GrilledChickenToppingModel grilledChickenToppingModel = new GrilledChickenToppingModel();
         grilledChickenToppingModel.setIngredientModel(IngredientDB.GRILLED_CHICKEN.ingredientModel());
         pizzaModel.addTopping(grilledChickenToppingModel);
+        pizzaModelValidator.setToppingModelValidator(new NonVegToppingModelValidator());
         pizzaModelValidator.validate(pizzaModel);
     }
 

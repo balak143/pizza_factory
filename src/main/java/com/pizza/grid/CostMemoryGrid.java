@@ -22,6 +22,7 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
     protected boolean isExist(InventoryDataKey key) {
         return getData().containsKey(key);
     }
+
     @Override
     public CostData getData(CostDataKey key) {
         if (isExist(key)) {
@@ -29,12 +30,12 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
         }
         Map.Entry<CostDataKey, CostData> dataEntry = getData().floorEntry(key);
 
-        return(dataEntry != null) ? dataEntry.getValue() : null;
+        return (dataEntry != null) ? dataEntry.getValue() : null;
     }
 
     @Override
     public void updateData(CostDataKey key, CostData data) {
-        getData().put(key,data);
+        getData().put(key, data);
     }
 
 
@@ -50,7 +51,7 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
 
     @Override
     public List<CostData> load(List<CostDataKey> dataKeyList) {
-        return null;
+       return this.getDataLoader().load(dataKeyList);
     }
 
     public TreeMap<CostDataKey, CostData> getData() {
@@ -60,7 +61,7 @@ public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
 
     @Override
     public void createDataMap() {
-        this.setData( this.getDataLoader().loadAll());
+        this.setData(this.getDataLoader().loadAll());
     }
 
 

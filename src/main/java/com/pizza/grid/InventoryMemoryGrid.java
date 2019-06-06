@@ -15,7 +15,7 @@ public class InventoryMemoryGrid extends AbstractGrid <InventoryDataKey, Invento
 
     @Override
     public void createDataMap() {
-        this.setData(new ConcurrentHashMap<>());
+        this.setData(this.getDataLoader().loadAll());
     }
 
     @Override
@@ -34,16 +34,16 @@ public class InventoryMemoryGrid extends AbstractGrid <InventoryDataKey, Invento
     }
     @Override
     public void loadAll() {
-
+        this.setData(this.getDataLoader().loadAll());
     }
 
     @Override
     public InventoryData load(InventoryDataKey dataKey) {
-        return null;
+        return (InventoryData) this.getDataLoader().load(dataKey);
     }
 
     @Override
     public List<InventoryData> load(List<InventoryDataKey> dataKeyList) {
-        return null;
+        return this.getDataLoader().load(dataKeyList);
     }
 }
