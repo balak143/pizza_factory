@@ -26,6 +26,7 @@ public class DeluxeVeggiePizzaModelBuilder extends AbstractPizzaModelBuilder<Del
         super(pizzaInputData);
     }
 
+    @Override
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         DeluxeVeggiePizzaIngredientsModel ingredientsModel = new DeluxeVeggiePizzaIngredientsModel();
         addCommonIngredients(ingredientsModel);

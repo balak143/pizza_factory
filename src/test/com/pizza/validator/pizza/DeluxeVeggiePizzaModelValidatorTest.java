@@ -39,7 +39,6 @@ public class DeluxeVeggiePizzaModelValidatorTest {
 
     @Before
     public void setup() {
-
         pizzaModel = new DeluxeVeggiePizzaModel();
         pizzaModel.setCrustModel(new WheatThinCrustModel());
         DeluxeVeggiePizzaIngredientsModel pizzaIngredientsModel = new DeluxeVeggiePizzaIngredientsModel();
@@ -53,7 +52,7 @@ public class DeluxeVeggiePizzaModelValidatorTest {
     }
 
     @Test
-    public void validate_vegpizza_has_vegtappings() throws Exception {
+    public void validate_vegpizza_has_vegtoppings() throws Exception {
         pizzaModelValidator.validate(pizzaModel);
         pizzaModelValidator.setCrustModelValidator(new SingleCrustValidator());
         pizzaModelValidator.setToppingModelValidator(new VegToppingModelValidator());

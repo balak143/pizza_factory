@@ -2,6 +2,7 @@ package com.pizza.model.pizza.ingredients;
 
 import com.pizza.exception.ApplicationException;
 import com.pizza.model.crust.CrustName;
+import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.sides.SidesName;
 import com.pizza.model.topping.ToppingName;
 
@@ -55,9 +56,9 @@ public class IngredientQtyDeriveService {
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_PEPPER.getName(), 6, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.OREGANO.getName(), 2, "GRAM"));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.GARLIC.getName(), 2, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CHICKEN.getName(), 3, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_MEAT.getName(), 2, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.FISH.getName(), 4, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CHICKEN.getName(), 3, "GRAM", IngredientType.NON_VEG));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_MEAT.getName(), 2, "GRAM", IngredientType.NON_VEG));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.FISH.getName(), 4, "GRAM", IngredientType.NON_VEG));
 
         // Toppings
         addRequiredQty(new IngredientRequiredQty(ToppingName.PANEER.getName(), 5, "GRAM"));
