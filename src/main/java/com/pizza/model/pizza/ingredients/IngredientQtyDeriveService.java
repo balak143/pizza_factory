@@ -26,9 +26,9 @@ public class IngredientQtyDeriveService {
         return INSTANCE;
     }
 
-    public IngredientRequiredQty getQty(String name)throws ApplicationException {
+    public IngredientRequiredQty getQty(String name) throws ApplicationException {
 
-        if(!isExist(name)) {
+        if (!isExist(name)) {
             throw new ApplicationException(name + " - not a valid product.");
         }
 
@@ -43,37 +43,37 @@ public class IngredientQtyDeriveService {
      * At Application Start Up
      */
     public void defaultQuantities() {
-        addRequiredQty(new IngredientRequiredQty(CrustName.WHEAT_THIN_CRUST.getName(), 100, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(CrustName.CHEESE_BURST.getName(), 100, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(CrustName.FRESH_PAN_PIZZA.getName(), 150, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(CrustName.NEW_HAND_TOSSED.getName(), 110, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(CrustName.WHEAT_THIN_CRUST.getName(), 100, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(CrustName.CHEESE_BURST.getName(), 100, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(CrustName.FRESH_PAN_PIZZA.getName(), 150, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(CrustName.NEW_HAND_TOSSED.getName(), 110, "GRAM", IngredientType.VEG));
         // INGREDIENTS
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.SAUCE.getName(), 8, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CHEESE.getName(), 10, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CORN.getName(), 5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.PANEER_CHOP.getName(), 2, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.PEPPERONI.getName(), 5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_PEPPER.getName(), 6, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.OREGANO.getName(), 2, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.GARLIC.getName(), 2, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.SAUCE.getName(), 8, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CHEESE.getName(), 10, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CORN.getName(), 5, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.PANEER_CHOP.getName(), 2, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.PEPPERONI.getName(), 5, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_PEPPER.getName(), 6, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.OREGANO.getName(), 2, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.GARLIC.getName(), 2, "GRAM", IngredientType.VEG));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CHICKEN.getName(), 3, "GRAM", IngredientType.NON_VEG));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_MEAT.getName(), 2, "GRAM", IngredientType.NON_VEG));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.FISH.getName(), 4, "GRAM", IngredientType.NON_VEG));
 
         // Toppings
-        addRequiredQty(new IngredientRequiredQty(ToppingName.PANEER.getName(), 5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.CAPSICUM.getName(), 5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.FRESH_TOMATO.getName(), 2, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.MUSHROOM.getName(), 5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.BLACK_OLIVE.getName(), 4, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.EXTRA_CHEESE.getName(), 5, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.PANEER.getName(), 5, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.CAPSICUM.getName(), 5, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.FRESH_TOMATO.getName(), 2, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.MUSHROOM.getName(), 5, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.BLACK_OLIVE.getName(), 4, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.EXTRA_CHEESE.getName(), 5, "GRAM", IngredientType.VEG));
 
-        addRequiredQty(new IngredientRequiredQty(ToppingName.CHICKEN_TIKKA.getName(), 5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.BARBEQUE_CHICKEN.getName(), 5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(ToppingName.GRILLED_CHICKEN.getName(), 5, "GRAM"));
-        
-        addRequiredQty(new IngredientRequiredQty(SidesName.COLD_DRINK.getName(), 5.5, "GRAM"));
-        addRequiredQty(new IngredientRequiredQty(SidesName.MOUSSE_CAKE.getName(), 9, "GRAM"));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.CHICKEN_TIKKA.getName(), 5, "GRAM", IngredientType.NON_VEG));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.BARBEQUE_CHICKEN.getName(), 5, "GRAM", IngredientType.NON_VEG));
+        addRequiredQty(new IngredientRequiredQty(ToppingName.GRILLED_CHICKEN.getName(), 5, "GRAM", IngredientType.NON_VEG));
+
+        addRequiredQty(new IngredientRequiredQty(SidesName.COLD_DRINK.getName(), 5.5, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(SidesName.MOUSSE_CAKE.getName(), 9, "GRAM", IngredientType.VEG));
     }
 
     private void addRequiredQty(IngredientRequiredQty requiredQty) {

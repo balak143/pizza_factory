@@ -18,7 +18,7 @@ public class PaneerTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder {
 
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         PaneerTikkaPizzaIngredientsModel ingredientsModel = new PaneerTikkaPizzaIngredientsModel();
-        addCommonIngredients(ingredientsModel);
+        addBasicIngredients(ingredientsModel);
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.PANEER_CHOP));
         return ingredientsModel;
     }

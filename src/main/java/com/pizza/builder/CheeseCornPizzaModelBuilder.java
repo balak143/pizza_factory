@@ -2,16 +2,11 @@ package com.pizza.builder;
 
 import com.pizza.exception.ApplicationException;
 import com.pizza.input.PizzaInputData;
-import com.pizza.input.PizzaOrderInputData;
 import com.pizza.model.ingredient.IngredientType;
-import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.pizza.Size;
 import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.CheeseCornPizzaIngredientsModel;
-import com.pizza.model.pizza.ingredients.DeluxeVeggiePizzaIngredientsModel;
-import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
-import com.pizza.model.pizza.nonveg.ChickenTikkaPizzaModel;
 import com.pizza.model.pizza.veg.CheeseAndCornPizzaModel;
 
 public class CheeseCornPizzaModelBuilder extends AbstractPizzaModelBuilder<CheeseAndCornPizzaModel> {
@@ -24,7 +19,7 @@ public class CheeseCornPizzaModelBuilder extends AbstractPizzaModelBuilder<Chees
     @Override
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel()throws ApplicationException {
         CheeseCornPizzaIngredientsModel ingredientsModel = new CheeseCornPizzaIngredientsModel();
-        addCommonIngredients(ingredientsModel);
+        addBasicIngredients(ingredientsModel);
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CORN));
         return ingredientsModel;
     }

@@ -19,7 +19,7 @@ public class NonVegSupremePizzaModelBuilder extends AbstractPizzaModelBuilder {
     @Override
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         NonVegSupremePizzaIngredientsModel ingredientsModel = new NonVegSupremePizzaIngredientsModel();
-        addCommonIngredients(ingredientsModel);
+        addBasicIngredients(ingredientsModel);
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CORN));
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHICKEN));
         return ingredientsModel;

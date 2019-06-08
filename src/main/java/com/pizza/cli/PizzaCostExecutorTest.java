@@ -19,7 +19,8 @@ import java.util.Date;
 public class PizzaCostExecutorTest {
 
     static void init() {
-        // Initial Grid. Ideally this should happen on the Server startup
+        // Initial Grid. Ideally the services should be mocked with in memory data
+        // as we are anyways loading the dummy data, I have used the same data to validate the cases
         CostMemoryGrid costMemoryGrid = new CostMemoryGrid(new CostDataLoader());
         costMemoryGrid.createDataMap();
         GridManager gridManager = GridManager.getInstance();

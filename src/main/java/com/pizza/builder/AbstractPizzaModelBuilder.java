@@ -36,7 +36,6 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
     }
 
     protected IngredientModel buildIngredientModel(String productName, IngredientType type, double requiredQty, String uomCode) {
-        //Call inventoryGet Service to get the Ingredient type and set
         return new IngredientModel(productName, type, requiredQty, uomCode);
 
     }
@@ -55,14 +54,19 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
 
     protected IngredientModel getIngredientModel(PizzaIngredientsName pizzaIngredientsName) throws ApplicationException {
         IngredientRequiredQty ingredientRequiredQty = getIngredientRequiredQty(pizzaIngredientsName.getName());
-        return buildIngredientModel(pizzaIngredientsName.getName(), IngredientType.VEG, ingredientRequiredQty.getQty()
+        return buildIngredientModel(pizzaIngredientsName.getName(), ingredientRequiredQty.getType(), ingredientRequiredQty.getQty()
                 * getMultiplier(), ingredientRequiredQty.getQtyUom());
     }
 
 
     protected abstract AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException;
 
-    protected void addCommonIngredients(AbstractPizzaIngredientsModel ingredientsModel) throws ApplicationException {
+    /**
+     * Add minimum basic ingredients to any pizza
+     * @param ingredientsModel
+     * @throws ApplicationException
+     */
+    protected void addBasicIngredients(AbstractPizzaIngredientsModel ingredientsModel) throws ApplicationException {
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.SAUCE));
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHEESE));
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.PEPPERONI));
@@ -87,8 +91,8 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
     protected AbstractCrustModel buildCrustModel() throws ApplicationException {
         CrustName crustName = CrustName.of(getPizzaInputData().getCrustName());
         AbstractCrustModel crustModel = CrustModelFactory.getInstance().createCrustModel(crustName);
-        IngredientRequiredQty requiredQty = getIngredientRequiredQty(crustName.getName());
-        crustModel.setIngredientModel(buildIngredientModel(crustName.getName(), IngredientType.VEG, requiredQty.getQty(), requiredQty.getQtyUom()));
+        IngredientRequiredQty ingredientRequiredQty = getIngredientRequiredQty(crustName.getName());
+        crustModel.setIngredientModel(buildIngredientModel(crustName.getName(), ingredientRequiredQty.getType(), ingredientRequiredQty.getQty(), ingredientRequiredQty.getQtyUom()));
         return crustModel;
     }
 
@@ -105,14 +109,14 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
         List<String> toppings = getPizzaInputData().getToppings();
         toppings.forEach(topping -> {
             ToppingName toppingName = ToppingName.of(topping);
-            IngredientRequiredQty requiredQty = null;
+            IngredientRequiredQty ingredientRequiredQty = null;
             try {
-                requiredQty = getIngredientRequiredQty(toppingName.getName());
+                ingredientRequiredQty = getIngredientRequiredQty(toppingName.getName());
             } catch (ApplicationException e) {
                 ThrowingConsumer.sneakyThrow(e);
             }
             AbstractToppingModel toppingModel = ToppingModelFactory.getInstance().createToppingModel(toppingName);
-            toppingModel.setIngredientModel(buildIngredientModel(toppingName.getName(), toppingName.getType(), requiredQty.getQty(), requiredQty.getQtyUom()));
+            toppingModel.setIngredientModel(buildIngredientModel(toppingName.getName(), toppingName.getType(), ingredientRequiredQty.getQty(), ingredientRequiredQty.getQtyUom()));
             toppingModels.add(toppingModel);
         });
         return toppingModels;

@@ -3,7 +3,6 @@ package com.pizza.builder;
 import com.pizza.exception.ApplicationException;
 import com.pizza.input.PizzaInputData;
 import com.pizza.model.ingredient.IngredientType;
-import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.pizza.Size;
 import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
 import com.pizza.model.pizza.ingredients.ChickenTikkaPizzaIngredientsModel;
@@ -18,7 +17,7 @@ public class ChickenTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder<Chi
     @Override
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         ChickenTikkaPizzaIngredientsModel ingredientsModel = new ChickenTikkaPizzaIngredientsModel();
-        addCommonIngredients(ingredientsModel);
+        addBasicIngredients(ingredientsModel);
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CORN));
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHICKEN));
         ingredientsModel.add(getIngredientModel(PizzaIngredientsName.FISH));

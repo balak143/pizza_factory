@@ -13,7 +13,12 @@ import com.pizza.validator.topping.ToppingModelValidator;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
+/**
+ *
+ * AbstractPizzaModel validator to validate both crust and toppings.
+ * Can create similar specific validators for different pizza if required
+ * @param <T>
+ */
 public abstract class AbstractPizzaModelValidator<T extends AbstractPizzaModel> implements PizzaModelValidator<T> {
     private ToppingModelValidator toppingModelValidator;
     private CrustModelValidator crustModelValidator;

@@ -69,9 +69,9 @@ public class InventoryDataLoader extends DataLoader<InventoryDataKey,InventoryDa
                 new InventoryData("Fresh Pan Pizza", 0.0,  "GRAM"));
         // Sides
         inventoryMap.put(new InventoryDataKey("Cold Drink"),
-                new InventoryData("Cold Drink", 10,  "GRAM"));
+                new InventoryData("Cold Drink", 10*100,  "GRAM"));
         inventoryMap.put(new InventoryDataKey("Mousse Cake"),
-                new InventoryData("Mousse Cake", 10,  "GRAM"));
+                new InventoryData("Mousse Cake", 10*100,  "GRAM"));
 
         // Pizza Ingradients
         inventoryMap.put(new InventoryDataKey("Sauce"),
