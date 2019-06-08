@@ -6,7 +6,7 @@ import com.pizza.utils.Price;
 import java.util.Date;
 import java.util.List;
 
-public class IngredientModel implements CostModel {
+public class IngredientModel {
     private String productCode;
     private IngredientType type;
     private Double requiredQty;
@@ -17,11 +17,6 @@ public class IngredientModel implements CostModel {
         this.type = type;
         this.requiredQty = requiredQty;
         this.qtyUom = qtyUom;
-    }
-
-    @Override
-    public List<Price> cost(Date date) {
-        return null;
     }
 
     public String getProductCode() {

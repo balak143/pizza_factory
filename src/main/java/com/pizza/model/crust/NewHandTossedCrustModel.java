@@ -10,8 +10,4 @@ public class NewHandTossedCrustModel extends AbstractCrustModel {
     public NewHandTossedCrustModel(){
         this.setName(CrustName.NEW_HAND_TOSSED.getName());
     }
-    @Override
-    public List<Price> cost(Date date) {
-        return null;
-    }
 }

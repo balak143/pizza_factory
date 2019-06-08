@@ -1,5 +1,6 @@
 package com.pizza.model.cost;
 
+import com.pizza.model.crust.AbstractCrustModel;
 import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.pizza.Size;
@@ -16,7 +17,6 @@ public class PizzaCostModel extends AbstractCostModel {
     @Override
     public List<Price> cost(Date orderDate) {
         List<Price> prices = new ArrayList<>();
-
         double pizzaPrice = 0.0;
         Price crustPrice = getCrustPrice(orderDate);
         pizzaPrice += crustPrice.getPrice();
@@ -31,7 +31,14 @@ public class PizzaCostModel extends AbstractCostModel {
     }
 
     private Price getCrustPrice(Date orderDate) {
-        return getCostService().cost(pizzaModel.getCrustModel().getIngredientModel(), orderDate);
+        AbstractCrustModel crustModel = pizzaModel.getCrustModel();
+        IngredientModel ingredientModel = crustModel.getIngredientModel();
+
+        Price cost = getCostService().cost(ingredientModel, orderDate);
+        if (cost == null) {
+            throw new IllegalArgumentException("Price not found for " + ingredientModel.getProductCode());
+        }
+        return cost;
     }
 
     private Price getPizzaIngredientsPrice(Date orderDate) {
@@ -72,8 +79,7 @@ public class PizzaCostModel extends AbstractCostModel {
     }
 
 
-    public PizzaCostModel setPizzaModel(AbstractPizzaModel pizzaModel) {
+    public void setPizzaModel(AbstractPizzaModel pizzaModel) {
         this.pizzaModel = pizzaModel;
-        return this;
     }
 }

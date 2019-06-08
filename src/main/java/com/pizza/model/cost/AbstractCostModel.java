@@ -58,10 +58,6 @@ public abstract class AbstractCostModel implements CostModel {
         return new Price(0.0, "USD");
     }
 
-    protected List<IngredientModel> checkOffer(List<IngredientModel> ingredients) {
-        return ingredients;
-    }
-
 
     public CostService getCostService() {
         return costService;

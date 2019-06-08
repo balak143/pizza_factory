@@ -10,8 +10,4 @@ public class WheatThinCrustModel extends AbstractCrustModel {
     public WheatThinCrustModel(){
         this.setName(CrustName.WHEAT_THIN_CRUST.getName());
     }
-    @Override
-    public List<Price> cost(Date date) {
-        return null;
-    }
 }

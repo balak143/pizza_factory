@@ -18,11 +18,6 @@ public abstract class AbstractCrustModel implements CrustModel {
         this.ingredientModel = ingredientModel;
     }
 
-    @Override
-    public List<Price> cost(Date date) {
-        return null;
-    }
-
     public String getName() {
         return name;
     }

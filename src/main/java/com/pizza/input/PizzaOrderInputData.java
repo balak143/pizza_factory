@@ -33,8 +33,7 @@ public class PizzaOrderInputData {
         return orderDate;
     }
 
-    public PizzaOrderInputData setOrderDate(Date orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
-        return this;
     }
 }
