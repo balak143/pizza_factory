@@ -18,10 +18,10 @@ public class PepperBarbecueChickenPizzaModelBuilder extends AbstractPizzaModelBu
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         PepperBarbecueChickenPizzaIngredientsModel ingredientsModel = new PepperBarbecueChickenPizzaIngredientsModel();
         addBasicIngredients(ingredientsModel);
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CORN));
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHICKEN));
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.RED_MEAT));
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.FISH));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.CORN.getName()));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.CHICKEN.getName()));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.RED_MEAT.getName()));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.GINGER_CHICKEN.getName()));
         return ingredientsModel;
 
     }

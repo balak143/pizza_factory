@@ -20,7 +20,7 @@ public class CheeseCornPizzaModelBuilder extends AbstractPizzaModelBuilder<Chees
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel()throws ApplicationException {
         CheeseCornPizzaIngredientsModel ingredientsModel = new CheeseCornPizzaIngredientsModel();
         addBasicIngredients(ingredientsModel);
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CORN));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.CORN.getName()));
         return ingredientsModel;
     }
 

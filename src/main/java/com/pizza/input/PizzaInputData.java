@@ -8,7 +8,6 @@ public class PizzaInputData {
     private String name;
     private String crustName;
     private String pizzaSize;
-
     private List<String> toppings = new ArrayList<>();
 
     public String getName() {

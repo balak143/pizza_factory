@@ -19,7 +19,7 @@ public class PaneerTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder {
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         PaneerTikkaPizzaIngredientsModel ingredientsModel = new PaneerTikkaPizzaIngredientsModel();
         addBasicIngredients(ingredientsModel);
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.PANEER_CHOP));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.PANEER_CHOP.getName()));
         return ingredientsModel;
     }
 
@@ -42,7 +42,7 @@ public class PaneerTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder {
 
     @Override
     protected IngredientType getPizzaType() {
-        return null;
+        return IngredientType.VEG;
     }
 
 

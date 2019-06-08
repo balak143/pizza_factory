@@ -2,7 +2,6 @@ package com.pizza.builder;
 
 import com.pizza.exception.ApplicationException;
 import com.pizza.input.PizzaInputData;
-import com.pizza.input.PizzaOrderInputData;
 import com.pizza.model.crust.CrustName;
 import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.model.ingredient.IngredientType;
@@ -11,10 +10,8 @@ import com.pizza.model.pizza.PizzaName;
 import com.pizza.model.pizza.Size;
 import com.pizza.model.pizza.ingredients.IngredientQtyDeriveService;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
-import com.pizza.model.sides.SidesName;
 import com.pizza.model.topping.AbstractToppingModel;
 import com.pizza.model.topping.ToppingName;
-import jdk.nashorn.internal.ir.IdentNode;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -24,8 +21,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DeluxeVeggiePizzaModelBuilderTest {
-    DeluxeVeggiePizzaModelBuilder deluxeVeggiePizzaModelBuilder = null;
+public class ChickenTikkaPizzaModelBuilderTest {
+    ChickenTikkaPizzaModelBuilder pizzaModelBuilder = null;
 
     @Rule
     public ExpectedException expected = ExpectedException.none();
@@ -35,18 +32,18 @@ public class DeluxeVeggiePizzaModelBuilderTest {
         BuildContext context = new BuildContext();
 
         PizzaInputData pizzaInputData = preparePizzaInputDataForDeluxeVeggiePizza();
-        deluxeVeggiePizzaModelBuilder = new DeluxeVeggiePizzaModelBuilder(pizzaInputData);
-        AbstractPizzaModel pizzaModel = deluxeVeggiePizzaModelBuilder.build(context);
+        pizzaModelBuilder = new ChickenTikkaPizzaModelBuilder(pizzaInputData);
+        AbstractPizzaModel pizzaModel = pizzaModelBuilder.build(context);
 
-        Assert.assertEquals("Deluxe Veggie", pizzaModel.getName());
+        Assert.assertEquals("Chicken Tikka", pizzaModel.getName());
         List<IngredientModel> ingredients = pizzaModel.getPizzaIngredientsModel().getIngredients();
         Assert.assertNotNull("Ingredients should not be Null", ingredients);
-        Assert.assertEquals("Ingredients Size should be 6 ", 6, ingredients.size());
+        Assert.assertEquals("Ingredients Size should be 9 ", 9, ingredients.size());
         List<String> originalList = ingredients.stream().map(IngredientModel::getProductCode).collect(Collectors.toList());
 
         List<String> expectedList = Arrays.asList(PizzaIngredientsName.SAUCE.getName(), PizzaIngredientsName.CHEESE.getName(),
                 PizzaIngredientsName.PEPPERONI.getName(), PizzaIngredientsName.RED_PEPPER.getName(), PizzaIngredientsName.OREGANO.getName(),
-                PizzaIngredientsName.GARLIC.getName());
+                PizzaIngredientsName.GARLIC.getName(), PizzaIngredientsName.CORN.getName(), PizzaIngredientsName.CHICKEN.getName(), PizzaIngredientsName.GINGER_CHICKEN.getName());
 
         Assert.assertEquals("Miss match in Pizza Ingredients  ", expectedList, originalList);
     }
@@ -56,8 +53,8 @@ public class DeluxeVeggiePizzaModelBuilderTest {
         BuildContext context = new BuildContext();
 
         PizzaInputData pizzaInputData = preparePizzaInputDataForDeluxeVeggiePizza();
-        deluxeVeggiePizzaModelBuilder = new DeluxeVeggiePizzaModelBuilder(pizzaInputData);
-        AbstractPizzaModel pizzaModel = deluxeVeggiePizzaModelBuilder.build(context);
+        pizzaModelBuilder = new ChickenTikkaPizzaModelBuilder(pizzaInputData);
+        AbstractPizzaModel pizzaModel = pizzaModelBuilder.build(context);
 
         List<AbstractToppingModel> toppings = pizzaModel.getToppings();
         Assert.assertEquals("Toppings size should be 2", 2, toppings.size());
@@ -65,22 +62,11 @@ public class DeluxeVeggiePizzaModelBuilderTest {
         List<String> originalList = toppings.stream().map(AbstractToppingModel::getIngredientModel).
                 map(ingredientModel -> ingredientModel.getProductCode()).collect(Collectors.toList());
 
-        List<String> expectedList = Arrays.asList(ToppingName.CHICKEN_TIKKA.getName(),ToppingName.BLACK_OLIVE.getName());
+        List<String> expectedList = Arrays.asList(ToppingName.GRILLED_CHICKEN.getName(), ToppingName.BLACK_OLIVE.getName());
 
         Assert.assertEquals("Miss match in Topping Ingredients  ", expectedList, originalList);
     }
 
-    @Test
-    public void validate_build_with_required_quantities() throws ApplicationException {
-        expected.expect(ApplicationException.class);
-        expected.expectMessage("Ingredient is not available for  Product");
-        BuildContext context = new BuildContext();
-        PizzaInputData pizzaInputData = preparePizzaInputDataForDeluxeVeggiePizza();
-        IngredientQtyDeriveService.getInstance().clearQuantities();
-        deluxeVeggiePizzaModelBuilder = new DeluxeVeggiePizzaModelBuilder(pizzaInputData);
-        deluxeVeggiePizzaModelBuilder.build(context);
-        IngredientQtyDeriveService.getInstance().loadRequiredQuantities();
-    }
     @Test
     public void validate_getMultiplier_for_size_large() throws ApplicationException {
         BuildContext context = new BuildContext();
@@ -88,10 +74,10 @@ public class DeluxeVeggiePizzaModelBuilderTest {
         PizzaInputData pizzaInputData = new PizzaInputData();
         pizzaInputData.setPizzaSize("Large");
 
-        deluxeVeggiePizzaModelBuilder = new DeluxeVeggiePizzaModelBuilder(pizzaInputData);
-        double multiplier = deluxeVeggiePizzaModelBuilder.getMultiplier();
+        pizzaModelBuilder = new ChickenTikkaPizzaModelBuilder(pizzaInputData);
+        double multiplier = pizzaModelBuilder.getMultiplier();
 
-        Assert.assertEquals("Multiplier is not 2.168", 2.168, multiplier, 0.000000d);
+        Assert.assertEquals("Multiplier is not 2.383", 2.383, multiplier, 0.000000d);
     }
 
     @Test
@@ -101,18 +87,18 @@ public class DeluxeVeggiePizzaModelBuilderTest {
         PizzaInputData pizzaInputData = new PizzaInputData();
         pizzaInputData.setPizzaSize("Medium");
 
-        deluxeVeggiePizzaModelBuilder = new DeluxeVeggiePizzaModelBuilder(pizzaInputData);
-        double multiplier = deluxeVeggiePizzaModelBuilder.getMultiplier();
+        pizzaModelBuilder = new ChickenTikkaPizzaModelBuilder(pizzaInputData);
+        double multiplier = pizzaModelBuilder.getMultiplier();
 
-        Assert.assertEquals("Multiplier is not 1.338", 1.338, multiplier, 0.000000d);
+        Assert.assertEquals("Multiplier is not 1.755", 1.755, multiplier, 0.000000d);
     }
 
     @Test
     public void validate_getMultiplier_for_size_regular() throws ApplicationException {
         PizzaInputData pizzaInputData = new PizzaInputData();
         pizzaInputData.setPizzaSize("Regular");
-        deluxeVeggiePizzaModelBuilder = new DeluxeVeggiePizzaModelBuilder(pizzaInputData);
-        double multiplier = deluxeVeggiePizzaModelBuilder.getMultiplier();
+        pizzaModelBuilder = new ChickenTikkaPizzaModelBuilder(pizzaInputData);
+        double multiplier = pizzaModelBuilder.getMultiplier();
         Assert.assertEquals("Multiplier is not 1", 1, multiplier, 0.000000d);
     }
 
@@ -121,31 +107,20 @@ public class DeluxeVeggiePizzaModelBuilderTest {
         PizzaInputData pizzaInputData = new PizzaInputData();
         pizzaInputData.setPizzaSize("Regular");
 
-        deluxeVeggiePizzaModelBuilder = new DeluxeVeggiePizzaModelBuilder(pizzaInputData);
-        IngredientType pizzaType = deluxeVeggiePizzaModelBuilder.getPizzaType();
+        pizzaModelBuilder = new ChickenTikkaPizzaModelBuilder(pizzaInputData);
+        IngredientType pizzaType = pizzaModelBuilder.getPizzaType();
 
-        Assert.assertEquals("Deluxe Veggie pizza type should be VEG", IngredientType.VEG, pizzaType);
-    }
-
-    @Test
-    public void validate_getIngredientRequiredQty() throws ApplicationException {
-        PizzaInputData pizzaInputData = new PizzaInputData();
-        pizzaInputData.setPizzaSize("Regular");
-
-        deluxeVeggiePizzaModelBuilder = new DeluxeVeggiePizzaModelBuilder(pizzaInputData);
-        //IngredientType pizzaType = pizzaModelBuilder.getIngredientRequiredQty();
-
-        //Assert.assertEquals("Deluxe Veggie pizza type should be VEG" , IngredientType.VEG, pizzaType);
+        Assert.assertEquals("Chicken Tikka pizza type should be Non VEG", IngredientType.NON_VEG, pizzaType);
     }
 
     private PizzaInputData preparePizzaInputDataForDeluxeVeggiePizza() {
         IngredientQtyDeriveService ingredientQtyDeriveService = IngredientQtyDeriveService.getInstance();
         ingredientQtyDeriveService.loadRequiredQuantities();
         PizzaInputData pizzaInputData = new PizzaInputData();
-        pizzaInputData.setCrustName(CrustName.WHEAT_THIN_CRUST.getName());
-        pizzaInputData.setPizzaSize(Size.LARGE.getName());
-        pizzaInputData.setName(PizzaName.DELUXE_VEGGIE.getName());
-        pizzaInputData.addToppings(ToppingName.CHICKEN_TIKKA.getName());
+        pizzaInputData.setCrustName(CrustName.FRESH_PAN_PIZZA.getName());
+        pizzaInputData.setPizzaSize(Size.REGULAR.getName());
+        pizzaInputData.setName(PizzaName.CHICKEN_TIKKA.getName());
+        pizzaInputData.addToppings(ToppingName.GRILLED_CHICKEN.getName());
         pizzaInputData.addToppings(ToppingName.BLACK_OLIVE.getName());
         return pizzaInputData;
     }

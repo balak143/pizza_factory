@@ -9,7 +9,7 @@ public enum PizzaIngredientsName {
     PEPPERONI("Pepperoni"),
     CHICKEN("Chicken"),
     RED_MEAT("Red meat"),
-    FISH("Fish"),
+    GINGER_CHICKEN("Ginger Chicken"),
     RED_PEPPER("Red Pepper"),
     OREGANO("Oregano"),
     GARLIC("Garlic");
@@ -47,8 +47,8 @@ public enum PizzaIngredientsName {
                 return CHICKEN;
             case "Red meat":
                 return RED_MEAT;
-            case "Fish":
-                return FISH;
+            case "Ginger Chicken":
+                return GINGER_CHICKEN;
         }
         throw new RuntimeException(" Pizza Ingredients - '" + name + "'  is not available in store");
     }

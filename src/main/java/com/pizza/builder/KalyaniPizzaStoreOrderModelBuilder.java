@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 public class KalyaniPizzaStoreOrderModelBuilder implements PizzaOrderModelBuilder {
 
 
-
     @Override
     public KalyaniPizzaStoreOrderModel build(BuildContext buildContext) {
 
@@ -50,11 +49,14 @@ public class KalyaniPizzaStoreOrderModelBuilder implements PizzaOrderModelBuilde
 
     private List<AbstractSidesModel> buildSidesModel(BuildContext buildContext, List<String> sides) {
         List<AbstractSidesModel> sidesModels = new ArrayList<>();
-
-        sides.forEach(pizzaInputData -> {
+        sides.forEach(side -> {
                     SidesModelBuilder modelBuilder = SidesModelBuilderFactory.getInstance()
-                            .getBuilder(pizzaInputData);
-                    sidesModels.add(modelBuilder.build(buildContext));
+                            .getBuilder(side);
+                    try {
+                        sidesModels.add(modelBuilder.build(buildContext));
+                    } catch (ApplicationException e) {
+                        ThrowingConsumer.sneakyThrow(e);
+                    }
                 }
         );
         return sidesModels;

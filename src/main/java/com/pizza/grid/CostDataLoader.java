@@ -69,8 +69,8 @@ public class CostDataLoader extends DataLoader<CostDataKey, CostData> {
                 new CostData("Chicken", today(), 5, "INR", "GRAM"));
         costData.put(new CostDataKey("Red meat", today()),
                 new CostData("Red meat", today(), 5, "INR", "GRAM"));
-        costData.put(new CostDataKey("Fish", today()),
-                new CostData("Fish", today(), 5, "INR", "GRAM"));
+        costData.put(new CostDataKey("Ginger Chicken", today()),
+                new CostData("Ginger Chicken", today(), 5, "INR", "GRAM"));
 
     }
 

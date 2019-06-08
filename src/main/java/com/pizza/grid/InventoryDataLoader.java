@@ -94,8 +94,8 @@ public class InventoryDataLoader extends DataLoader<InventoryDataKey,InventoryDa
                 new InventoryData("Chicken", 5*100,  "GRAM"));
         inventoryMap.put(new InventoryDataKey("Red meat"),
                 new InventoryData("Red meat", 5*100,  "GRAM"));
-        inventoryMap.put(new InventoryDataKey("Fish"),
-                new InventoryData("Fish", 5*100,  "GRAM"));
+        inventoryMap.put(new InventoryDataKey("Ginger Chicken"),
+                new InventoryData("Ginger Chicken", 5*100,  "GRAM"));
 
     }
 

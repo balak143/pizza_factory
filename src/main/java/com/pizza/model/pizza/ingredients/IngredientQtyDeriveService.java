@@ -17,11 +17,6 @@ public class IngredientQtyDeriveService {
 
     private Map<String, IngredientRequiredQty> quantities = new HashMap<>();
 
-    private IngredientQtyDeriveService() {
-        //Don't allow to create Objects from Outside
-        defaultQuantities();
-    }
-
     public static IngredientQtyDeriveService getInstance() {
         return INSTANCE;
     }
@@ -29,7 +24,7 @@ public class IngredientQtyDeriveService {
     public IngredientRequiredQty getQty(String name) throws ApplicationException {
 
         if (!isExist(name)) {
-            throw new ApplicationException(name + " - not a valid product.");
+            throw new ApplicationException("Ingredient is not available for  Product - "+ name );
         }
 
         return quantities.get(name);
@@ -42,7 +37,7 @@ public class IngredientQtyDeriveService {
     /**
      * At Application Start Up
      */
-    public void defaultQuantities() {
+    public void loadRequiredQuantities() {
         addRequiredQty(new IngredientRequiredQty(CrustName.WHEAT_THIN_CRUST.getName(), 100, "GRAM", IngredientType.VEG));
         addRequiredQty(new IngredientRequiredQty(CrustName.CHEESE_BURST.getName(), 100, "GRAM", IngredientType.VEG));
         addRequiredQty(new IngredientRequiredQty(CrustName.FRESH_PAN_PIZZA.getName(), 150, "GRAM", IngredientType.VEG));
@@ -58,7 +53,7 @@ public class IngredientQtyDeriveService {
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.GARLIC.getName(), 2, "GRAM", IngredientType.VEG));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.CHICKEN.getName(), 3, "GRAM", IngredientType.NON_VEG));
         addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.RED_MEAT.getName(), 2, "GRAM", IngredientType.NON_VEG));
-        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.FISH.getName(), 4, "GRAM", IngredientType.NON_VEG));
+        addRequiredQty(new IngredientRequiredQty(PizzaIngredientsName.GINGER_CHICKEN.getName(), 4, "GRAM", IngredientType.NON_VEG));
 
         // Toppings
         addRequiredQty(new IngredientRequiredQty(ToppingName.PANEER.getName(), 5, "GRAM", IngredientType.VEG));
@@ -72,10 +67,13 @@ public class IngredientQtyDeriveService {
         addRequiredQty(new IngredientRequiredQty(ToppingName.BARBEQUE_CHICKEN.getName(), 5, "GRAM", IngredientType.NON_VEG));
         addRequiredQty(new IngredientRequiredQty(ToppingName.GRILLED_CHICKEN.getName(), 5, "GRAM", IngredientType.NON_VEG));
 
-        addRequiredQty(new IngredientRequiredQty(SidesName.COLD_DRINK.getName(), 5.5, "GRAM", IngredientType.VEG));
-        addRequiredQty(new IngredientRequiredQty(SidesName.MOUSSE_CAKE.getName(), 9, "GRAM", IngredientType.VEG));
+        addRequiredQty(new IngredientRequiredQty(SidesName.COLD_DRINK.getName(), 5.5, "GRAM", IngredientType.BEVERAGES));
+        addRequiredQty(new IngredientRequiredQty(SidesName.MOUSSE_CAKE.getName(), 9, "GRAM", IngredientType.BEVERAGES));
     }
 
+    public void clearQuantities(){
+        quantities.clear();
+    }
     private void addRequiredQty(IngredientRequiredQty requiredQty) {
         quantities.put(requiredQty.getName(), requiredQty);
     }

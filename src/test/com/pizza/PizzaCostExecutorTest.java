@@ -4,6 +4,7 @@ import com.pizza.command.CommandExecutor;
 import com.pizza.grid.*;
 import com.pizza.input.PizzaInputData;
 import com.pizza.input.PizzaOrderInputData;
+import com.pizza.model.pizza.ingredients.IngredientQtyDeriveService;
 import com.pizza.task.PizzaCostTask;
 import com.pizza.task.PizzaOrderTask;
 import com.pizza.task.PizzaTask;
@@ -25,9 +26,11 @@ public class PizzaCostExecutorTest {
         InventoryMemoryGrid inventoryMemoryGrid = new InventoryMemoryGrid(new InventoryDataLoader());
         inventoryMemoryGrid.createDataMap();
         gridManager.registerGrid(inventoryMemoryGrid);
+        IngredientQtyDeriveService ingredientQtyDeriveService = IngredientQtyDeriveService.getInstance();
+        ingredientQtyDeriveService.loadRequiredQuantities();
 
     }
-    @Test
+    //@Test
     public void test()throws Exception{
         //Prepare PizzaOrderInputData
         init();

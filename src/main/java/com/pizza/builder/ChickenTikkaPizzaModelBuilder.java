@@ -18,9 +18,9 @@ public class ChickenTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder<Chi
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         ChickenTikkaPizzaIngredientsModel ingredientsModel = new ChickenTikkaPizzaIngredientsModel();
         addBasicIngredients(ingredientsModel);
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CORN));
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHICKEN));
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.FISH));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.CORN.getName()));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.CHICKEN.getName()));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.GINGER_CHICKEN.getName()));
         return ingredientsModel;
     }
 

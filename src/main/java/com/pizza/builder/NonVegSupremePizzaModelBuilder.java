@@ -20,8 +20,8 @@ public class NonVegSupremePizzaModelBuilder extends AbstractPizzaModelBuilder {
     protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
         NonVegSupremePizzaIngredientsModel ingredientsModel = new NonVegSupremePizzaIngredientsModel();
         addBasicIngredients(ingredientsModel);
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CORN));
-        ingredientsModel.add(getIngredientModel(PizzaIngredientsName.CHICKEN));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.CORN.getName()));
+        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.CHICKEN.getName()));
         return ingredientsModel;
     }
 
@@ -44,6 +44,6 @@ public class NonVegSupremePizzaModelBuilder extends AbstractPizzaModelBuilder {
 
     @Override
     protected IngredientType getPizzaType() {
-        return null;
+        return IngredientType.NON_VEG;
     }
 }

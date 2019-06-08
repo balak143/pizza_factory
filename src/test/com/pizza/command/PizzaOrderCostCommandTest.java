@@ -48,8 +48,8 @@ public class PizzaOrderCostCommandTest {
         return PizzaDateTime.getInstance().convert("20190603");
     }
 
-    @Test
-    public void test_pizza_large_cost_three_toppings() {
+    //@Test
+    public void execute_pizza_large_cost_three_toppings() {
         Context context = new Context();
         PizzaInputData pizzaInputData = pizzaOrderInputData.getPizzaInputDatas().get(0);
         pizzaInputData.setPizzaSize(Size.LARGE.getName());
@@ -70,8 +70,8 @@ public class PizzaOrderCostCommandTest {
         assertEquals("INR",prices.get(0).getCurrency());
     }
 
-    @Test
-    public void test_pizza_large_cost_with_one_topping() {
+    //@Test
+    public void execute_pizza_large_cost_with_one_topping() {
         Context context = new Context();
         PizzaInputData pizzaInputData = pizzaOrderInputData.getPizzaInputDatas().get(0);
         pizzaInputData.setPizzaSize(Size.LARGE.getName());
@@ -90,8 +90,8 @@ public class PizzaOrderCostCommandTest {
         assertEquals("INR",prices.get(0).getCurrency());
     }
 
-    @Test
-    public void test_basic_pizza_cost() {
+    //@Test
+    public void execute_basic_pizza_cost() {
         Context context = new Context();
         pizzaOrderInputData.getPizzaInputDatas().get(0).setName(PizzaName.CHICKEN_TIKKA.getName());
         context.setData("PIZZA_ORDER_INPUT", pizzaOrderInputData);
@@ -108,8 +108,8 @@ public class PizzaOrderCostCommandTest {
         assertEquals("INR",prices.get(0).getCurrency());
     }
 
-    @Test
-    public void test_basic_pizza_cost_with_sides() {
+    //@Test
+    public void execute_basic_pizza_cost_with_sides() {
         Context context = new Context();
         pizzaOrderInputData.getPizzaInputDatas().get(0).setName(PizzaName.PEPPER_BARBECUE.getName());
         pizzaOrderInputData.addSides(SidesName.COLD_DRINK.getName());
