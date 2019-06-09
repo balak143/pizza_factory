@@ -21,13 +21,10 @@ public class KalyaniPizzaStoreOrderModelBuilder implements PizzaOrderModelBuilde
 
     @Override
     public KalyaniPizzaStoreOrderModel build(BuildContext buildContext) {
-
         PizzaOrderInputData pizzaOrderInputData = buildContext.getPizzaOrderInputData();
-
         KalyaniPizzaStoreOrderModel orderModel = new KalyaniPizzaStoreOrderModel();
         orderModel.setPizzaModels(buildPizzaModel(buildContext, pizzaOrderInputData.getPizzaInputDatas()));
         orderModel.setSidesModels(buildSidesModel(buildContext, pizzaOrderInputData.getSides()));
-
         return orderModel;
     }
 
