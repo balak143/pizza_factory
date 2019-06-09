@@ -28,10 +28,5 @@ public abstract class AbstractToppingModel implements ToppingModel {
         this.name = name;
     }
 
-    @Override
-    public List<Price> cost(Date date) {
-        return null;
-    }
-
 
 }

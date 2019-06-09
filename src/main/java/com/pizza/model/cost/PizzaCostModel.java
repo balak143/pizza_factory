@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PizzaCostModel extends AbstractCostModel {
-    //private AbstractPizzaModel pizzaModel;
 
     @Override
     public List<Price> cost(Date orderDate) {

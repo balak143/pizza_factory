@@ -20,7 +20,6 @@ public class PizzaWorkflowBeans {
         List<Command> chain = new ArrayList<>();
         chain.addAll(pizzaInventoryUpdate());
         chain.add(new PizzaOrderPaymentCommand());
-        chain.add(new InventoryUpdateCommand());
         chain.add(new PizzaOrderConfirmationCommand());
         return chain;
     }

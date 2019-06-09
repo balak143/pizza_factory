@@ -30,6 +30,7 @@ public class PizzaOrderCostCommand implements Command {
         context.setData("ORDER_PRICE", prices);
         System.out.println(prices);
 
+
         return true;
     }
 }

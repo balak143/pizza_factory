@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Order Cost model will have list of Prices
+ * 1) At Pizza Level including toppings ..etc
+ * 2) At Sides level
+ * For simplicity we have kept it separate to report order summary at Pizza and sides separately.
+ */
 public class PizzaOrderCostModel extends AbstractCostModel {
     private PizzaOrderModel pizzaOrderModel;
 
@@ -21,15 +27,11 @@ public class PizzaOrderCostModel extends AbstractCostModel {
     public List<Price> cost(Date orderDate) {
         List<Price> prices = new ArrayList<>();
         List<Price> pizzaPrices = addPizzasPrices(orderDate);
-
         PizzaPriceMerger merger = new PizzaPriceMerger();
         pizzaPrices = merger.merge(pizzaPrices);
-
         prices.addAll(pizzaPrices);
-
         List<Price> sidesPrices = addSidesPrices(orderDate);
         sidesPrices = merger.merge(sidesPrices);
-
         prices.addAll(sidesPrices);
         return prices;
     }
@@ -57,17 +59,15 @@ public class PizzaOrderCostModel extends AbstractCostModel {
         return pizzaCostModel;
     }
 
-    public PizzaOrderCostModel setPizzaCostModel(PizzaCostModel pizzaCostModel) {
+    public void setPizzaCostModel(PizzaCostModel pizzaCostModel) {
         this.pizzaCostModel = pizzaCostModel;
-        return this;
     }
 
     public SidesCostModel getSidesCostModel() {
         return sidesCostModel;
     }
 
-    public PizzaOrderCostModel setSidesCostModel(SidesCostModel sidesCostModel) {
+    public void setSidesCostModel(SidesCostModel sidesCostModel) {
         this.sidesCostModel = sidesCostModel;
-        return this;
     }
 }

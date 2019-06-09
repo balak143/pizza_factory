@@ -30,7 +30,7 @@ public class PizzaCostExecutorTest {
         ingredientQtyDeriveService.loadRequiredQuantities();
 
     }
-    //@Test
+    @Test
     public void test()throws Exception{
         //Prepare PizzaOrderInputData
         init();
@@ -39,6 +39,13 @@ public class PizzaCostExecutorTest {
         PizzaOrderInputData pizzaOrderInputData = new PizzaOrderInputData();
         pizzaOrderInputData.setOrderDate(today());
         PizzaInputData pizzaInputData = new PizzaInputData();
+        pizzaInputData.setName("Paneer Tikka");
+        pizzaInputData.setPizzaSize("Regular");
+        pizzaInputData.setCrustName("Wheat Thin");
+        pizzaOrderInputData.addSides("Cold Drink");
+        pizzaOrderInputData.setPizzaInputDatas(pizzaInputData);
+
+        pizzaInputData = new PizzaInputData();
         pizzaInputData.setName("Paneer Tikka");
         pizzaInputData.setPizzaSize("Regular");
         pizzaInputData.setCrustName("Wheat Thin");

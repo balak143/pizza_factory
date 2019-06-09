@@ -34,4 +34,8 @@ public class IngredientModel {
     public String getQtyUom() {
         return qtyUom;
     }
+
+    public void setRequiredQty(Double requiredQty) {
+        this.requiredQty = requiredQty;
+    }
 }

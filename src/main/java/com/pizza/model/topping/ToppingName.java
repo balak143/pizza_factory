@@ -4,32 +4,26 @@ import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.pizza.PizzaName;
 
 public enum ToppingName {
-    BLACK_OLIVE("Black Olive", IngredientType.VEG),
-    CAPSICUM("Capsicum", IngredientType.VEG),
-    PANEER("Paneer", IngredientType.VEG),
-    MUSHROOM("Mushroom", IngredientType.VEG),
-    FRESH_TOMATO("Fresh Tomato", IngredientType.VEG),
+    BLACK_OLIVE("Black Olive"),
+    CAPSICUM("Capsicum"),
+    PANEER("Paneer"),
+    MUSHROOM("Mushroom"),
+    FRESH_TOMATO("Fresh Tomato"),
     // Non Veg
-    CHICKEN_TIKKA("Chicken Tikka", IngredientType.NON_VEG),
-    BARBEQUE_CHICKEN("Barbeque Chicken", IngredientType.NON_VEG),
-    GRILLED_CHICKEN("Grilled Chicken", IngredientType.NON_VEG),
+    CHICKEN_TIKKA("Chicken Tikka"),
+    BARBEQUE_CHICKEN("Barbeque Chicken"),
+    GRILLED_CHICKEN("Grilled Chicken"),
     // Extra Cheese
-    EXTRA_CHEESE("Extra Cheese", IngredientType.VEG);
+    EXTRA_CHEESE("Extra Cheese");
 
     private String name = null;
-    private IngredientType type;
 
-    ToppingName(String name, IngredientType type) {
+    ToppingName(String name) {
         this.name = name;
-        this.type = type;
     }
 
     public String getName() {
         return name;
-    }
-
-    public IngredientType getType() {
-        return type;
     }
 
     public static ToppingName of(String name) {

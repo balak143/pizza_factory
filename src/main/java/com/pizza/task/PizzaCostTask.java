@@ -25,8 +25,8 @@ public class PizzaCostTask extends PizzaTask {
         Context context = new Context();
         context.setData("PIZZA_ORDER_INPUT", pizzaOrderInputData);
         executeCommands(commands, context);
-        //List<Price> prices = (List<Price>) context.getData("ORDER_PRICE");
-        //System.out.println(prices);
+        List<Price> prices = (List<Price>) context.getData("ORDER_PRICE");
+        System.out.println(prices);
         return null;
     }
 

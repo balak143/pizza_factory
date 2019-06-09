@@ -7,8 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public class FreshTomatoToppingModel extends AbstractToppingModel implements VegetarianToppingModel{
-    @Override
-    public List<Price> cost(Date date) {
-        return null;
+    public FreshTomatoToppingModel() {
+        this.setName(ToppingName.FRESH_TOMATO.getName());
     }
 }

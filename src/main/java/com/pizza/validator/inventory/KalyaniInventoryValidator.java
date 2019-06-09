@@ -10,9 +10,11 @@ import com.pizza.service.inventory.IngredientInventoryService;
 import com.pizza.service.inventory.InventoryService;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class KalyaniInventoryValidator implements InventoryValidator {
     private InventoryService inventoryService;
+    Map<String, IngredientModel> ingredientsMap = new ConcurrentHashMap<>();
 
     public KalyaniInventoryValidator(InventoryService inventoryService) {
         this.inventoryService = inventoryService;
@@ -30,27 +32,32 @@ public class KalyaniInventoryValidator implements InventoryValidator {
                     checkToppingIngredientStock(pizzaModel);
                 }
         );
+
         pizzaOrderModel.getSidesModels().stream().forEach(
                 sidesModel -> {
                     IngredientModel ingredientModel = sidesModel.getIngredientModel();
-                    try {
+                    accumulateIngredients(ingredientModel);
+                  /*  try {
                         validateStock(ingredientModel);
                     } catch (ApplicationException e) {
                         ThrowingConsumer.sneakyThrow(e);
-                    }
+                    }*/
                 }
         );
+
+        ingredientsMap.forEach((s, ingredientModel) -> {
+            try {
+                validateStock(ingredientModel);
+            } catch (ApplicationException e) {
+                ThrowingConsumer.sneakyThrow(e);
+            }
+        });
     }
 
     private void checkToppingIngredientStock(AbstractPizzaModel abstractPizzaModel) {
         abstractPizzaModel.getToppings().stream().forEach(
                 toppingModel -> {
-                    try {
-                        IngredientModel ingredientModel = toppingModel.getIngredientModel();
-                        validateStock(ingredientModel);
-                    } catch (ApplicationException e) {
-                        ThrowingConsumer.sneakyThrow(e);
-                    }
+                    accumulateIngredients(toppingModel.getIngredientModel());
                 }
         );
     }
@@ -58,22 +65,24 @@ public class KalyaniInventoryValidator implements InventoryValidator {
     private void checkPizzaIngredientStock(AbstractPizzaModel abstractPizzaModel) {
         abstractPizzaModel.getPizzaIngredientsModel().getIngredients().stream().forEach(
                 ingredientModel -> {
-                    try {
-                        validateStock(ingredientModel);
-                    } catch (ApplicationException e) {
-                        ThrowingConsumer.sneakyThrow(e);
-                    }
+                    accumulateIngredients(ingredientModel);
                 }
         );
     }
 
-    public void accumulateIngredients(Map<String, IngredientModel> map, IngredientModel ingredientModel) {
-        map.compute(ingredientModel.getProductCode(), (s, ingredientModel1) -> {
-                    return new IngredientModel(s, ingredientModel1.getType(), (ingredientModel1.getRequiredQty() + ingredientModel.getRequiredQty()),
-                            ingredientModel1.getQtyUom());
-                }
-        );
+    /**
+     * @param map
+     * @param ingredientModel
+     */
+    public void accumulateIngredients(IngredientModel ingredientModel) {
 
+        String productCode = ingredientModel.getProductCode();
+        if(ingredientsMap.containsKey(productCode)){
+            IngredientModel ingredientModelNew = ingredientsMap.get(productCode);
+            ingredientModelNew.setRequiredQty(ingredientModelNew.getRequiredQty()+ ingredientModel.getRequiredQty());
+        }else{
+            ingredientsMap.put(ingredientModel.getProductCode(), ingredientModel);
+        }
     }
 
     public void validateStock(IngredientModel ingredientModel) throws ApplicationException {

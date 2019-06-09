@@ -19,6 +19,9 @@ public enum CrustName {
     }
 
     public static CrustName of(String name) {
+        if (name == null) {
+            throw new RuntimeException("Please provide crust type");
+        }
         switch (name) {
             case "New Hand Tossed":
                 return NEW_HAND_TOSSED;

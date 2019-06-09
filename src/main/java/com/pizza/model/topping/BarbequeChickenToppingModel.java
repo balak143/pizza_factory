@@ -7,9 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public class BarbequeChickenToppingModel extends AbstractToppingModel implements NonVegetarianToppingModel {
-
-    @Override
-    public List<Price> cost(Date date) {
-        return null;
+    public BarbequeChickenToppingModel() {
+        this.setName(ToppingName.BARBEQUE_CHICKEN.getName());
     }
 }

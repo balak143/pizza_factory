@@ -10,9 +10,4 @@ public class PaneerToppingModel extends AbstractToppingModel {
     public PaneerToppingModel() {
         this.setName(ToppingName.PANEER.getName());
     }
-
-    @Override
-    public List<Price> cost(Date date) {
-        return null;
-    }
 }

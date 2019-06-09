@@ -22,6 +22,9 @@ public enum PizzaName {
     }
 
     public static PizzaName of(String name){
+        if (name == null) {
+            throw new RuntimeException("Provide Pizza Name");
+        }
         switch (name) {
             case "Deluxe Veggie":
                 return DELUXE_VEGGIE;
