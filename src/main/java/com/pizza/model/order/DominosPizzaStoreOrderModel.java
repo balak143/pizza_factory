@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class KalyaniPizzaStoreOrderModel implements PizzaOrderModel {
+public class DominosPizzaStoreOrderModel implements PizzaOrderModel {
     private List<AbstractPizzaModel> pizzaModels = new ArrayList<>();
     private List<AbstractSidesModel> sidesModels = new ArrayList<>();
 
@@ -31,12 +31,12 @@ public class KalyaniPizzaStoreOrderModel implements PizzaOrderModel {
         return this.sidesModels;
     }
 
-    public KalyaniPizzaStoreOrderModel setPizzaModels(List<AbstractPizzaModel> pizzaModels) {
+    public DominosPizzaStoreOrderModel setPizzaModels(List<AbstractPizzaModel> pizzaModels) {
         this.pizzaModels = pizzaModels;
         return this;
     }
 
-    public KalyaniPizzaStoreOrderModel setSidesModels(List<AbstractSidesModel> sidesModels) {
+    public DominosPizzaStoreOrderModel setSidesModels(List<AbstractSidesModel> sidesModels) {
         this.sidesModels = sidesModels;
         return this;
     }

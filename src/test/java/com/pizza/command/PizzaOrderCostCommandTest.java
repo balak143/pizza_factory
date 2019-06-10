@@ -1,12 +1,12 @@
 package com.pizza.command;
 
 import com.pizza.builder.BuildContext;
-import com.pizza.builder.KalyaniPizzaStoreOrderModelBuilder;
+import com.pizza.builder.DominosPizzaStoreOrderModelBuilder;
 import com.pizza.grid.*;
 import com.pizza.input.PizzaInputData;
 import com.pizza.input.PizzaOrderInputData;
 import com.pizza.model.crust.CrustName;
-import com.pizza.model.order.KalyaniPizzaStoreOrderModel;
+import com.pizza.model.order.DominosPizzaStoreOrderModel;
 import com.pizza.model.pizza.PizzaName;
 import com.pizza.model.pizza.Size;
 import com.pizza.model.sides.SidesName;
@@ -14,7 +14,6 @@ import com.pizza.model.topping.ToppingName;
 import com.pizza.utils.PizzaDateTime;
 import com.pizza.utils.Price;
 import org.junit.Before;
-import org.junit.Test;
 
 import java.util.Date;
 import java.util.List;
@@ -57,10 +56,10 @@ public class PizzaOrderCostCommandTest {
         pizzaInputData.addToppings(ToppingName.MUSHROOM.getName());
         pizzaInputData.addToppings(ToppingName.FRESH_TOMATO.getName());
         context.setData("PIZZA_ORDER_INPUT", pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModelBuilder orderModelBuilder = new KalyaniPizzaStoreOrderModelBuilder();
+        DominosPizzaStoreOrderModelBuilder orderModelBuilder = new DominosPizzaStoreOrderModelBuilder();
         BuildContext buildContext = new BuildContext();
         buildContext.setPizzaOrderInputData(pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
+        DominosPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
         context.setData("PIZZA_ORDER_MODEL", pizzaOrderModel);
         pizzaOrderCostCommand.execute(context);
         List<Price> prices = (List<Price>) context.getData("ORDER_PRICE");
@@ -77,10 +76,10 @@ public class PizzaOrderCostCommandTest {
         pizzaInputData.setPizzaSize(Size.LARGE.getName());
         pizzaInputData.addToppings(ToppingName.BLACK_OLIVE.getName());
         context.setData("PIZZA_ORDER_INPUT", pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModelBuilder orderModelBuilder = new KalyaniPizzaStoreOrderModelBuilder();
+        DominosPizzaStoreOrderModelBuilder orderModelBuilder = new DominosPizzaStoreOrderModelBuilder();
         BuildContext buildContext = new BuildContext();
         buildContext.setPizzaOrderInputData(pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
+        DominosPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
         context.setData("PIZZA_ORDER_MODEL", pizzaOrderModel);
         pizzaOrderCostCommand.execute(context);
         List<Price> prices = (List<Price>) context.getData("ORDER_PRICE");
@@ -95,10 +94,10 @@ public class PizzaOrderCostCommandTest {
         Context context = new Context();
         pizzaOrderInputData.getPizzaInputDatas().get(0).setName(PizzaName.CHICKEN_TIKKA.getName());
         context.setData("PIZZA_ORDER_INPUT", pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModelBuilder orderModelBuilder = new KalyaniPizzaStoreOrderModelBuilder();
+        DominosPizzaStoreOrderModelBuilder orderModelBuilder = new DominosPizzaStoreOrderModelBuilder();
         BuildContext buildContext = new BuildContext();
         buildContext.setPizzaOrderInputData(pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
+        DominosPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
         context.setData("PIZZA_ORDER_MODEL", pizzaOrderModel);
         pizzaOrderCostCommand.execute(context);
         List<Price> prices = (List<Price>) context.getData("ORDER_PRICE");
@@ -114,10 +113,10 @@ public class PizzaOrderCostCommandTest {
         pizzaOrderInputData.getPizzaInputDatas().get(0).setName(PizzaName.PEPPER_BARBECUE.getName());
         pizzaOrderInputData.addSides(SidesName.COLD_DRINK.getName());
         context.setData("PIZZA_ORDER_INPUT", pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModelBuilder orderModelBuilder = new KalyaniPizzaStoreOrderModelBuilder();
+        DominosPizzaStoreOrderModelBuilder orderModelBuilder = new DominosPizzaStoreOrderModelBuilder();
         BuildContext buildContext = new BuildContext();
         buildContext.setPizzaOrderInputData(pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
+        DominosPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
         context.setData("PIZZA_ORDER_MODEL", pizzaOrderModel);
         pizzaOrderCostCommand.execute(context);
         List<Price> prices = (List<Price>) context.getData("ORDER_PRICE");

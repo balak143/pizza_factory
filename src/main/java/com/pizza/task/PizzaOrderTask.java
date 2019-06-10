@@ -9,7 +9,7 @@ import com.pizza.workflow.PizzaWorkflowBeans;
 import java.util.List;
 
 public class PizzaOrderTask extends PizzaTask {
-    PizzaOrderInputData pizzaOrderInputData;
+    private PizzaOrderInputData pizzaOrderInputData;
 
     public PizzaOrderTask(PizzaOrderInputData pizzaOrderInputData) {
         this.pizzaOrderInputData = pizzaOrderInputData;

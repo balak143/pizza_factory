@@ -12,7 +12,7 @@ import com.pizza.workflow.PizzaWorkflowBeans;
 import java.util.List;
 
 public class PizzaCostTask extends PizzaTask {
-    PizzaOrderInputData pizzaOrderInputData;
+    private PizzaOrderInputData pizzaOrderInputData;
 
     public PizzaCostTask(PizzaOrderInputData pizzaOrderInputData) {
         this.pizzaOrderInputData = pizzaOrderInputData;

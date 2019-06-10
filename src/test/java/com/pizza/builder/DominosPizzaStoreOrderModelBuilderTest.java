@@ -2,7 +2,7 @@ package com.pizza.builder;
 
 import com.pizza.input.PizzaInputData;
 import com.pizza.input.PizzaOrderInputData;
-import com.pizza.model.order.KalyaniPizzaStoreOrderModel;
+import com.pizza.model.order.DominosPizzaStoreOrderModel;
 import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.pizza.ingredients.IngredientQtyDeriveService;
 import com.pizza.utils.PizzaDateTime;
@@ -15,7 +15,7 @@ import java.util.Date;
 
 import static org.junit.Assert.*;
 
-public class KalyaniPizzaStoreOrderModelBuilderTest {
+public class DominosPizzaStoreOrderModelBuilderTest {
 
     @Rule
     public ExpectedException expected = ExpectedException.none();
@@ -34,9 +34,9 @@ public class KalyaniPizzaStoreOrderModelBuilderTest {
         pizzaInputData.setCrustName("Wheat Thin");
         BuildContext buildContext = new BuildContext();
         buildContext.setPizzaOrderInputData(pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModelBuilder orderModelBuilder = new KalyaniPizzaStoreOrderModelBuilder();
-        KalyaniPizzaStoreOrderModel kalyaniPizzaStoreOrderModel = orderModelBuilder.build(buildContext);
-        AbstractPizzaModel pizzaModel = kalyaniPizzaStoreOrderModel.getPizzaModels().get(0);
+        DominosPizzaStoreOrderModelBuilder orderModelBuilder = new DominosPizzaStoreOrderModelBuilder();
+        DominosPizzaStoreOrderModel dominosPizzaStoreOrderModel = orderModelBuilder.build(buildContext);
+        AbstractPizzaModel pizzaModel = dominosPizzaStoreOrderModel.getPizzaModels().get(0);
         assertEquals("Pizza name is not Deluxe Veggie", "Deluxe Veggie", pizzaModel.getName());
         assertEquals("Size should be Regular", "Regular", pizzaModel.getSize().getName());
         assertEquals("Crust should be Wheat Thin", "Wheat Thin", pizzaModel.getCrustModel().getName());
@@ -51,9 +51,9 @@ public class KalyaniPizzaStoreOrderModelBuilderTest {
         pizzaInputData.addToppings("Black Olive");
         BuildContext buildContext = new BuildContext();
         buildContext.setPizzaOrderInputData(pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModelBuilder orderModelBuilder = new KalyaniPizzaStoreOrderModelBuilder();
-        KalyaniPizzaStoreOrderModel kalyaniPizzaStoreOrderModel = orderModelBuilder.build(buildContext);
-        AbstractPizzaModel pizzaModel = kalyaniPizzaStoreOrderModel.getPizzaModels().get(0);
+        DominosPizzaStoreOrderModelBuilder orderModelBuilder = new DominosPizzaStoreOrderModelBuilder();
+        DominosPizzaStoreOrderModel dominosPizzaStoreOrderModel = orderModelBuilder.build(buildContext);
+        AbstractPizzaModel pizzaModel = dominosPizzaStoreOrderModel.getPizzaModels().get(0);
         assertEquals("Pizza name is not Deluxe Veggie", "Deluxe Veggie", pizzaModel.getName());
         assertEquals("", "Regular", pizzaModel.getSize().getName());
         assertEquals("Crust should be Wheat Thin", "Wheat Thin", pizzaModel.getCrustModel().getName());
@@ -67,11 +67,11 @@ public class KalyaniPizzaStoreOrderModelBuilderTest {
         pizzaOrderInputData.addSides("Mousse Cake");
         BuildContext buildContext = new BuildContext();
         buildContext.setPizzaOrderInputData(pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModelBuilder orderModelBuilder = new KalyaniPizzaStoreOrderModelBuilder();
-        KalyaniPizzaStoreOrderModel kalyaniPizzaStoreOrderModel = orderModelBuilder.build(buildContext);
-        assertEquals("No pizza is expected ", 0, kalyaniPizzaStoreOrderModel.getPizzaModels().size());
-        assertEquals("only one side should be available ", 1, kalyaniPizzaStoreOrderModel.getSidesModels().size());
-        assertEquals("Sides should be Mousse Cake", "Mousse Cake", kalyaniPizzaStoreOrderModel.getSidesModels().get(0).getName());
+        DominosPizzaStoreOrderModelBuilder orderModelBuilder = new DominosPizzaStoreOrderModelBuilder();
+        DominosPizzaStoreOrderModel dominosPizzaStoreOrderModel = orderModelBuilder.build(buildContext);
+        assertEquals("No pizza is expected ", 0, dominosPizzaStoreOrderModel.getPizzaModels().size());
+        assertEquals("only one side should be available ", 1, dominosPizzaStoreOrderModel.getSidesModels().size());
+        assertEquals("Sides should be Mousse Cake", "Mousse Cake", dominosPizzaStoreOrderModel.getSidesModels().get(0).getName());
     }
 
 
@@ -83,9 +83,9 @@ public class KalyaniPizzaStoreOrderModelBuilderTest {
         pizzaOrderInputData.getPizzaInputDatas().get(0).setPizzaSize("Regular");
         BuildContext buildContext = new BuildContext();
         buildContext.setPizzaOrderInputData(pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModelBuilder orderModelBuilder = new KalyaniPizzaStoreOrderModelBuilder();
-        KalyaniPizzaStoreOrderModel kalyaniPizzaStoreOrderModel = orderModelBuilder.build(buildContext);
-        kalyaniPizzaStoreOrderModel.getPizzaModels().get(0);
+        DominosPizzaStoreOrderModelBuilder orderModelBuilder = new DominosPizzaStoreOrderModelBuilder();
+        DominosPizzaStoreOrderModel dominosPizzaStoreOrderModel = orderModelBuilder.build(buildContext);
+        dominosPizzaStoreOrderModel.getPizzaModels().get(0);
     }
     @Test
     public void build_validate_size() {
@@ -94,8 +94,8 @@ public class KalyaniPizzaStoreOrderModelBuilderTest {
         PizzaOrderInputData pizzaOrderInputData = preparePizzaOrderInputModel();
         BuildContext buildContext = new BuildContext();
         buildContext.setPizzaOrderInputData(pizzaOrderInputData);
-        KalyaniPizzaStoreOrderModelBuilder orderModelBuilder = new KalyaniPizzaStoreOrderModelBuilder();
-        KalyaniPizzaStoreOrderModel kalyaniPizzaStoreOrderModel = orderModelBuilder.build(buildContext);
+        DominosPizzaStoreOrderModelBuilder orderModelBuilder = new DominosPizzaStoreOrderModelBuilder();
+        DominosPizzaStoreOrderModel dominosPizzaStoreOrderModel = orderModelBuilder.build(buildContext);
     }
 
     private PizzaOrderInputData preparePizzaOrderInputModel() {

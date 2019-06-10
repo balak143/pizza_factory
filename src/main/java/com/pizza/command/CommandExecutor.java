@@ -4,9 +4,9 @@ import java.util.List;
 
 public class CommandExecutor {
 
-    public void execute(List<Command> comands, Context context) {
+    public void execute(List<Command> commands, Context context) {
         for (Command command:
-                comands) {
+                commands) {
             boolean executeSuccessful = command.execute(context);
             if(!executeSuccessful) {
                 break;
