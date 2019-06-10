@@ -37,11 +37,6 @@ public class KalyaniInventoryValidator implements InventoryValidator {
                 sidesModel -> {
                     IngredientModel ingredientModel = sidesModel.getIngredientModel();
                     accumulateIngredients(ingredientModel);
-                  /*  try {
-                        validateStock(ingredientModel);
-                    } catch (ApplicationException e) {
-                        ThrowingConsumer.sneakyThrow(e);
-                    }*/
                 }
         );
 
@@ -77,11 +72,14 @@ public class KalyaniInventoryValidator implements InventoryValidator {
     public void accumulateIngredients(IngredientModel ingredientModel) {
 
         String productCode = ingredientModel.getProductCode();
-        if(ingredientsMap.containsKey(productCode)){
-            IngredientModel ingredientModelNew = ingredientsMap.get(productCode);
-            ingredientModelNew.setRequiredQty(ingredientModelNew.getRequiredQty()+ ingredientModel.getRequiredQty());
-        }else{
-            ingredientsMap.put(ingredientModel.getProductCode(), ingredientModel);
+        if (ingredientsMap.containsKey(productCode)) {
+            IngredientModel model = ingredientsMap.get(productCode);
+            model.setRequiredQty(model.getRequiredQty() + ingredientModel.getRequiredQty());
+
+        } else {
+            ingredientsMap.put(ingredientModel.getProductCode(),
+                    new IngredientModel(ingredientModel.getProductCode(), ingredientModel.getType(),
+                            ingredientModel.getRequiredQty(), ingredientModel.getQtyUom()));
         }
     }
 
