@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PizzaCostModel extends AbstractCostModel {
+    protected AbstractPizzaModel pizzaModel;
 
     @Override
     public List<Price> cost(Date orderDate) {
@@ -52,13 +53,13 @@ public class PizzaCostModel extends AbstractCostModel {
 
         List<IngredientModel> ingredients = pizzaModel.getToppings().stream().map(toppingModel -> toppingModel.getIngredientModel()).collect(Collectors.toList());
 
-        ingredients = checkOffer(ingredients);
+        ingredients = applyOffer(ingredients);
 
         return getPrice(orderDate, ingredients);
     }
 
 
-    protected List<IngredientModel> checkOffer(List<IngredientModel> ingredients) {
+    protected List<IngredientModel> applyOffer(List<IngredientModel> ingredients) {
         List<IngredientModel> targetIngredients = ingredients;
         int size = ingredients.size();
 

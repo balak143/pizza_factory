@@ -15,7 +15,6 @@ import java.util.List;
  */
 public class PizzaOrderCostModel extends AbstractCostModel {
     private PizzaOrderModel pizzaOrderModel;
-
     private PizzaCostModel pizzaCostModel;
     private SidesCostModel sidesCostModel;
 

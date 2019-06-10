@@ -1,4 +1,4 @@
-package com.pizza;
+package com.pizza.integration;
 
 import com.pizza.command.CommandExecutor;
 import com.pizza.grid.*;
@@ -35,7 +35,7 @@ public class PizzaCostExecutorTest {
         //Prepare PizzaOrderInputData
         init();
         //DeluxeVeg();
-        //paneerTikka();
+        paneerTikka();
         PizzaOrderInputData pizzaOrderInputData = new PizzaOrderInputData();
         pizzaOrderInputData.setOrderDate(today());
         PizzaInputData pizzaInputData = new PizzaInputData();

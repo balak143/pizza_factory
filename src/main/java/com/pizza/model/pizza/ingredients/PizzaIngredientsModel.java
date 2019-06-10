@@ -5,5 +5,5 @@ import com.pizza.utils.Price;
 
 import java.util.Date;
 
-public interface PizzaIngredientsModel extends CostModel {
+public interface PizzaIngredientsModel {
 }

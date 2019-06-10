@@ -34,7 +34,7 @@ public class PizzaCostExecutorTest {
         //Prepare PizzaOrderInputData
         init();
         //DeluxeVeg();
-        //paneerTikka();
+        paneerTikka();
         PizzaOrderInputData pizzaOrderInputData = new PizzaOrderInputData();
         pizzaOrderInputData.setOrderDate(today());
         PizzaInputData pizzaInputData = new PizzaInputData();

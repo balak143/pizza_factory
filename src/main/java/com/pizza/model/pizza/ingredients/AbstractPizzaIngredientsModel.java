@@ -12,11 +12,6 @@ public abstract class AbstractPizzaIngredientsModel implements PizzaIngredientsM
 
     protected List<IngredientModel> ingredients = new ArrayList<>();
 
-    @Override
-    public List<Price> cost(Date date) {
-        return null;
-    }
-
     public void add(IngredientModel... ingredientModels) {
         ingredients.addAll(Arrays.asList(ingredientModels));
     }

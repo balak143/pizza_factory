@@ -13,8 +13,6 @@ import java.util.List;
 public abstract class AbstractCostModel implements CostModel {
 
     private CostService costService;
-    protected AbstractPizzaModel pizzaModel;
-
 
     protected Price getPrice(Date orderDate, List<IngredientModel> ingredients){
         double totalPrice = 0;
