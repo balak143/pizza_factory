@@ -1,8 +1,5 @@
 package com.pizza.model.topping;
 
-import com.pizza.model.ingredient.IngredientType;
-import com.pizza.model.pizza.PizzaName;
-
 public enum ToppingName {
     BLACK_OLIVE("Black Olive"),
     CAPSICUM("Capsicum"),
@@ -53,6 +50,8 @@ public enum ToppingName {
             case "Grilled Chicken":
                 toppingName = GRILLED_CHICKEN;
                 break;
+            default:
+
         }
         return toppingName;
     }

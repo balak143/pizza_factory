@@ -8,19 +8,21 @@ import com.pizza.model.order.DominosPizzaStoreOrderModel;
 import java.util.logging.Logger;
 
 public class PizzaOrderModelBuilderCommand implements Command {
-    private static Logger logger = Logger.getLogger(PizzaOrderModelBuilderCommand.class.getName());
-    @Override
-    public boolean execute(Context context) {
-        PizzaOrderInputData pizzaOrderInputData = (PizzaOrderInputData)context.getData("PIZZA_ORDER_INPUT");
-        DominosPizzaStoreOrderModelBuilder orderModelBuilder = new DominosPizzaStoreOrderModelBuilder();
+  private static final Logger LOGGER = Logger.getLogger(PizzaOrderModelBuilderCommand.class.getName());
 
-        BuildContext buildContext = new BuildContext();
-        buildContext.setPizzaOrderInputData(pizzaOrderInputData);
+  @Override
+  public boolean execute(Context context) {
+    PizzaOrderInputData pizzaOrderInputData =
+        (PizzaOrderInputData) context.getData("PIZZA_ORDER_INPUT");
+    DominosPizzaStoreOrderModelBuilder orderModelBuilder = new DominosPizzaStoreOrderModelBuilder();
 
-        DominosPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
-        logger.info(pizzaOrderModel.toString());
+    BuildContext buildContext = new BuildContext();
+    buildContext.setPizzaOrderInputData(pizzaOrderInputData);
 
-        context.setData("PIZZA_ORDER_MODEL", pizzaOrderModel);
-        return true;
-    }
+    DominosPizzaStoreOrderModel pizzaOrderModel = orderModelBuilder.build(buildContext);
+    LOGGER.info(pizzaOrderModel.toString());
+
+    context.setData("PIZZA_ORDER_MODEL", pizzaOrderModel);
+    return true;
+  }
 }

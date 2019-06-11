@@ -11,7 +11,7 @@ import com.pizza.validator.sides.SidesModelValidator;
 import java.util.logging.Logger;
 
 public class PizzaOrderValidatorCommand implements Command {
-    private static Logger logger = Logger.getLogger(PizzaOrderValidatorCommand.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PizzaOrderValidatorCommand.class.getName());
 
     @Override
     public boolean execute(Context context) {
@@ -24,7 +24,7 @@ public class PizzaOrderValidatorCommand implements Command {
         try {
             validator.validate(pizzaOrderModel);
         } catch (ApplicationException e) {
-            logger.info(e.getMessage());
+            LOGGER.info(e.getMessage());
             return false;
         }
 

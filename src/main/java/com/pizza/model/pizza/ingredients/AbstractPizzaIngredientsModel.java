@@ -1,11 +1,9 @@
 package com.pizza.model.pizza.ingredients;
 
 import com.pizza.model.ingredient.IngredientModel;
-import com.pizza.utils.Price;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 public abstract class AbstractPizzaIngredientsModel implements PizzaIngredientsModel {

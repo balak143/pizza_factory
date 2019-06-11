@@ -10,6 +10,10 @@ import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.pizza.nonveg.ChickenTikkaPizzaModel;
 
 public class ChickenTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder<ChickenTikkaPizzaModel> {
+
+    public static final double LARGE_PRICE = 2.383;
+    public static final double MEDIUM_PRICE = 1.755;
+
     public ChickenTikkaPizzaModelBuilder(PizzaInputData pizza) {
         super(pizza);
     }
@@ -28,9 +32,9 @@ public class ChickenTikkaPizzaModelBuilder extends AbstractPizzaModelBuilder<Chi
     protected double getMultiplier() {
         Size pizzaSize = Size.of(getPizzaInputData().getPizzaSize());
         if (pizzaSize == Size.LARGE) {
-            return 2.383;
+            return LARGE_PRICE;
         } else if (pizzaSize == Size.MEDIUM) {
-            return 1.755;
+            return MEDIUM_PRICE;
         } else {
             return 1;
         }

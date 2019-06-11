@@ -1,23 +1,21 @@
 package com.pizza.model.sides;
 
 public class SidesModelFactory {
-    private static final SidesModelFactory INSTANCE = new SidesModelFactory();
+  private static final SidesModelFactory INSTANCE = new SidesModelFactory();
 
-    public static SidesModelFactory getInstance() {
-        return INSTANCE;
+  public static SidesModelFactory getInstance() {
+    return INSTANCE;
+  }
+
+  public AbstractSidesModel createSidesModel(SidesName toppingName) {
+    AbstractSidesModel sidesModel = null;
+    if (SidesName.COLD_DRINK == toppingName) {
+
+      sidesModel = new ColdDrinkSidesModel();
+    } else if (SidesName.MOUSSE_CAKE == toppingName) {
+      sidesModel = new MousseCakeSidesModel();
     }
 
-    public AbstractSidesModel createSidesModel(SidesName toppingName) {
-        AbstractSidesModel sidesModel = null;
-        switch (toppingName) {
-            case COLD_DRINK:
-                sidesModel = new ColdDrinkSidesModel();
-                break;
-            case MOUSSE_CAKE:
-                sidesModel = new MousseCakeSidesModel();
-                break;
-        }
-
-        return sidesModel;
-    }
+    return sidesModel;
+  }
 }

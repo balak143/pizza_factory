@@ -2,15 +2,17 @@ package com.pizza.validator.sides;
 
 import com.pizza.model.sides.ColdDrinkSidesModel;
 
+import java.util.logging.Logger;
+
 /**
- * Currently there is no validation being performed and can be used if anything specific to ColdDrink Side
- * Model need to be validated in future
+ * Currently there is no validation being performed and can be used if anything specific to
+ * ColdDrink Side Model need to be validated in future
  */
-
 public class ColdDrinkSidesModelValidator implements SidesModelValidator<ColdDrinkSidesModel> {
-
-    @Override
-    public void validate(ColdDrinkSidesModel sidesModel) {
-
-    }
+  private static final Logger LOGGER =
+          Logger.getLogger(ColdDrinkSidesModelValidator.class.getName());
+  @Override
+  public void validate(ColdDrinkSidesModel sidesModel) {
+    LOGGER.info("");
+  }
 }

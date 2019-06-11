@@ -1,9 +1,6 @@
 package com.pizza.model.cost;
 
-import com.pizza.exception.ApplicationException;
 import com.pizza.model.ingredient.IngredientModel;
-import com.pizza.model.pizza.AbstractPizzaModel;
-import com.pizza.model.pizza.Size;
 import com.pizza.service.cost.CostService;
 import com.pizza.utils.Price;
 

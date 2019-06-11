@@ -1,38 +1,36 @@
 package com.pizza.model.crust;
 
-import com.pizza.exception.ApplicationException;
-
 public enum CrustName {
-    NEW_HAND_TOSSED("New Hand Tossed"),
-    WHEAT_THIN_CRUST("Wheat Thin"),
-    CHEESE_BURST("Cheese Burst"),
-    FRESH_PAN_PIZZA("Fresh Pan Pizza");
+  NEW_HAND_TOSSED("New Hand Tossed"),
+  WHEAT_THIN_CRUST("Wheat Thin"),
+  CHEESE_BURST("Cheese Burst"),
+  FRESH_PAN_PIZZA("Fresh Pan Pizza");
 
-    private String name = null;
+  private String name = null;
 
-    CrustName(String name) {
-        this.name = name;
+  CrustName(String name) {
+    this.name = name;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public static CrustName of(String name) {
+    if (name == null) {
+      throw new RuntimeException("Please provide crust type");
     }
-
-    public String getName() {
-        return name;
+    switch (name) {
+      case "New Hand Tossed":
+        return NEW_HAND_TOSSED;
+      case "Wheat Thin":
+        return WHEAT_THIN_CRUST;
+      case "Cheese Burst":
+        return CHEESE_BURST;
+      case "Fresh Pan Pizza":
+        return FRESH_PAN_PIZZA;
+      default:
     }
-
-    public static CrustName of(String name) {
-        if (name == null) {
-            throw new RuntimeException("Please provide crust type");
-        }
-        switch (name) {
-            case "New Hand Tossed":
-                return NEW_HAND_TOSSED;
-            case "Wheat Thin":
-                return  WHEAT_THIN_CRUST;
-            case "Cheese Burst":
-                return  CHEESE_BURST;
-            case "Fresh Pan Pizza":
-                return FRESH_PAN_PIZZA;
-        }
-        throw new RuntimeException(" Crust - '"+ name +"'  is not available in store");
-    }
-
+    throw new RuntimeException(" Crust - '" + name + "'  is not available in store");
+  }
 }

@@ -1,37 +1,41 @@
 package com.pizza.utils;
 
-import java.util.Currency;
-
 public class Price {
-     private String name;
-     private Double price;
-     private String currency;
+  private String name;
+  private Double price;
+  private String currency;
 
-     public Double getPrice() {
-          return price;
-     }
+  public Price(String name, Double price, String currency) {
+    this.name = name;
+    this.price = price;
+    this.currency = currency;
+  }
 
-     public String getCurrency() {
-          return currency;
-     }
+  public Price(Double price, String currency) {
+    this.price = price;
+    this.currency = currency;
+  }
 
-     public String getName() {
-          return name;
-     }
 
-     public Price(String name, Double price, String currency) {
-          this.name = name;
-          this.price = price;
-          this.currency = currency;
-     }
+  public Double getPrice() {
+    return price;
+  }
 
-     public Price(Double price, String currency) {
-          this.price = price;
-          this.currency = currency;
-     }
+  public String getCurrency() {
+    return currency;
+  }
 
-     @Override
-     public String toString() {
-          return "Name - "+this.getName() +" Price - " + this.getPrice() +" Currency - "+ this.getCurrency();
-     }
+  public String getName() {
+    return name;
+  }
+
+  @Override
+  public String toString() {
+    return "Name - "
+        + this.getName()
+        + " Price - "
+        + this.getPrice()
+        + " Currency - "
+        + this.getCurrency();
+  }
 }

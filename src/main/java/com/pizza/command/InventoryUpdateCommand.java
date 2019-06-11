@@ -7,28 +7,36 @@ import com.pizza.service.inventory.IngredientInventoryService;
 import com.pizza.service.inventory.InventoryService;
 
 public class InventoryUpdateCommand implements Command {
-    InventoryService inventoryService = null;
+  private InventoryService inventoryService = null;
 
-    public InventoryUpdateCommand() {
-        inventoryService = new IngredientInventoryService();
-    }
+  public InventoryUpdateCommand() {
+    inventoryService = new IngredientInventoryService();
+  }
 
-    public InventoryUpdateCommand(InventoryService inventoryService) {
-        this.inventoryService = inventoryService;
-    }
+  public InventoryUpdateCommand(InventoryService inventoryService) {
+    this.inventoryService = inventoryService;
+  }
 
-    @Override
-    public boolean execute(Context context) {
-        PizzaOrderModel pizzaOrderModel = (PizzaOrderModel) context.getData("PIZZA_ORDER_MODEL");
-        pizzaOrderModel.getPizzaModels().forEach(abstractPizzaModel -> {
-            AbstractPizzaIngredientsModel pizzaIngredientsModel = abstractPizzaModel.getPizzaIngredientsModel();
-            pizzaIngredientsModel.getIngredients().forEach(ingredientModel ->
-                    inventoryService.updateInventory(ingredientModel));
-        });
-        pizzaOrderModel.getSidesModels().forEach(abstractPizzaModel -> {
-            IngredientModel ingredientModel = abstractPizzaModel.getIngredientModel();
-            inventoryService.updateInventory(ingredientModel);
-        });
-        return true;
-    }
+  @Override
+  public boolean execute(Context context) {
+    PizzaOrderModel pizzaOrderModel = (PizzaOrderModel) context.getData("PIZZA_ORDER_MODEL");
+    pizzaOrderModel
+        .getPizzaModels()
+        .forEach(
+            abstractPizzaModel -> {
+              AbstractPizzaIngredientsModel pizzaIngredientsModel =
+                  abstractPizzaModel.getPizzaIngredientsModel();
+              pizzaIngredientsModel
+                  .getIngredients()
+                  .forEach(ingredientModel -> inventoryService.updateInventory(ingredientModel));
+            });
+    pizzaOrderModel
+        .getSidesModels()
+        .forEach(
+            abstractPizzaModel -> {
+              IngredientModel ingredientModel = abstractPizzaModel.getIngredientModel();
+              inventoryService.updateInventory(ingredientModel);
+            });
+    return true;
+  }
 }

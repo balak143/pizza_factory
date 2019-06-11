@@ -1,17 +1,11 @@
 package com.pizza.model.pizza;
 
-import com.pizza.dao.CostData;
 import com.pizza.model.crust.AbstractCrustModel;
-import com.pizza.model.crust.CrustModel;
 import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
-import com.pizza.model.pizza.ingredients.PizzaIngredientsModel;
 import com.pizza.model.topping.AbstractToppingModel;
-import com.pizza.model.topping.ToppingModel;
-import com.pizza.utils.Price;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 public abstract class AbstractPizzaModel implements PizzaModel {

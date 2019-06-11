@@ -9,40 +9,47 @@ import com.pizza.model.pizza.ingredients.PepperBarbecueChickenPizzaIngredientsMo
 import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.pizza.nonveg.PepperBarbecueChickenPizzaModel;
 
-public class PepperBarbecueChickenPizzaModelBuilder extends AbstractPizzaModelBuilder<PepperBarbecueChickenPizzaModel> {
-    public PepperBarbecueChickenPizzaModelBuilder(PizzaInputData pizzaInputData) {
-        super(pizzaInputData);
-    }
+public class PepperBarbecueChickenPizzaModelBuilder
+    extends AbstractPizzaModelBuilder<PepperBarbecueChickenPizzaModel> {
 
-    @Override
-    protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
-        PepperBarbecueChickenPizzaIngredientsModel ingredientsModel = new PepperBarbecueChickenPizzaIngredientsModel();
-        addBasicIngredients(ingredientsModel);
-        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.CORN.getName()));
-        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.CHICKEN.getName()));
-        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.RED_MEAT.getName()));
-        ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.GINGER_CHICKEN.getName()));
-        return ingredientsModel;
+  public static final double LARGE_PRICE = 2.39;
+  public static final double MEDIUM_PRICE = 1.73;
 
-    }
-    @Override
-    protected double getMultiplier() {
-        Size pizzaSize = Size.of(getPizzaInputData().getPizzaSize());
-        if (pizzaSize == Size.LARGE) {
-            return 2.39;
-        } else if (pizzaSize == Size.MEDIUM) {
-            return 1.73;
-        } else {
-            return 1;
-        }
-    }
-    @Override
-    protected PepperBarbecueChickenPizzaModel createPizzaModel() {
-        return new PepperBarbecueChickenPizzaModel();
-    }
+  public PepperBarbecueChickenPizzaModelBuilder(PizzaInputData pizzaInputData) {
+    super(pizzaInputData);
+  }
 
-    @Override
-    protected IngredientType getPizzaType() {
-        return IngredientType.NON_VEG;
+  @Override
+  protected AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException {
+    PepperBarbecueChickenPizzaIngredientsModel ingredientsModel =
+        new PepperBarbecueChickenPizzaIngredientsModel();
+    addBasicIngredients(ingredientsModel);
+    ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.CORN.getName()));
+    ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.CHICKEN.getName()));
+    ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.RED_MEAT.getName()));
+    ingredientsModel.add(buildIngredientModel(PizzaIngredientsName.GINGER_CHICKEN.getName()));
+    return ingredientsModel;
+  }
+
+  @Override
+  protected double getMultiplier() {
+    Size pizzaSize = Size.of(getPizzaInputData().getPizzaSize());
+    if (pizzaSize == Size.LARGE) {
+      return LARGE_PRICE;
+    } else if (pizzaSize == Size.MEDIUM) {
+      return MEDIUM_PRICE;
+    } else {
+      return 1;
     }
+  }
+
+  @Override
+  protected PepperBarbecueChickenPizzaModel createPizzaModel() {
+    return new PepperBarbecueChickenPizzaModel();
+  }
+
+  @Override
+  protected IngredientType getPizzaType() {
+    return IngredientType.NON_VEG;
+  }
 }

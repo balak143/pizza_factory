@@ -7,7 +7,7 @@ import com.pizza.model.sides.SidesModelFactory;
 import com.pizza.model.sides.AbstractSidesModel;
 import com.pizza.model.sides.SidesName;
 
-public class ColdDrinkSidesModelBuilder extends AbstractSideModelBuilder<ColdDrinkSidesModel> {
+public class ColdDrinkSidesModelBuilder extends AbstractSideModelBuilder{
 
     public ColdDrinkSidesModelBuilder(String sidesInputData) {
         super(sidesInputData);

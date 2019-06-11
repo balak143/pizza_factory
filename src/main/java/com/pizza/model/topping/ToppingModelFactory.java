@@ -34,6 +34,7 @@ public class ToppingModelFactory {
             case GRILLED_CHICKEN:
                 toppingModel = new GrilledChickenToppingModel();
                 break;
+            default:
 
         }
 

@@ -1,39 +1,46 @@
 package com.pizza.workflow;
 
-import com.pizza.command.*;
-import com.pizza.validator.inventory.KalyaniInventoryValidator;
-import com.pizza.validator.order.PizzaOrderModelValidator;
+import com.pizza.command.Command;
+import com.pizza.command.InventoryUpdateCommand;
+import com.pizza.command.InventoryValidatorCommand;
+import com.pizza.command.PizzaOrderConfirmationCommand;
+import com.pizza.command.PizzaOrderCostCommand;
+import com.pizza.command.PizzaOrderModelBuilderCommand;
+import com.pizza.command.PizzaOrderPaymentCommand;
+import com.pizza.command.PizzaOrderValidatorCommand;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PizzaWorkflowBeans {
 
-    public List<Command> pizzaCost() {
-        List<Command> chain = new ArrayList<>();
-        chain.addAll(pizzaCreation());
-        chain.add(new InventoryValidatorCommand());
-        chain.add(new PizzaOrderCostCommand());
-        return chain;
-    }
-    public List<Command> pizzaOrder() {
-        List<Command> chain = new ArrayList<>();
-        chain.addAll(pizzaInventoryUpdate());
-        chain.add(new PizzaOrderPaymentCommand());
-        chain.add(new PizzaOrderConfirmationCommand());
-        return chain;
-    }
-    public List<Command> pizzaInventoryUpdate() {
-        List<Command> chain = new ArrayList<>();
-        chain.addAll(pizzaCost());
-        chain.add(new InventoryUpdateCommand());
-        return chain;
-    }
+  public List<Command> pizzaCost() {
+    List<Command> chain = new ArrayList<>();
+    chain.addAll(pizzaCreation());
+    chain.add(new InventoryValidatorCommand());
+    chain.add(new PizzaOrderCostCommand());
+    return chain;
+  }
 
-    public List<Command> pizzaCreation() {
-        List<Command> chain = new ArrayList<>();
-        chain.add(new PizzaOrderModelBuilderCommand());
-        chain.add(new PizzaOrderValidatorCommand());
-        return chain;
-    }
+  public List<Command> pizzaOrder() {
+    List<Command> chain = new ArrayList<>();
+    chain.addAll(pizzaInventoryUpdate());
+    chain.add(new PizzaOrderPaymentCommand());
+    chain.add(new PizzaOrderConfirmationCommand());
+    return chain;
+  }
+
+  public List<Command> pizzaInventoryUpdate() {
+    List<Command> chain = new ArrayList<>();
+    chain.addAll(pizzaCost());
+    chain.add(new InventoryUpdateCommand());
+    return chain;
+  }
+
+  public List<Command> pizzaCreation() {
+    List<Command> chain = new ArrayList<>();
+    chain.add(new PizzaOrderModelBuilderCommand());
+    chain.add(new PizzaOrderValidatorCommand());
+    return chain;
+  }
 }

@@ -1,14 +1,7 @@
 package com.pizza.model.topping;
 
-import com.pizza.model.ingredient.IngredientModel;
-import com.pizza.model.pizza.veg.VegetarianPizzaModel;
-import com.pizza.utils.Price;
-
-import java.util.Date;
-import java.util.List;
-
 public class CapsicumToppingModel extends AbstractToppingModel implements VegetarianToppingModel {
     public CapsicumToppingModel() {
-        this.setName(ToppingName.CAPSICUM.getName());
+        super.setName(ToppingName.CAPSICUM.getName());
     }
 }

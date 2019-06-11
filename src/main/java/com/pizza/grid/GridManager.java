@@ -4,27 +4,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GridManager {
-    private static final GridManager INSTANCE = new GridManager();
+  private static final GridManager INSTANCE = new GridManager();
 
-    Map<GridType, Grid> grids = new HashMap<>();
+  private Map<GridType, Grid> grids = new HashMap<>();
 
-    private GridManager() {
-    }
+  private GridManager() {}
 
-    public static GridManager getInstance() {
-        return INSTANCE;
-    }
+  public static GridManager getInstance() {
+    return INSTANCE;
+  }
 
-    public void registerGrid(Grid grid) {
-        grids.put(grid.getType(), grid);
-    }
+  public void registerGrid(Grid grid) {
+    grids.put(grid.getType(), grid);
+  }
 
-    public Grid get(GridType gridType) {
-        return grids.get(gridType);
-    }
+  public Grid get(GridType gridType) {
+    return grids.get(gridType);
+  }
 
-    public <T extends Grid> T get(GridType gridType, Class<T> clazz) {
-        Grid obj = grids.get(gridType);
-        return clazz.cast(obj);
-    }
+  public <T extends Grid> T get(GridType gridType, Class<T> clazz) {
+    Grid obj = grids.get(gridType);
+    return clazz.cast(obj);
+  }
 }

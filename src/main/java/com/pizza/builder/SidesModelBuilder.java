@@ -1,7 +1,6 @@
 package com.pizza.builder;
 
 import com.pizza.exception.ApplicationException;
-import com.pizza.model.pizza.PizzaModel;
 import com.pizza.model.sides.SidesModel;
 
 public interface SidesModelBuilder {

@@ -11,12 +11,12 @@ import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.pizza.Size;
 import com.pizza.model.pizza.ingredients.AbstractPizzaIngredientsModel;
-import com.pizza.service.ingredient.IngredientQtyDeriveService;
 import com.pizza.model.pizza.ingredients.IngredientRequiredQty;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.topping.AbstractToppingModel;
 import com.pizza.model.topping.ToppingModelFactory;
 import com.pizza.model.topping.ToppingName;
+import com.pizza.service.ingredient.IngredientQtyDeriveService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +47,7 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
                , ingredientRequiredQty.getQtyUom());
     }
     protected IngredientRequiredQty getIngredientRequiredQty(String productName) throws ApplicationException {
-        IngredientRequiredQty requiredQty = IngredientQtyDeriveService.getInstance().getQty(productName);
-        return requiredQty;
+        return IngredientQtyDeriveService.getInstance().getQty(productName);
     }
 
     protected abstract AbstractPizzaIngredientsModel buildPizzaIngredientModel() throws ApplicationException;
@@ -94,7 +93,6 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
         List<String> toppings = getPizzaInputData().getToppings();
         toppings.forEach(topping -> {
             ToppingName toppingName = ToppingName.of(topping);
-            IngredientRequiredQty ingredientRequiredQty = null;
             try {
                 AbstractToppingModel toppingModel = ToppingModelFactory.getInstance().createToppingModel(toppingName);
                 toppingModel.setIngredientModel(buildToppingIngredientModel(toppingName.getName()));

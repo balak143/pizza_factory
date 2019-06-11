@@ -11,26 +11,26 @@ import com.pizza.utils.Price;
 import java.util.List;
 
 public class PizzaOrderCostCommand implements Command {
-    @Override
-    public boolean execute(Context context) {
-        PizzaOrderInputData pizzaOrderInputData = (PizzaOrderInputData)context.getData("PIZZA_ORDER_INPUT");
-        PizzaOrderModel pizzaOrderModel = (PizzaOrderModel)context.getData("PIZZA_ORDER_MODEL");
+  @Override
+  public boolean execute(Context context) {
+    PizzaOrderInputData pizzaOrderInputData =
+        (PizzaOrderInputData) context.getData("PIZZA_ORDER_INPUT");
+    PizzaOrderModel pizzaOrderModel = (PizzaOrderModel) context.getData("PIZZA_ORDER_MODEL");
 
-        PizzaOrderCostModel pizzaOrderCostModel = new PizzaOrderCostModel(pizzaOrderModel);
-        PizzaCostModel pizzaCostModel = new PizzaCostModel();
-        IngredientCostService costService = new IngredientCostService();
-        pizzaCostModel.setCostService(costService);
-        pizzaOrderCostModel.setPizzaCostModel(pizzaCostModel);
-        SidesCostModel sidesCostModel = new SidesCostModel();
-        sidesCostModel.setCostService(costService);
-        pizzaOrderCostModel.setSidesCostModel(sidesCostModel);
+    PizzaOrderCostModel pizzaOrderCostModel = new PizzaOrderCostModel(pizzaOrderModel);
+    PizzaCostModel pizzaCostModel = new PizzaCostModel();
+    IngredientCostService costService = new IngredientCostService();
+    pizzaCostModel.setCostService(costService);
+    pizzaOrderCostModel.setPizzaCostModel(pizzaCostModel);
+    SidesCostModel sidesCostModel = new SidesCostModel();
+    sidesCostModel.setCostService(costService);
+    pizzaOrderCostModel.setSidesCostModel(sidesCostModel);
 
-        List<Price> prices = pizzaOrderCostModel.cost(pizzaOrderInputData.getOrderDate());
+    List<Price> prices = pizzaOrderCostModel.cost(pizzaOrderInputData.getOrderDate());
 
-        context.setData("ORDER_PRICE", prices);
-        System.out.println(prices);
+    context.setData("ORDER_PRICE", prices);
+    System.out.println(prices);
 
-
-        return true;
-    }
+    return true;
+  }
 }

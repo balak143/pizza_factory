@@ -2,6 +2,11 @@
 <project version="4">
   <component name="SonarLintProjectSettings">
     <option name="bindingEnabled" value="true" />
+    <option name="fileExclusions">
+      <list>
+        <option value="DIRECTORY:src/main/java" />
+      </list>
+    </option>
     <option name="projectKey" value="com.tpt.valuation:tpt-valuation" />
     <option name="serverId" value="Sonat TPT" />
   </component>

@@ -12,6 +12,9 @@ import com.pizza.model.pizza.veg.CheeseAndCornPizzaModel;
 public class CheeseCornPizzaModelBuilder extends AbstractPizzaModelBuilder<CheeseAndCornPizzaModel> {
 
 
+    public static final double LARGE_PRICE = 2.7143;
+    public static final double MEDIUM_PRICE = 2.145;
+
     public CheeseCornPizzaModelBuilder(PizzaInputData pizzaInputData) {
         super(pizzaInputData);
     }
@@ -28,9 +31,9 @@ public class CheeseCornPizzaModelBuilder extends AbstractPizzaModelBuilder<Chees
     protected double getMultiplier() {
         Size pizzaSize = Size.of(getPizzaInputData().getPizzaSize());
         if (pizzaSize == Size.LARGE) {
-            return 2.7143;
+            return LARGE_PRICE;
         } else if (pizzaSize == Size.MEDIUM) {
-            return 2.145;
+            return MEDIUM_PRICE;
         } else {
             return 1;
         }
