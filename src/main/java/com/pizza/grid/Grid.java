@@ -5,6 +5,11 @@ import com.pizza.dao.DataKey;
 
 import java.util.List;
 
+/**
+ * We can use hazel case here as an in memory distributed cache.
+ * @param <K>
+ * @param <V>
+ */
 public interface Grid<K extends DataKey, V extends Data> {
     GridType getType();
     V getData(K key);

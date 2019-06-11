@@ -4,7 +4,7 @@ import com.pizza.command.CommandExecutor;
 import com.pizza.grid.*;
 import com.pizza.input.PizzaInputData;
 import com.pizza.input.PizzaOrderInputData;
-import com.pizza.model.pizza.ingredients.IngredientQtyDeriveService;
+import com.pizza.service.ingredient.IngredientQtyDeriveService;
 import com.pizza.task.PizzaCostTask;
 import com.pizza.task.PizzaOrderTask;
 import com.pizza.task.PizzaTask;

@@ -4,7 +4,7 @@ import com.pizza.input.PizzaInputData;
 import com.pizza.input.PizzaOrderInputData;
 import com.pizza.model.order.DominosPizzaStoreOrderModel;
 import com.pizza.model.pizza.AbstractPizzaModel;
-import com.pizza.model.pizza.ingredients.IngredientQtyDeriveService;
+import com.pizza.service.ingredient.IngredientQtyDeriveService;
 import com.pizza.utils.PizzaDateTime;
 import org.junit.Before;
 import org.junit.Rule;

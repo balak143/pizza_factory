@@ -1,11 +1,9 @@
 package com.pizza.builder;
 
 import com.pizza.exception.ApplicationException;
-import com.pizza.model.pizza.ingredients.IngredientQtyDeriveService;
 import com.pizza.model.pizza.ingredients.IngredientRequiredQty;
 import com.pizza.model.sides.ColdDrinkSidesModel;
 import com.pizza.model.sides.SidesModelFactory;
-import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.sides.AbstractSidesModel;
 import com.pizza.model.sides.SidesName;
 

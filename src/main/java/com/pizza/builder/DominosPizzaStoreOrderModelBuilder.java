@@ -20,12 +20,12 @@ public class DominosPizzaStoreOrderModelBuilder implements PizzaOrderModelBuilde
     public DominosPizzaStoreOrderModel build(BuildContext buildContext) {
         PizzaOrderInputData pizzaOrderInputData = buildContext.getPizzaOrderInputData();
         DominosPizzaStoreOrderModel orderModel = new DominosPizzaStoreOrderModel();
-        orderModel.setPizzaModels(buildPizzaModel(buildContext, pizzaOrderInputData.getPizzaInputDatas()));
-        orderModel.setSidesModels(buildSidesModel(buildContext, pizzaOrderInputData.getSides()));
+        orderModel.setPizzaModels(buildPizzaModels(buildContext, pizzaOrderInputData.getPizzaInputDatas()));
+        orderModel.setSidesModels(buildSidesModels(buildContext, pizzaOrderInputData.getSides()));
         return orderModel;
     }
 
-    private List<AbstractPizzaModel> buildPizzaModel(BuildContext buildContext, List<PizzaInputData> pizzaInputDatas) {
+    private List<AbstractPizzaModel> buildPizzaModels(BuildContext buildContext, List<PizzaInputData> pizzaInputDatas) {
         List<AbstractPizzaModel> pizzaModels = new ArrayList<>();
         pizzaInputDatas.forEach(pizzaInputData -> {
                     PizzaModelBuilder modelBuilder = PizzaModelBuilderFactory.getInstance()
@@ -41,7 +41,7 @@ public class DominosPizzaStoreOrderModelBuilder implements PizzaOrderModelBuilde
         return pizzaModels;
     }
 
-    private List<AbstractSidesModel> buildSidesModel(BuildContext buildContext, List<String> sides) {
+    private List<AbstractSidesModel> buildSidesModels(BuildContext buildContext, List<String> sides) {
         List<AbstractSidesModel> sidesModels = new ArrayList<>();
         sides.forEach(side -> {
                     SidesModelBuilder modelBuilder = SidesModelBuilderFactory.getInstance()

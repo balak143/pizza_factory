@@ -1,9 +1,8 @@
 package com.pizza.builder;
 
 import com.pizza.exception.ApplicationException;
-import com.pizza.model.pizza.ingredients.IngredientQtyDeriveService;
+import com.pizza.service.ingredient.IngredientQtyDeriveService;
 import com.pizza.model.sides.AbstractSidesModel;
-import com.pizza.model.sides.ColdDrinkSidesModel;
 import com.pizza.model.sides.MousseCakeSidesModel;
 import org.junit.Assert;
 import org.junit.Before;

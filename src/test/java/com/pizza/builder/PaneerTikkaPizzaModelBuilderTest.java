@@ -8,7 +8,7 @@ import com.pizza.model.ingredient.IngredientType;
 import com.pizza.model.pizza.AbstractPizzaModel;
 import com.pizza.model.pizza.PizzaName;
 import com.pizza.model.pizza.Size;
-import com.pizza.model.pizza.ingredients.IngredientQtyDeriveService;
+import com.pizza.service.ingredient.IngredientQtyDeriveService;
 import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.topping.AbstractToppingModel;
 import com.pizza.model.topping.ToppingName;

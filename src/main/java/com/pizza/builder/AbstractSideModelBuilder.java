@@ -3,7 +3,7 @@ package com.pizza.builder;
 import com.pizza.exception.ApplicationException;
 import com.pizza.model.ingredient.IngredientModel;
 import com.pizza.model.ingredient.IngredientType;
-import com.pizza.model.pizza.ingredients.IngredientQtyDeriveService;
+import com.pizza.service.ingredient.IngredientQtyDeriveService;
 import com.pizza.model.pizza.ingredients.IngredientRequiredQty;
 import com.pizza.model.sides.AbstractSidesModel;
 

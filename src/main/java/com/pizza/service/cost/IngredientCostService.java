@@ -10,6 +10,9 @@ import com.pizza.utils.Price;
 
 import java.util.Date;
 
+/**
+ * This is the service class talk to Grid Manager to get the Cost Data from the grid.
+ */
 public class IngredientCostService implements CostService {
     @Override
     public Price cost(IngredientModel model, Date date) {

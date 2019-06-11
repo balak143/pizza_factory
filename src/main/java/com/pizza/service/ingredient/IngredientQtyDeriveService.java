@@ -1,8 +1,10 @@
-package com.pizza.model.pizza.ingredients;
+package com.pizza.service.ingredient;
 
 import com.pizza.exception.ApplicationException;
 import com.pizza.model.crust.CrustName;
 import com.pizza.model.ingredient.IngredientType;
+import com.pizza.model.pizza.ingredients.IngredientRequiredQty;
+import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
 import com.pizza.model.sides.SidesName;
 import com.pizza.model.topping.ToppingName;
 
@@ -10,7 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * It supposed to be derived from recipe but for simplecity I am using it from here.
+ * It supposed to be derived from ingredients required recipe but for simplicity I am using it from here.
+ * Ideally should be like Cost and Inventory service using memory grid.
  */
 public class IngredientQtyDeriveService {
     private static final IngredientQtyDeriveService INSTANCE = new IngredientQtyDeriveService();

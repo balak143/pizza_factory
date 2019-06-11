@@ -1,28 +1,14 @@
 package com.pizza.builder;
 
 import com.pizza.exception.ApplicationException;
-import com.pizza.input.PizzaInputData;
-import com.pizza.model.crust.CrustName;
-import com.pizza.model.ingredient.IngredientModel;
-import com.pizza.model.ingredient.IngredientType;
-import com.pizza.model.pizza.AbstractPizzaModel;
-import com.pizza.model.pizza.PizzaName;
-import com.pizza.model.pizza.Size;
-import com.pizza.model.pizza.ingredients.IngredientQtyDeriveService;
-import com.pizza.model.pizza.ingredients.PizzaIngredientsName;
+import com.pizza.service.ingredient.IngredientQtyDeriveService;
 import com.pizza.model.sides.AbstractSidesModel;
 import com.pizza.model.sides.ColdDrinkSidesModel;
-import com.pizza.model.topping.AbstractToppingModel;
-import com.pizza.model.topping.ToppingName;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ColdDrinkSidesModelBuilderTest {
     ColdDrinkSidesModelBuilder coldDrinkSidesModelBuilder = null;

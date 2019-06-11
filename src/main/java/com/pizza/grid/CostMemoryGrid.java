@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Cost Memory grid hold cached data in TreeMap.
+ * Reason for choosing TreeMap to get the nearest available prices to applied if store decide to use dynamic fares based on
+ * the demand and cost of the ingredients changes everyday.
+ */
 public class CostMemoryGrid extends AbstractGrid<CostDataKey, CostData> {
 
     public CostMemoryGrid(DataLoader dataLoader) {
