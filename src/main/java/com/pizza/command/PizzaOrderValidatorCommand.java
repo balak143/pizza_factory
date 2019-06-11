@@ -2,7 +2,7 @@ package com.pizza.command;
 
 import com.pizza.exception.ApplicationException;
 import com.pizza.model.order.PizzaOrderModel;
-import com.pizza.validator.order.KalyaniPizzaStoreOrderModelValidator;
+import com.pizza.validator.order.DonimosPizzaStoreOrderModelValidator;
 import com.pizza.validator.pizza.DeluxeVeggiePizzaModelValidator;
 import com.pizza.validator.pizza.PizzaModelValidator;
 import com.pizza.validator.sides.ColdDrinkSidesModelValidator;
@@ -19,8 +19,8 @@ public class PizzaOrderValidatorCommand implements Command {
 
         PizzaModelValidator pizzaModelValidator = new DeluxeVeggiePizzaModelValidator();
         SidesModelValidator sidesModelValidator = new ColdDrinkSidesModelValidator();
-        KalyaniPizzaStoreOrderModelValidator validator =
-                new KalyaniPizzaStoreOrderModelValidator(pizzaModelValidator, sidesModelValidator);
+        DonimosPizzaStoreOrderModelValidator validator =
+                new DonimosPizzaStoreOrderModelValidator(pizzaModelValidator, sidesModelValidator);
         try {
             validator.validate(pizzaOrderModel);
         } catch (ApplicationException e) {

@@ -10,12 +10,12 @@ import com.pizza.validator.sides.SidesModelValidator;
 
 import java.util.List;
 
-public class KalyaniPizzaStoreOrderModelValidator
+public class DonimosPizzaStoreOrderModelValidator
     implements PizzaOrderModelValidator<PizzaOrderModel> {
   private PizzaModelValidator pizzaModelValidator;
   private SidesModelValidator sidesModelValidator;
 
-  public KalyaniPizzaStoreOrderModelValidator(
+  public DonimosPizzaStoreOrderModelValidator(
       PizzaModelValidator pizzaModelValidator, SidesModelValidator sidesModelValidator) {
     this.pizzaModelValidator = pizzaModelValidator;
     this.sidesModelValidator = sidesModelValidator;
