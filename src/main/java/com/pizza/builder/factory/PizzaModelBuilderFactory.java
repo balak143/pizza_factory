@@ -39,8 +39,6 @@ public class PizzaModelBuilderFactory {
             case NONVEG_SUPREME:
                 pizzaModelBuilder = new NonVegSupremePizzaModelBuilder(pizza);
                 break;
-            default:
-                pizzaModelBuilder = new DeluxeVeggiePizzaModelBuilder(pizza);
         }
         return pizzaModelBuilder;
     }

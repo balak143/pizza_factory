@@ -41,7 +41,11 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
                 * getMultiplier(), ingredientRequiredQty.getQtyUom());
     }
 
-
+    protected IngredientModel buildToppingIngredientModel(String name) throws ApplicationException {
+        IngredientRequiredQty ingredientRequiredQty = getIngredientRequiredQty(name);
+        return new IngredientModel(ingredientRequiredQty.getName(), ingredientRequiredQty.getType(), ingredientRequiredQty.getQty()
+               , ingredientRequiredQty.getQtyUom());
+    }
     protected IngredientRequiredQty getIngredientRequiredQty(String productName) throws ApplicationException {
         IngredientRequiredQty requiredQty = IngredientQtyDeriveService.getInstance().getQty(productName);
         return requiredQty;
@@ -93,7 +97,7 @@ public abstract class AbstractPizzaModelBuilder<T extends AbstractPizzaModel> im
             IngredientRequiredQty ingredientRequiredQty = null;
             try {
                 AbstractToppingModel toppingModel = ToppingModelFactory.getInstance().createToppingModel(toppingName);
-                toppingModel.setIngredientModel(buildIngredientModel(toppingName.getName()));
+                toppingModel.setIngredientModel(buildToppingIngredientModel(toppingName.getName()));
                 toppingModels.add(toppingModel);
             } catch (ApplicationException e) {
                 ThrowingConsumer.sneakyThrow(e);

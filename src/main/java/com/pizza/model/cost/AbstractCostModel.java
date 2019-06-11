@@ -48,7 +48,7 @@ public abstract class AbstractCostModel implements CostModel {
             throw new IllegalArgumentException("Price not found for " + ingredient.getProductCode());
         }
 
-        return new Price(imPrice.getPrice(), imPrice.getCurrency());
+        return new Price(imPrice.getPrice()*ingredient.getRequiredQty(), imPrice.getCurrency());
     }
 
 

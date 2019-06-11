@@ -5,7 +5,10 @@ import com.pizza.model.ingredient.IngredientType;
 
 import java.util.function.Supplier;
 
-public enum IngredientDB {
+/**
+ * This is data used for Test cases
+ */
+public enum IngredientTestDB {
 
     // Toppings and Ingredients
     BLACK_OLIVE(() -> new IngredientModel("Black Olive", IngredientType.VEG, 50.0, "GRAM")),
@@ -31,7 +34,7 @@ public enum IngredientDB {
 
     private Supplier<IngredientModel> supplier;
 
-    IngredientDB(Supplier supplier) {
+    IngredientTestDB(Supplier supplier) {
         this.supplier = supplier;
     }
 

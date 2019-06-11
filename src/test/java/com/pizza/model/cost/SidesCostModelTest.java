@@ -39,9 +39,6 @@ public class SidesCostModelTest {
         costService = Mockito.mock(IngredientCostService.class);
         coldDrinkSidesModel = Mockito.mock(ColdDrinkSidesModel.class);
         ingredientModel = Mockito.mock(IngredientModel.class);
-    }
-
-    private void mockRequired() {
         price = new Price("DUMMY", 1.5, "INR");
         Mockito.when(costService.cost(Mockito.any(), Mockito.any())).thenReturn(price);
         Mockito.when(coldDrinkSidesModel.getIngredientModel()).thenReturn(ingredientModel);
@@ -66,7 +63,9 @@ public class SidesCostModelTest {
 
     @Test
     public void cost() {
-        mockRequired();
+        Mockito.when(coldDrinkSidesModel.getIngredientModel()).thenReturn(ingredientModel);
+        Mockito.when(ingredientModel.getRequiredQty()).thenReturn(1.0);
+        Mockito.when(costService.cost(Mockito.any(), Mockito.any())).thenReturn(price);
         SidesCostModel sidesCostModel = new SidesCostModel();
         sidesCostModel.setCostService(costService);
         sidesCostModel.setSidesModel(coldDrinkSidesModel);
