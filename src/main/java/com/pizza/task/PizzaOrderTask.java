@@ -15,7 +15,7 @@ public class PizzaOrderTask extends PizzaTask {
     }
 
     @Override
-    protected Object execute() throws Exception {
+    protected Object execute() {
         PizzaWorkflowBeans workflowBeans = new PizzaWorkflowBeans();
         List<Command> commands = workflowBeans.pizzaOrder();
         Context context = new Context();

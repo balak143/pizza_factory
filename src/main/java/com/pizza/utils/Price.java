@@ -31,11 +31,11 @@ public class Price {
 
   @Override
   public String toString() {
-    return "Name - "
+    return "{Name - "
         + this.getName()
-        + " Price - "
+        + ", Price - "
         + this.getPrice()
-        + " Currency - "
-        + this.getCurrency();
+        + ", Currency - "
+        + this.getCurrency()+"}";
   }
 }
