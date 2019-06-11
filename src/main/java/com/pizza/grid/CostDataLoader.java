@@ -11,35 +11,42 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class CostDataLoader extends DataLoader<CostDataKey, CostData> {
+  public static final int FIVE = 5;
+  public static final int FOUR = 4;
+  public static final int SEVEN = 7;
+  public static final int SIX = 6;
+  public static final int TEN = 10;
+  public static final int NINE = 9;
+  public static final int EIGHT = 8;
   private Map<CostDataKey, CostData> costData = new TreeMap<>();
 
   private void dummyData() {
     // Toppings - Veg
     costData.put(
         new CostDataKey("Black Olive", today()),
-        new CostData("Black Olive", today(), 5, "INR", "GRAM"));
+        new CostData("Black Olive", today(), FIVE, "INR", "GRAM"));
     costData.put(
-        new CostDataKey("Capsicum", today()), new CostData("Capsicum", today(), 5, "INR", "GRAM"));
+        new CostDataKey("Capsicum", today()), new CostData("Capsicum", today(), FIVE, "INR", "GRAM"));
     costData.put(
-        new CostDataKey("Paneer", today()), new CostData("Paneer", today(), 7, "INR", "GRAM"));
+        new CostDataKey("Paneer", today()), new CostData("Paneer", today(), SEVEN, "INR", "GRAM"));
     costData.put(
-        new CostDataKey("Mushroom", today()), new CostData("Mushroom", today(), 6, "INR", "GRAM"));
+        new CostDataKey("Mushroom", today()), new CostData("Mushroom", today(), SIX, "INR", "GRAM"));
     costData.put(
         new CostDataKey("Extra Cheese", today()),
-        new CostData("Extra Cheese", today(), 7, "INR", "GRAM"));
+        new CostData("Extra Cheese", today(), SEVEN, "INR", "GRAM"));
     // Toppings Non-veg
     costData.put(
         new CostDataKey("Fresh Tomato", today()),
-        new CostData("Fresh Tomato", today(), 5, "INR", "GRAM"));
+        new CostData("Fresh Tomato", today(), FIVE, "INR", "GRAM"));
     costData.put(
         new CostDataKey("Chicken Tikka", today()),
-        new CostData("Chicken Tikka", today(), 7, "INR", "GRAM"));
+        new CostData("Chicken Tikka", today(), SEVEN, "INR", "GRAM"));
     costData.put(
         new CostDataKey("Barbeque Chicken", today()),
-        new CostData("Barbeque Chicken", today(), 9, "INR", "GRAM"));
+        new CostData("Barbeque Chicken", today(), NINE, "INR", "GRAM"));
     costData.put(
         new CostDataKey("Grilled Chicken", today()),
-        new CostData("Grilled Chicken", today(), 8, "INR", "GRAM"));
+        new CostData("Grilled Chicken", today(), EIGHT, "INR", "GRAM"));
     // Crust
     costData.put(
         new CostDataKey("Wheat Thin", today()),
@@ -56,37 +63,37 @@ public class CostDataLoader extends DataLoader<CostDataKey, CostData> {
     // Sides
     costData.put(
         new CostDataKey("Cold Drink", today()),
-        new CostData("Cold Drink", today(), 10, "INR", "GRAM"));
+        new CostData("Cold Drink", today(), TEN, "INR", "GRAM"));
     costData.put(
         new CostDataKey("Mousse Cake", today()),
-        new CostData("Mousse Cake", today(), 10, "INR", "GRAM"));
+        new CostData("Mousse Cake", today(), TEN, "INR", "GRAM"));
 
     // Pizza Ingradients
     costData.put(
-        new CostDataKey("Sauce", today()), new CostData("Sauce", today(), 5, "INR", "GRAM"));
+        new CostDataKey("Sauce", today()), new CostData("Sauce", today(), FIVE, "INR", "GRAM"));
     costData.put(
-        new CostDataKey("Cheese", today()), new CostData("Cheese", today(), 5, "INR", "GRAM"));
+        new CostDataKey("Cheese", today()), new CostData("Cheese", today(), FIVE, "INR", "GRAM"));
     costData.put(
         new CostDataKey("Pepperoni", today()),
-        new CostData("Pepperoni", today(), 4, "INR", "GRAM"));
+        new CostData("Pepperoni", today(), FOUR, "INR", "GRAM"));
     costData.put(
         new CostDataKey("Red Pepper", today()),
-        new CostData("Red Pepper", today(), 4, "INR", "GRAM"));
+        new CostData("Red Pepper", today(), FOUR, "INR", "GRAM"));
     costData.put(
-        new CostDataKey("Oregano", today()), new CostData("Oregano", today(), 4, "INR", "GRAM"));
+        new CostDataKey("Oregano", today()), new CostData("Oregano", today(), FOUR, "INR", "GRAM"));
     costData.put(
-        new CostDataKey("Garlic", today()), new CostData("Garlic", today(), 4, "INR", "GRAM"));
-    costData.put(new CostDataKey("Corn", today()), new CostData("Corn", today(), 5, "INR", "GRAM"));
+        new CostDataKey("Garlic", today()), new CostData("Garlic", today(), FOUR, "INR", "GRAM"));
+    costData.put(new CostDataKey("Corn", today()), new CostData("Corn", today(), FIVE, "INR", "GRAM"));
     costData.put(
         new CostDataKey("Paneer Chop", today()),
-        new CostData("Paneer Chop", today(), 5, "INR", "GRAM"));
+        new CostData("Paneer Chop", today(), FIVE, "INR", "GRAM"));
     costData.put(
-        new CostDataKey("Chicken", today()), new CostData("Chicken", today(), 5, "INR", "GRAM"));
+        new CostDataKey("Chicken", today()), new CostData("Chicken", today(), FIVE, "INR", "GRAM"));
     costData.put(
-        new CostDataKey("Red meat", today()), new CostData("Red meat", today(), 5, "INR", "GRAM"));
+        new CostDataKey("Red meat", today()), new CostData("Red meat", today(), FIVE, "INR", "GRAM"));
     costData.put(
         new CostDataKey("Ginger Chicken", today()),
-        new CostData("Ginger Chicken", today(), 5, "INR", "GRAM"));
+        new CostData("Ginger Chicken", today(), FIVE, "INR", "GRAM"));
   }
 
   private static Date today() {

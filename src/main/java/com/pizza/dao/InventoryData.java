@@ -12,6 +12,10 @@ public class InventoryData implements Data {
     this.qtyUOM = qtyUOM;
   }
 
+  public String getUuid() {
+    return uuid;
+  }
+
   public String getProductCode() {
     return productCode;
   }
@@ -23,5 +27,4 @@ public class InventoryData implements Data {
   public String getQtyUOM() {
     return qtyUOM;
   }
-
 }

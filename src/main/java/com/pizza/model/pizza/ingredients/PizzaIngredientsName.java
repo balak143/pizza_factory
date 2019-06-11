@@ -49,6 +49,6 @@ public enum PizzaIngredientsName {
         return GINGER_CHICKEN;
       default:
     }
-    throw new RuntimeException(" Pizza Ingredients - '" + name + "'  is not available in store");
+    throw new IllegalArgumentException(" Pizza Ingredients - '" + name + "'  is not available in store");
   }
 }

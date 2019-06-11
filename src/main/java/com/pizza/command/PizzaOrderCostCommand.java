@@ -9,8 +9,11 @@ import com.pizza.service.cost.IngredientCostService;
 import com.pizza.utils.Price;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 public class PizzaOrderCostCommand implements Command {
+  private static final Logger LOGGER = Logger.getLogger(PizzaOrderCostCommand.class.getName());
+
   @Override
   public boolean execute(Context context) {
     PizzaOrderInputData pizzaOrderInputData =
@@ -29,7 +32,7 @@ public class PizzaOrderCostCommand implements Command {
     List<Price> prices = pizzaOrderCostModel.cost(pizzaOrderInputData.getOrderDate());
 
     context.setData("ORDER_PRICE", prices);
-    System.out.println(prices);
+    LOGGER.info(prices.toString());
 
     return true;
   }

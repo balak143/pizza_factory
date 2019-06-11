@@ -1,13 +1,13 @@
 package com.pizza.command;
 
-import com.pizza.model.order.PizzaOrderModel;
+import java.util.logging.Logger;
 
 public class PizzaOrderPaymentCommand implements Command {
-
+  private static final Logger LOGGER = Logger.getLogger(PizzaOrderPaymentCommand.class.getName());
   @Override
   public boolean execute(Context context) {
-    System.out.println(" Payment is being processed....");
-    System.out.println(" Payment is successful");
+    LOGGER.info(" Payment is being processed....");
+    LOGGER.info(" Payment is successful");
     return true;
   }
 }

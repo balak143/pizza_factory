@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>pizza-ordering-service</artifactId>
+    <artifactId>pizza-factory</artifactId>
     <version>1.0-SNAPSHOT</version>
     <groupId>com.pizzafactory.order</groupId>
 

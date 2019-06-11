@@ -36,6 +36,7 @@ public enum PizzaName {
         return CHICKEN_TIKKA;
       case "Pepper Barbecue":
         return PEPPER_BARBECUE;
+      default:
     }
     throw new IllegalArgumentException("Pizza - '" + name + "' is not available in store");
   }

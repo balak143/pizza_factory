@@ -18,7 +18,7 @@ public enum CrustName {
 
   public static CrustName of(String name) {
     if (name == null) {
-      throw new RuntimeException("Please provide crust type");
+      throw new IllegalArgumentException("Please provide crust type");
     }
     switch (name) {
       case "New Hand Tossed":
@@ -31,6 +31,6 @@ public enum CrustName {
         return FRESH_PAN_PIZZA;
       default:
     }
-    throw new RuntimeException(" Crust - '" + name + "'  is not available in store");
+    throw new IllegalArgumentException(" Crust - '" + name + "'  is not available in store");
   }
 }

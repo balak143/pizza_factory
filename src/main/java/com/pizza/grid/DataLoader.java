@@ -9,7 +9,7 @@ import java.util.Map;
 public abstract class DataLoader<K extends DataKey, V extends Data> {
   public abstract Map<K, V> loadAll();
 
-  public abstract <V> Data load(K dataKey);
+  public abstract Data load(K dataKey);
 
   public abstract List<V> load(List<K> keys);
 }

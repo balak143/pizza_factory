@@ -12,11 +12,11 @@ public abstract class PizzaTask implements Callable {
     private CommandExecutor commandExecutor;
 
     @Override
-    public Object call() throws Exception {
+    public Object call() {
         return execute();
     }
 
-    protected abstract Object execute() throws Exception;
+    protected abstract Object execute();
 
     protected void executeCommands(List<Command> commands, Context context) {
         commandExecutor.execute(commands, context);
